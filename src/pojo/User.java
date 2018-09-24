@@ -1,4 +1,4 @@
-package com.pojo;
+package pojo;
 
 public class User {
 	private double userId;// primary key
