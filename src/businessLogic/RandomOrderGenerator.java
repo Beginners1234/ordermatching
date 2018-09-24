@@ -42,6 +42,7 @@ public class RandomOrderGenerator implements Runnable {
 //	}
 	
 	String[] o_type = {"buy", "sell"};
+	int[] num = {2,3,4};
 	
 	@Override
 	public void run() {
