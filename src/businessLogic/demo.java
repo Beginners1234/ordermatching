@@ -12,7 +12,7 @@ public class demo {
 		Thread t=new Thread(r);
 		t.setName("bob");
 		t.start();
-		Order o=new Order();
+		int a5tg5ttg5g5tgsdasdasds;
 	}
 
 }
