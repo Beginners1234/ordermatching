@@ -2,6 +2,8 @@ package DAO;
 
 import java.util.List;
 
+import pojo.Order;
+
 public class OrderTableImpl implements OrderTable {
 
 	@Override
@@ -20,11 +22,6 @@ public class OrderTableImpl implements OrderTable {
 	public List GetAllOrders(String status) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

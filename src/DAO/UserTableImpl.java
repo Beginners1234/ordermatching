@@ -2,6 +2,8 @@ package DAO;
 
 import java.util.List;
 
+import pojo.User;
+
 public class UserTableImpl implements UserTable {
 
 	@Override

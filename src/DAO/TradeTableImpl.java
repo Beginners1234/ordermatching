@@ -2,6 +2,8 @@ package DAO;
 
 import java.util.List;
 
+import pojo.Trade;
+
 public class TradeTableImpl implements TradeTable {
 
 	@Override
@@ -16,10 +18,6 @@ public class TradeTableImpl implements TradeTable {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public double AddTrade(Trade trade) {
