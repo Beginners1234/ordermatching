@@ -10,7 +10,7 @@ public class demo {
 		Thread t=new Thread(r);
 		t.setName("bob");
 		t.start();
-		int asd;
+		int asdasdasds;
 	}
 
 }
