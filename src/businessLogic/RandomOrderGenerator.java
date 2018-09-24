@@ -4,20 +4,45 @@ import java.util.Random;
 import com.pojo.Order;
 
 public class RandomOrderGenerator implements Runnable {
-	private Order GenerateBuy(double val)
+	
+	private Order Generate(double val, String type)
 	{
-		double t=153+(val*2.3);
-		double price=Math.round(t);
-		Order o=new Order(0,"limit","buy", "na",0,price,1,"waiting");//id and time to be set when adding 
-		return o;
+		String order_type = type;
+		if(order_type == "buy")
+		{
+			double t=153+(val*2.3);
+			double price=Math.round(t);
+			Order o=new Order(0,"limit",order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+			return o;
+		}
+		else
+		{
+			double t=157+(val*2.3);
+			double price=Math.round(t);
+			Order o=new Order(0,"limit",order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+			return o;
+		}
 	}
-	private Order GenerateSell(double val)
-	{
-		double t=157+(val*2.3);
-		double price=Math.round(t);
-		Order o=new Order(0,"limit","sell", "na",0,price,1,"waiting");//id and time to be set when adding 
-		return o;
-	}
+//	
+//	private Order GenerateBuy(double val, String type)
+//	{
+//		String order_type = type;
+//		double t=153+(val*2.3);
+//		double price=Math.round(t);
+//		Order o=new Order(0,"limit",order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+//		return o;
+//	}
+//	private Order GenerateSell(double val, String type)
+//	{
+//		String order_type = type;
+//		double t=157+(val*2.3);
+//		double price=Math.round(t);
+//		Order o=new Order(0,"limit",order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+//		return o;
+//	}
+	
+	String[] o_type = {"buy", "sell"};
+	
 	@Override
 	public void run() {
 		Random val_1=new Random(150);
@@ -28,6 +53,7 @@ public class RandomOrderGenerator implements Runnable {
 		Thread t=new Thread();
 		while(true)
 		{
+			int o_t = new Random().nextInt(o_type.length);
 			double tim_step = tim.nextGaussian();
 			
 			if(Thread.currentThread().getName().equals("bob"))
@@ -41,18 +67,35 @@ public class RandomOrderGenerator implements Runnable {
 			}
 			double val_buy=val_1.nextGaussian();
 			double val_sell=val_2.nextGaussian();
-			Order ob=GenerateBuy(val_buy);
-			Order os=GenerateSell(val_sell);
+//			Order ob=GenerateBuy(val_buy, o_type[o_t]);
+//			Order os=GenerateSell(val_sell, o_type[o_t]);
 			double userId_buy =100+val_user.nextInt(10);
 			double userId_sell=111+val_user.nextInt(10);
 			double quant_buy=quantity.nextInt(100);
 			double quant_sell=quantity.nextInt(100);
-			ob.setUserId(userId_buy);
-			os.setUserId(userId_sell);
-			ob.setOrderQuantity(quant_buy);
-			os.setOrderQuantity(quant_sell);
+//			ob.setUserId(userId_buy);
+//			os.setUserId(userId_sell);
+//			ob.setOrderQuantity(quant_buy);
+//			os.setOrderQuantity(quant_sell);
+//			
+			
+			if(o_type[o_t] == "buy")
+			{
+				Order o = Generate(val_buy, o_type[o_t]);
+				o.setUserId(userId_buy);
+				o.setOrderQuantity(quant_buy);
+				System.out.println(o);
+			}
+			else
+			{
+				Order o = Generate(val_sell, o_type[o_t]);
+				o.setUserId(userId_sell);
+				o.setOrderQuantity(quant_sell);
+				System.out.println(o);
+
+			}
 			//call to place order function for os and ob
-			System.out.print(ob+"\t");System.out.print(os+"\n");  
+			//System.out.print(ob+"\t");System.out.print(os+"\n");  
 		}
 
 	}
