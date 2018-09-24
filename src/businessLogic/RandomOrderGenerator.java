@@ -1,7 +1,7 @@
 package businessLogic;
 import java.util.Random;
 
-import com.pojo.Order;
+import pojo.Order;
 
 public class RandomOrderGenerator implements Runnable {
 	
