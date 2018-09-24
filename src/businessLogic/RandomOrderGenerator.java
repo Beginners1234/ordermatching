@@ -24,13 +24,16 @@ public class RandomOrderGenerator implements Runnable {
 		Random val_2=new Random(100);
 		Random val_user=new Random(70);
 		Random quantity=new Random(60);
+		Random tim = new Random(40);
 		Thread t=new Thread();
 		while(true)
 		{
+			double tim_step = tim.nextGaussian();
+			
 			if(Thread.currentThread().getName().equals("bob"))
 			{
 				try {
-					Thread.sleep(1000);
+					Thread.sleep((long) (Math.abs(2000 + tim_step*2500)));
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
