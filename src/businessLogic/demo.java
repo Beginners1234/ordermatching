@@ -13,6 +13,7 @@ public class demo {
 		t.setName("bob");
 		t.start();
 		int a5tg5ttg5g5tgsdasdasds;
+		int a;
 	}
 
 }
