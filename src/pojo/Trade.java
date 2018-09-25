@@ -71,6 +71,12 @@ public class Trade {
 	public void setTradedTime(Date tradedTime) {
 		this.tradedTime = tradedTime;
 	}
+	@Override
+	public String toString() {
+		return "Trade [tradeId=" + tradeId + ", orderId_buy=" + orderId_buy + ", orderId_sell=" + orderId_sell
+				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
+				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
+	}
 
 	
 }
