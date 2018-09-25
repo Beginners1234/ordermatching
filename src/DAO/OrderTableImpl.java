@@ -11,7 +11,6 @@ import java.util.List;
 import connection.MyConnection;
 
 import pojo.Order;
-import pojo.Trade;
 
 public class OrderTableImpl implements OrderTable {
 
