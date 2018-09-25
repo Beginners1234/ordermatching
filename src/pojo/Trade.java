@@ -1,6 +1,6 @@
 package pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Trade {
 	private double tradeId;//primary key
@@ -10,7 +10,7 @@ public class Trade {
 	private double userId_sell;
 	private double tradedPrice;
 	private double tradedQuantity;
-	private String tradedTime;
+	private Date tradedTime;
 	
 	@Override
 	public String toString() {
@@ -22,7 +22,7 @@ public class Trade {
 		return tradeId;
 	}
 	public Trade(double tradeId, double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
-			double tradedPrice, double tradedQuantity, String tradedTime) {
+			double tradedPrice, double tradedQuantity, Date tradedTime) {
 		super();
 		this.tradeId = tradeId;
 		this.orderId_buy = orderId_buy;
@@ -72,10 +72,10 @@ public class Trade {
 	public void setTradedQuantity(double tradedQuantity) {
 		this.tradedQuantity = tradedQuantity;
 	}
-	public String getTradedTime() {
+	public Date getTradedTime() {
 		return tradedTime;
 	}
-	public void setTradedTime(String tradedTime) {
+	public void setTradedTime(Date tradedTime) {
 		this.tradedTime = tradedTime;
 	}
     	
