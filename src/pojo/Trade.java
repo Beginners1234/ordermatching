@@ -1,6 +1,6 @@
 package pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Trade {
 	private double tradeId;//primary key
@@ -10,19 +10,9 @@ public class Trade {
 	private double userId_sell;
 	private double tradedPrice;
 	private double tradedQuantity;
-	private String tradedTime;
-	
-	@Override
-	public String toString() {
-		return "Trade [tradeId=" + tradeId + ", orderId_buy=" + orderId_buy + ", orderId_sell=" + orderId_sell
-				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
-				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
-	}
-	public double getTradeId() {
-		return tradeId;
-	}
+	private Date tradedTime;
 	public Trade(double tradeId, double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
-			double tradedPrice, double tradedQuantity, String tradedTime) {
+			double tradedPrice, double tradedQuantity, Date tradedTime) {
 		super();
 		this.tradeId = tradeId;
 		this.orderId_buy = orderId_buy;
@@ -32,6 +22,9 @@ public class Trade {
 		this.tradedPrice = tradedPrice;
 		this.tradedQuantity = tradedQuantity;
 		this.tradedTime = tradedTime;
+	}
+	public double getTradeId() {
+		return tradeId;
 	}
 	public void setTradeId(double tradeId) {
 		this.tradeId = tradeId;
@@ -72,11 +65,12 @@ public class Trade {
 	public void setTradedQuantity(double tradedQuantity) {
 		this.tradedQuantity = tradedQuantity;
 	}
-	public String getTradedTime() {
+	public Date getTradedTime() {
 		return tradedTime;
 	}
-	public void setTradedTime(String tradedTime) {
+	public void setTradedTime(Date tradedTime) {
 		this.tradedTime = tradedTime;
 	}
-    	
+
+	
 }
