@@ -1,19 +1,23 @@
 package pojo;
 
+import java.sql.Date;
+
 public class User {
 	private double userId;// primary key
 	private double loginId;
 	private String password;
 	private double contact;
 	private String name;
+	private Date reg;
 	
-	public User(double userId, double loginId, String password, double contact, String name) {
+	public User(double userId, double loginId, String password, double contact, String name, Date reg) {
 		super();
 		this.userId = userId;
 		this.loginId = loginId;
 		this.password = password;
 		this.contact = contact;
 		this.name = name;
+		this.reg = reg;
 	}
 	
 	public double getUserId() {
@@ -46,11 +50,19 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public Date getReg() {
+		return reg;
+	}
+
+	public void setReg(Date reg) {
+		this.reg = reg;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", loginId=" + loginId + ", password=" + password + ", contact=" + contact
-				+ ", name=" + name + "]";
+				+ ", name=" + name + ", reg=" + reg + "]";
 	}
 
 }

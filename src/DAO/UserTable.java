@@ -9,5 +9,5 @@ public interface UserTable {
 	public List<User> GetUserByUsername(Double LoginId);
 	public List<User> GetAllUsers();
 	public double AddUser(User user);
-
+	public double GetCount();
 }
