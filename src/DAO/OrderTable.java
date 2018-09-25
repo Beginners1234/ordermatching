@@ -10,5 +10,6 @@ public interface OrderTable {
 	public List<Order> GetAllOrders(String status);
 	public double AddOrder(Order order);
 	public List<Order> GetAllOrders();
-	public List<Order> GetOrderForMatching(String order_type, Double quantity);
+	public List<Order> GetOrderForMatching(String order_category, Double quantity);
+	public double UpdateOrderByOrderId(Order order);
 }

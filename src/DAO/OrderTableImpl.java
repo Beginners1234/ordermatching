@@ -111,7 +111,7 @@ public class OrderTableImpl implements OrderTable {
 		// TODO Auto-generated method stub
 		
 		int rowsAdded = 0;
-		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?)";
+		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?,?)";
 		
 		Connection con = MyConnection.openConnection();
 		try {
@@ -126,6 +126,7 @@ public class OrderTableImpl implements OrderTable {
 			ps.setDouble(7, order.getUserId());
 			ps.setString(8, order.getOrderStatus());
 			ps.setBoolean(9, order.isAon());
+			ps.setDouble(10, order.getOrderQuantity());
 			
 			rowsAdded = ps.executeUpdate();
 			
@@ -175,10 +176,72 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public List<Order> GetOrderForMatching(String order_type, Double quantity) {
+	public List<Order> GetOrderForMatching(String order_categ, Double quantity) {
 		// TODO Auto-generated method stub
+		String GETORDERSFORMATCH;
+		List<Order> ordersmatch = new ArrayList<>();
+		if(order_categ == "BUY")
+		{
+			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price DESC";
+		}
+		else
+		{
+			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price";
+
+		}
 		
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(GETORDERSFORMATCH);
+			ps.setDouble(1, quantity);
+			ps.setString(2, order_categ);
+			
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				String orderst_m = set.getString("order_status");
+				double orderid_m = set.getDouble("order_id");
+				String ordercat_m = set.getString("order_category");
+				String ordertype_m = set.getString("order_type");
+				Date order_time_m = set.getDate("order_time");
+				double quant_m = set.getDouble("quantity");
+				double price_m = set.getDouble("price");
+				double userid_m = set.getDouble("user_id");
+				boolean aon_m = set.getBoolean("aon");
+				
+				Order ordermatch = new Order(orderid_m, ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
+				ordersmatch.add(ordermatch);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ordersmatch;
+
+	}
+
+	@Override
+	public double UpdateOrderByOrderId(Order order) {
 		
-		return null;
+		double oid = order.getOrderId();
+		double isupdated = 0;
+		
+		String UpdateOrder = "UPDATE order_details SET order_status = ?, remianing_quantity = ? WHERE order_id = ?";
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(UpdateOrder);
+			ps.setString(1, order.getOrderStatus());
+			ps.setDouble(2, order.getRemaining_quantity());
+			ps.setDouble(3, oid);
+			
+			isupdated = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return isupdated;
+		
 	}
 }
