@@ -129,7 +129,7 @@ public class UserTableImpl implements UserTable {
 		// TODO Auto-generated method stub
 		double count = 0;
 		
-		String getcount = "SELECT COUNT(user_id) from order_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
+		String getcount = "SELECT COUNT(user_id) from user_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, reg) = DATEPART(MM, GETDATE()) "
 				+ "AND DATEPART(YYYY, reg) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
