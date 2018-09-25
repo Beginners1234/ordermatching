@@ -30,4 +30,13 @@ public class OrderTableImpl implements OrderTable {
 		return 0;
 	}
 
+	public Order getFirstSellOrder() {
+		//gets sell order with min cost and waiting status from db
+		return null;
+	}
+	
+	public Order getFirstBuyOrder() {
+		//gets buy order with max cost and waiting status from db
+		return null;
+	}
 }
