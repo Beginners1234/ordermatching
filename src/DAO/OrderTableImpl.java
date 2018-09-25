@@ -225,7 +225,7 @@ public class OrderTableImpl implements OrderTable {
 	public double UpdateOrderByOrderId(Order order) {
 		
 		double oid = order.getOrderId();
-		double isupdated = 0;
+		double isupdate = 0;
 		
 		String UpdateOrder = "UPDATE order_details SET order_status = ?, remianing_quantity = ? WHERE order_id = ?";
 		try(Connection con = MyConnection.openConnection();) {
@@ -234,13 +234,13 @@ public class OrderTableImpl implements OrderTable {
 			ps.setDouble(2, order.getRemaining_quantity());
 			ps.setDouble(3, oid);
 			
-			isupdated = ps.executeUpdate();
+			isupdate = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return isupdated;
+		return isupdate;
 		
 	}
 }
