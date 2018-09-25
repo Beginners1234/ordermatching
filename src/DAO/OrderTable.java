@@ -6,9 +6,9 @@ import pojo.Order;
 
 public interface OrderTable {
 	public double DropOrderTable();
-	public List GetOrderByUserId(Double UserId);
-	public List GetAllOrders(String status);
+	public List<Order> GetOrderByUserId(Double UserId);
+	public List<Order> GetAllOrders(String status);
 	public double AddOrder(Order order);
-	public List GetAllOrders();
-
+	public List<Order> GetAllOrders();
+	public List<Order> GetOrderForMatching(String order_type, Double quantity);
 }
