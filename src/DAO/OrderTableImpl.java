@@ -11,6 +11,7 @@ import java.util.List;
 import connection.MyConnection;
 
 import pojo.Order;
+import pojo.Trade;
 
 public class OrderTableImpl implements OrderTable {
 
@@ -20,7 +21,7 @@ public class OrderTableImpl implements OrderTable {
 		
 		int delete = 0;
 		Connection con = MyConnection.openConnection();
-		String DROPORDER = "drop table ORDER_DETAILS";
+		String DROPORDER = "drop table order_details";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(DROPORDER);
@@ -38,7 +39,7 @@ public class OrderTableImpl implements OrderTable {
 		
 	List<Order> ordersid = new ArrayList<>();
 		
-	String GETORDERBYID = "SELECT * FROM ORDER_DETAILS WHERE user_id = ?";
+	String GETORDERBYID = "SELECT * FROM order_details WHERE user_id = ?";
 	
 	try(Connection con = MyConnection.openConnection();) {
 		PreparedStatement ps = con.prepareStatement(GETORDERBYID);
@@ -138,7 +139,7 @@ public class OrderTableImpl implements OrderTable {
 	}
 	
 	@Override
-	public List GetAllOrders () {
+	public List<Order> GetAllOrders () {
 		// TODO Auto-generated method stub
 		
 		List<Order> ordersall = new ArrayList<>();

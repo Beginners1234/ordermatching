@@ -77,6 +77,10 @@ public class Trade {
 				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
 				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
 	}
-
+	public Trade() {
+		super();
+	}
+	
+	
 	
 }
