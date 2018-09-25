@@ -5,21 +5,27 @@ public class User {
 	private String loginId;
 	private String password;
 	private String contact;
-	private String username;
+	private String name;
 
-	public User(double userId, String loginId, String password, String contact, String username, double balance) {
+	public User(double userId, String loginId, String password, String contact, String name, double balance) {
 		super();
 		this.userId = userId;
 		this.loginId = loginId;
 		this.password = password;
 		this.contact = contact;
-		this.username = username;
+		this.name = name;
 		this.balance = balance;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", loginId=" + loginId + ", password=" + password + ", contact=" + contact
-				+ ", username=" + username + ", balance=" + balance + "]";
+				+ ", name=" + name + ", balance=" + balance + "]";
 	}
 	public double getUserId() {
 		return userId;
@@ -45,12 +51,7 @@ public class User {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+
 	public double getBalance() {
 		return balance;
 	}
