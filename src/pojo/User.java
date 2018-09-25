@@ -2,41 +2,30 @@ package pojo;
 
 public class User {
 	private double userId;// primary key
-	private String loginId;
+	private double loginId;
 	private String password;
-	private String contact;
+	private double contact;
 	private String name;
-
-	public User(double userId, String loginId, String password, String contact, String name, double balance) {
+	
+	public User(double userId, double loginId, String password, double contact, String name) {
 		super();
 		this.userId = userId;
 		this.loginId = loginId;
 		this.password = password;
 		this.contact = contact;
 		this.name = name;
-		this.balance = balance;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", loginId=" + loginId + ", password=" + password + ", contact=" + contact
-				+ ", name=" + name + ", balance=" + balance + "]";
-	}
+	
 	public double getUserId() {
 		return userId;
 	}
 	public void setUserId(double userId) {
 		this.userId = userId;
 	}
-	public String getLoginId() {
+	public double getLoginId() {
 		return loginId;
 	}
-	public void setLoginId(String loginId) {
+	public void setLoginId(double loginId) {
 		this.loginId = loginId;
 	}
 	public String getPassword() {
@@ -45,18 +34,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getContact() {
+	public double getContact() {
 		return contact;
 	}
-	public void setContact(String contact) {
+	public void setContact(double contact) {
 		this.contact = contact;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", loginId=" + loginId + ", password=" + password + ", contact=" + contact
+				+ ", name=" + name + "]";
+	}
 
-	public double getBalance() {
-		return balance;
-	}
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-	private double balance;
 }

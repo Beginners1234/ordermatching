@@ -1,4 +1,5 @@
 package businessLogic;
+import java.util.Date;
 import java.util.Random;
 
 import pojo.Order;
@@ -9,18 +10,20 @@ public class RandomOrderGenerator implements Runnable {
 	{
 		String order_cat = cat;
 		String order_type = type;
+		Date time_stamp= new Date();
 		if(order_type == "buy")
 		{
 			double t=153+(val*2.3);
 			double price=Math.round(t);
-			Order o=new Order(0,order_cat,order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+	
+			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
 			return o;
 		}
 		else
 		{
 			double t=157+(val*2.3);
 			double price=Math.round(t);
-			Order o=new Order(0,order_cat,order_type, "na",0,price,1,"waiting");//id and time to be set when adding 
+			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
 			return o;
 		}
 	}
@@ -43,7 +46,7 @@ public class RandomOrderGenerator implements Runnable {
 //	}
 	
 	String[] o_type = {"buy", "sell"};
-	int[] num = {2,3,4,6,8};
+	int[] num = {2,5,4,3,8};
 	String[] o_cat = {"limit", "market"};
 	
 	@Override

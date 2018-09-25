@@ -11,16 +11,7 @@ public class Trade {
 	private double tradedPrice;
 	private double tradedQuantity;
 	private Date tradedTime;
-	
-	@Override
-	public String toString() {
-		return "Trade [tradeId=" + tradeId + ", orderId_buy=" + orderId_buy + ", orderId_sell=" + orderId_sell
-				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
-				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
-	}
-	public double getTradeId() {
-		return tradeId;
-	}
+
 	public Trade(double tradeId, double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
 			double tradedPrice, double tradedQuantity, Date tradedTime) {
 		super();
@@ -32,6 +23,9 @@ public class Trade {
 		this.tradedPrice = tradedPrice;
 		this.tradedQuantity = tradedQuantity;
 		this.tradedTime = tradedTime;
+	}
+	public double getTradeId() {
+		return tradeId;
 	}
 	public void setTradeId(double tradeId) {
 		this.tradeId = tradeId;
@@ -78,5 +72,16 @@ public class Trade {
 	public void setTradedTime(Date tradedTime) {
 		this.tradedTime = tradedTime;
 	}
-    	
+	@Override
+	public String toString() {
+		return "Trade [tradeId=" + tradeId + ", orderId_buy=" + orderId_buy + ", orderId_sell=" + orderId_sell
+				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
+				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
+	}
+	public Trade() {
+		super();
+	}
+	
+	
+	
 }
