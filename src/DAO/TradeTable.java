@@ -8,5 +8,6 @@ public interface TradeTable {
 	public double DropTradeTable();
 	public List<Trade> GetAllTrades();
 	public double AddTrade(Trade trade);
+	public double GetCount();
 
 }

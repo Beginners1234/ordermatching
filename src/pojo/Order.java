@@ -14,6 +14,7 @@ public class Order {
 	private String orderStatus;// rejected,waiting or successful
 	private boolean aon;//all or none
 	private double remaining_quantity;
+	
 	public double getOrderId() {
 		return orderId;
 	}

@@ -49,8 +49,9 @@ public class UserTableImpl implements UserTable {
 				String name = set.getString("name");
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
+				Date regist = set.getDate("reg");
 				
-				User alluser = new User(userid, loginid, password, contact, name);
+				User alluser = new User(userid, loginid, password, contact, name, (java.sql.Date) regist);
 				usersall.add(alluser);
 				
 			}
@@ -82,8 +83,8 @@ public class UserTableImpl implements UserTable {
 				String name = set.getString("name");
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
-				
-				User user1 = new User(userid, loginid, password, contact, name);
+				Date regist = set.getDate("reg");
+				User user1 = new User(userid, loginid, password, contact, name, (java.sql.Date) regist);
 				usersid.add(user1);
 				
 			}
@@ -101,7 +102,7 @@ public class UserTableImpl implements UserTable {
 	public double AddUser(User user) {
 		// TODO Auto-generated method stub
 		int rowsAdded = 0;
-		String ADDUSER = "insert into user_details values(?,?,?,?,?)";
+		String ADDUSER = "insert into user_details values(?,?,?,?,?,?)";
 		
 		Connection con = MyConnection.openConnection();
 		try {
@@ -112,7 +113,7 @@ public class UserTableImpl implements UserTable {
 			ps.setDouble(3, user.getLoginId());
 			ps.setString(4, user.getPassword());
 			ps.setDouble(5, user.getContact());
-			
+			ps.setDate(6, user.getReg());
 			rowsAdded = ps.executeUpdate();
 			
 			
@@ -121,6 +122,25 @@ public class UserTableImpl implements UserTable {
 			e.printStackTrace();
 		}
 		return rowsAdded;
+	}
+
+	@Override
+	public double GetCount() {
+		// TODO Auto-generated method stub
+		double count = 0;
+		
+		String getcount = "SELECT COUNT(user_id) from user_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
+				+ "AND DATEPART(MM, reg) = DATEPART(MM, GETDATE()) "
+				+ "AND DATEPART(YYYY, reg) = DATEPART(YYYY, GETDATE())";
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(getcount);
+
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

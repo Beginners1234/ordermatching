@@ -95,4 +95,23 @@ public class TradeTableImpl implements TradeTable {
 		}
 		return rowsAdded;
 	}
+
+	@Override
+	public double GetCount() {
+		// TODO Auto-generated method stub
+double count = 0;
+		
+		String getcount = "SELECT COUNT(trade_id) from trade_details WHERE DATEPART(DD, traded_time) = DATEPART(DD, GETDATE())"
+						+ "AND DATEPART(MM, traded_time) = DATEPART(MM, GETDATE()) "
+						+ "AND DATEPART(YYYY, traded_time) = DATEPART(YYYY, GETDATE())";		
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(getcount);
+			
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
