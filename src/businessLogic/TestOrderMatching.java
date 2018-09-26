@@ -16,25 +16,26 @@ public class TestOrderMatching {
 			double orderPrice, double userId, String orderStatus, boolean aon
 	 */
 
-	//@Test
+	@Test
 	public void testOrderMatchingBuy() {
 		System.out.println("in test buy");
 		OrderMatching oms=new OrderMatching();
-		Order buyorder=new Order(123, "buy", "limit", new Date(), 100, 40, 888, "PENDING", false);
+		Order buyorder=new Order(123, "buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
 		//Order sellorder=new Order(999, "sell", "limit", new Date(), 100, 20, 777, "pending", false);
 		List<Order> sellerList=new ArrayList<Order>();
-		sellerList.add(new Order(999, "sell", "limit", new Date(), 40, 20, 777, "PENDING", false));
-		sellerList.add(new Order(999, "sell", "limit", new Date(), 30, 20, 777, "PENDING", false));
+		sellerList.add(new Order(999, "sell", "limit", new Date(), 800, 152, 99, "PENDING", false));
+		//sellerList.add(new Order(111, "sell", "limit", new Date(), 3000, 156, 11, "PENDING", false));
+		//sellerList.add(new Order(222, "sell", "limit", new Date(), 100, 80, 22, "PENDING", false));
 		System.out.println(buyorder+"\n"+"\n");
 		oms.matchOrder(buyorder,sellerList,null);
 	}
 	
-	@Test
+	//@Test
 	public void testOrderMatchingSell() {
 
 		System.out.println("in test sell");
 		OrderMatching oms=new OrderMatching();
-		Order sellorder=new Order(123, "sell", "market", new Date(), 100, 40, 888, "PENDING", false);
+		Order sellorder=new Order(123, "sell", "limit", new Date(), 100, 40, 888, "PENDING", false);
 		//Order sellorder=new Order(999, "sell", "limit", new Date(), 100, 20, 777, "pending", false);
 		List<Order> buyerList=new ArrayList<Order>();
 		buyerList.add(new Order(999, "buy", "limit", new Date(), 40, 60, 777, "PENDING", false));

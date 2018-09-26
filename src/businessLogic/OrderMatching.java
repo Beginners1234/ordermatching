@@ -1,6 +1,5 @@
 package businessLogic;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
@@ -17,7 +16,7 @@ public class OrderMatching {
 		String type=order.getOrderCategory();// buy/sell
 		
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
-			System.out.println("Order is of type BUY");
+			System.out.println("Order is of type BUY\n");
 			//List<Order> sellerList = orderFunctions.GetOrderForMatching("sell",20.0); //todo
 			 
 			ListIterator<Order> litr = sellerList.listIterator();
@@ -46,12 +45,16 @@ public class OrderMatching {
 				trade.setUserId_sell(curSellOrder.getOrderId());
 				trade.setOrderId_buy(order.getOrderId());
 				trade.setOrderId_sell(curSellOrder.getOrderId());
-				trade.setTradedPrice(curSellOrder.getOrderPrice());
+				trade.setTradedPrice(order.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curSellOrder.getRemaining_quantity()) {
 					System.out.println("edge case\n");
 					//buy order completed
+					if(curSellOrder.isAon()&&(order.getRemaining_quantity()!=curSellOrder.getRemaining_quantity())) {
+						System.out.println("not using current sell order due to aon");
+						continue; //go to next sell order as this one is aon
+					}
 					trade.setTradedQuantity(order.getRemaining_quantity());
 					order.setOrderStatus("COMPLETED");
 					curSellOrder.setRemaining_quantity(curSellOrder.getRemaining_quantity()-order.getRemaining_quantity());
@@ -70,12 +73,12 @@ public class OrderMatching {
 				//update sell orders in db
 				//OrderTableImpl oimpl=new OrderTableImpl();
 				//oimpl.updateOrder(curSellOrder); //todo
-				System.out.println("update sell order\n"+curSellOrder+"\n");
+				System.out.println("updated sell order\n"+curSellOrder+"\n");
 				
 				//update trade in db
 				//TradeTableImpl impl=new TradeTableImpl();
 				//impl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n");
+				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			
 			//update buy order in db
@@ -86,10 +89,10 @@ public class OrderMatching {
 			
 			//OrderTableImpl oimpl=new OrderTableImpl();
 			//oimpl.updateOrder(order); //todo
-			System.out.println("update buy order in db\n"+order+"\n");
+			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
-			System.out.println("Order is of type SELL");
+			System.out.println("Order is of type SELL\n");
 			
 			//List<Order> buyerList = orderFunctions.GetOrderForMatching("buy",20.0); //todo
 			 
@@ -117,12 +120,16 @@ public class OrderMatching {
 				trade.setUserId_sell(order.getOrderId());
 				trade.setOrderId_buy(curBuyOrder.getOrderId());
 				trade.setOrderId_sell(order.getOrderId());
-				trade.setTradedPrice(curBuyOrder.getOrderPrice());
+				trade.setTradedPrice(order.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curBuyOrder.getRemaining_quantity()) {
 					System.out.println("edge case\n");
 					//sell order completed
+					if(curBuyOrder.isAon()&&(order.getRemaining_quantity()!=curBuyOrder.getRemaining_quantity())) {
+						System.out.println("not using current buy order due to aon");
+						continue; //go to next buy order as this one is aon
+					}
 					trade.setTradedQuantity(order.getRemaining_quantity());
 					
 					order.setOrderStatus("COMPLETED");
@@ -139,21 +146,21 @@ public class OrderMatching {
 				//update buy orders in db
 				//OrderTableImpl oimpl=new OrderTableImpl();
 				//oimpl.updateOrder(curBuyOrder); //todo
-				System.out.println("update Buy order\n"+curBuyOrder+"\n");
+				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
 				
 				//update trade in db
 				//TradeTableImpl impl=new TradeTableImpl();
 				//impl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n");
+				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			//update sell order in db
 			//if order is market
-			if (order.getOrderType().equalsIgnoreCase("market")) {
+			if (order.getOrderType().equalsIgnoreCase("market")&&order.getRemaining_quantity()!=order.getOrderQuantity()) {
 				order.setOrderStatus("PARTIAL");
 			}
 			//OrderTableImpl oimpl=new OrderTableImpl();
 			//oimpl.updateOrder(order); //todo
-			System.out.println("update sell order in db\n"+order+"\n");
+			System.out.println("update sell order in db after trade\n"+order+"\n");
 		}
 		
 	}

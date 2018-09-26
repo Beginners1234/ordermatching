@@ -14,7 +14,7 @@ import pojo.Trade;
 public class TradeTableImpl implements TradeTable {
 
 	@Override
-	public double DropTradeTable() {
+	public int DropTradeTable() {
 		// TODO Auto-generated method stub
 
 		int delete_trade = 0;
@@ -72,7 +72,7 @@ public class TradeTableImpl implements TradeTable {
 
 
 	@Override
-	public double AddTrade(Trade trade) {
+	public int AddTrade(Trade trade) {
 		// TODO Auto-generated method stub
 		int rowsAdded = 0;
 		String ADDTRADE = "insert into trade_details values(?,?,?,?,?,?)";
@@ -97,9 +97,9 @@ public class TradeTableImpl implements TradeTable {
 	}
 
 	@Override
-	public double GetCount() {
+	public int GetCount() {
 		// TODO Auto-generated method stub
-double count = 0;
+		int count = 0;
 		
 		String getcount = "SELECT COUNT(trade_id) from trade_details WHERE DATEPART(DD, traded_time) = DATEPART(DD, GETDATE())"
 						+ "AND DATEPART(MM, traded_time) = DATEPART(MM, GETDATE()) "
@@ -107,6 +107,26 @@ double count = 0;
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
 			
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	@Override
+	public int GetCountUser(double user_id) {
+		// TODO Auto-generated method stub
+
+		int count = 0;
+		
+		String getcount = "SELECT COUNT(trade_id) from trade_details WHERE user_id = ? AND DATEPART(DD, traded_time) = DATEPART(DD, GETDATE())"
+						+ "AND DATEPART(MM, traded_time) = DATEPART(MM, GETDATE()) "
+						+ "AND DATEPART(YYYY, traded_time) = DATEPART(YYYY, GETDATE())";		
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(getcount);
+			ps.setDouble(1, user_id);
 			count = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
