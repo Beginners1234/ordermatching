@@ -106,7 +106,7 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public double AddOrder(Order order) {
+	public int AddOrder(Order order) {
 		// TODO Auto-generated method stub
 		
 		int rowsAdded = 0;
@@ -133,6 +133,7 @@ public class OrderTableImpl implements OrderTable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			rowsAdded = 0;
 		}
 		return rowsAdded;
 
@@ -246,10 +247,10 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public double GetCount() {
+	public int GetCount() {
 		// TODO Auto-generated method stub
 		
-		double count = 0;
+		int count = 0;
 		
 		String getcount = "SELECT COUNT(order_id) from order_details WHERE DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, order_time) = DATEPART(MM, GETDATE()) "

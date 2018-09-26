@@ -97,9 +97,9 @@ public class TradeTableImpl implements TradeTable {
 	}
 
 	@Override
-	public double GetCount() {
+	public int GetCount() {
 		// TODO Auto-generated method stub
-double count = 0;
+		int count = 0;
 		
 		String getcount = "SELECT COUNT(trade_id) from trade_details WHERE DATEPART(DD, traded_time) = DATEPART(DD, GETDATE())"
 						+ "AND DATEPART(MM, traded_time) = DATEPART(MM, GETDATE()) "

@@ -125,9 +125,9 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public double GetCount() {
+	public int GetCount() {
 		// TODO Auto-generated method stub
-		double count = 0;
+		int count = 0;
 		
 		String getcount = "SELECT COUNT(user_id) from user_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, reg) = DATEPART(MM, GETDATE()) "
