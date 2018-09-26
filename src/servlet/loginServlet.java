@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class loginServlet
@@ -46,24 +47,32 @@ public class loginServlet extends HttpServlet {
         }
         
         if (hasError) {
- 
-            
             request.setAttribute("errorString", errorString);
-            
- 
             // Forward to /WEB-INF/views/login.jsp
-            RequestDispatcher dispatcher= request("/WEB-INF/views/loginView.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
  
             dispatcher.forward(request, response);
         }
         else {
             HttpSession session = request.getSession();
-            session.setAttribute("username", userName);            
-            RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
-            dispatcher.forward(request, response);		
-	}
+            session.setAttribute("username", userName);
+            if(userName.equals("admin"))
+            	{	
+            		//redirect to admin servlet
+                RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+                dispatcher.forward(request, response);	
+            	
+            	}
+            else	
+            	{
+            		//redirect to user servlet
+                RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+                dispatcher.forward(request, response);	
+            	}
+           
+        	}
 
-}
 	}
-
 }
+
+

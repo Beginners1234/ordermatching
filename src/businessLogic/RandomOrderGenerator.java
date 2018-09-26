@@ -28,8 +28,7 @@ public class RandomOrderGenerator implements Runnable {
 			}
 			
 	        
-			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding
-			
+			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding
 			return o;
 
 		}
@@ -46,7 +45,7 @@ public class RandomOrderGenerator implements Runnable {
 				
 			}
 			//double price=Math.round(t);
-			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
+			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
 			return o;
 		}
 	}
