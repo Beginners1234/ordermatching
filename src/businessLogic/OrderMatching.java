@@ -45,7 +45,7 @@ public class OrderMatching {
 				trade.setUserId_sell(curSellOrder.getOrderId());
 				trade.setOrderId_buy(order.getOrderId());
 				trade.setOrderId_sell(curSellOrder.getOrderId());
-				trade.setTradedPrice(curSellOrder.getOrderPrice());
+				trade.setTradedPrice(order.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curSellOrder.getRemaining_quantity()) {
@@ -73,12 +73,12 @@ public class OrderMatching {
 				//update sell orders in db
 				//OrderTableImpl oimpl=new OrderTableImpl();
 				//oimpl.updateOrder(curSellOrder); //todo
-				System.out.println("update sell order\n"+curSellOrder+"\n");
+				System.out.println("updated sell order\n"+curSellOrder+"\n");
 				
 				//update trade in db
 				//TradeTableImpl impl=new TradeTableImpl();
 				//impl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n");
+				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			
 			//update buy order in db
@@ -89,7 +89,7 @@ public class OrderMatching {
 			
 			//OrderTableImpl oimpl=new OrderTableImpl();
 			//oimpl.updateOrder(order); //todo
-			System.out.println("update buy order in db\n"+order+"\n");
+			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
 			System.out.println("Order is of type SELL\n");
@@ -120,7 +120,7 @@ public class OrderMatching {
 				trade.setUserId_sell(order.getOrderId());
 				trade.setOrderId_buy(curBuyOrder.getOrderId());
 				trade.setOrderId_sell(order.getOrderId());
-				trade.setTradedPrice(curBuyOrder.getOrderPrice());
+				trade.setTradedPrice(order.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curBuyOrder.getRemaining_quantity()) {
@@ -146,12 +146,12 @@ public class OrderMatching {
 				//update buy orders in db
 				//OrderTableImpl oimpl=new OrderTableImpl();
 				//oimpl.updateOrder(curBuyOrder); //todo
-				System.out.println("update Buy order\n"+curBuyOrder+"\n");
+				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
 				
 				//update trade in db
 				//TradeTableImpl impl=new TradeTableImpl();
 				//impl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n");
+				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			//update sell order in db
 			//if order is market
@@ -160,7 +160,7 @@ public class OrderMatching {
 			}
 			//OrderTableImpl oimpl=new OrderTableImpl();
 			//oimpl.updateOrder(order); //todo
-			System.out.println("update sell order in db\n"+order+"\n");
+			System.out.println("update sell order in db after trade\n"+order+"\n");
 		}
 		
 	}
