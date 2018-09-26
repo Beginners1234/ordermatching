@@ -10,6 +10,9 @@ import pojo.Order;
 import pojo.Trade;
 
 public class OrderMatching {
+	public void matchOrder(Order order) {
+		;//created temporarily
+	}
 	
 	public void matchOrder(Order order,List<Order> sellerList,List<Order> buyerList) {
 		//OrderTableImpl orderFunctions=new OrderTableImpl();
