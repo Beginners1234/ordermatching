@@ -142,7 +142,7 @@ public class OrderTableImpl implements OrderTable {
 		// TODO Auto-generated method stub
 		
 		List<Order> ordersall = new ArrayList<>();
-		
+ 		
 		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS";
 		
 		try(Connection con = MyConnection.openConnection();) {
