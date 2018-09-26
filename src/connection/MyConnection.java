@@ -8,8 +8,11 @@ public class MyConnection {
 	
 	private static Connection con;
 	
-	static public Connection openConnection()
-	{
+	static {
+	    generateConnection();		
+	 }
+	
+	static private void generateConnection() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			System.out.println("Driver Loaded successfully");
@@ -18,13 +21,25 @@ public class MyConnection {
 			System.out.println("connection successful");
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	}
+	
+	//returns connection
+	static public Connection openConnection()
+	{
+				try {
+					if(con.isValid(0))
+						return con;
+					else {
+						generateConnection();
+					}
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
 		return con;
 	}
 }
