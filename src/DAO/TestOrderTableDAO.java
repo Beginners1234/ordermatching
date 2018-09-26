@@ -24,20 +24,24 @@ public class TestOrderTableDAO {
 	
 	@Test
 	public void testGetOrderByUserId() {
-
+		List<Order> list=o.GetOrderByUserId(888.0);
+		list.forEach(System.out::println);
+		//assert(list.get(0).getOrderId()==888.0);
 	}
+	
 	@Test
 	public void testGetAllOrdersWithStatus() {
 
 	}
+	
 	@Test
-	public void testGetAddOrder() {
+	public void testAddOrder() {
 		System.out.println("Test add order");
-		Order order = new Order("buy", "limit", new Date(), 500, 155, 888, "pending", false);
-//		Order order=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+		Order order = new Order(0.0,"buy", "limit", new Date(), 500, 155, 888, "pending", false,500);
 		int ret=o.AddOrder(order);
 		System.out.println("Return: "+ret);
 	}
+	
 	@Test
 	public void testGetCount() {
 
@@ -50,16 +54,27 @@ public class TestOrderTableDAO {
 			System.out.println(a);
 		}
 	}
+	
 	@Test
 	public void testGetOrderForMatching() {
 
 		List<Order> list=o.GetOrderForMatching("sell",20.0);
 		list.forEach(System.out::println);
 	}
+	
 	@Test
 	public void testUpdateOrderByOrderId() {
+		Order order = new Order(0.0,"buy", "limit", new Date(), 500, 155, 888, "pending", false,500);
+		order.setOrderId(2.0);
+		
+		order.setOrderCategory("COMPLETED");
+		order.setRemaining_quantity(9.0);
+		int res=o.UpdateOrderByOrderId(order);
+		
+		assert(res==1);
 
 	}
+	
 	@Test
 	public void testGetCountUser() {
 

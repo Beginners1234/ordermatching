@@ -69,9 +69,12 @@ public class Order {
 	public void setAon(boolean aon) {
 		this.aon = aon;
 	}
-	public Order(String orderCategory, String orderType, Date orderTime, double orderQuantity,
-			double orderPrice, double userId, String orderStatus, boolean aon) {
-		super();
+
+
+	
+	public Order(double orderId, String orderCategory, String orderType, Date orderTime, double orderQuantity,
+			double orderPrice, double userId, String orderStatus, boolean aon, double remaining_quantity) {
+		this.orderId = orderId;
 		this.orderCategory = orderCategory;
 		this.orderType = orderType;
 		this.orderTime = orderTime;
@@ -80,9 +83,8 @@ public class Order {
 		this.userId = userId;
 		this.orderStatus = orderStatus;
 		this.aon = aon;
-		this.remaining_quantity = orderQuantity;
+		this.remaining_quantity = remaining_quantity;
 	}
-
 	public double getRemaining_quantity() {
 		return remaining_quantity;
 	}
