@@ -96,6 +96,7 @@ public class Order {
 				+ ", orderTime=" + orderTime + ", orderQuantity=" + orderQuantity + ", orderPrice=" + orderPrice
 				+ ", userId=" + userId + ", orderStatus=" + orderStatus + ", aon=" + aon + ", remaining_quantity="
 				+ remaining_quantity + "]";
+		
 	}
 
 }
