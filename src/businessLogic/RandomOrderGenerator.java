@@ -18,7 +18,7 @@ public class RandomOrderGenerator implements Runnable {
 		{
 			double t=153+(val_w*2.3);
 			double price=Math.round(t);
-			while(price>160||price<150)
+			while(price>160||price<150)//validity check
 			{
 
 				val_w=val.nextGaussian();
@@ -28,8 +28,7 @@ public class RandomOrderGenerator implements Runnable {
 			}
 			
 	        
-			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding
-			
+			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding
 			return o;
 
 		}
@@ -37,7 +36,7 @@ public class RandomOrderGenerator implements Runnable {
 		{
 			double t=157+(val_w*2.3);
 			double price=Math.round(t);
-			while(price>160||price<150)
+			while(price>160||price<150)//validity check
 			{
 
 				val_w=val.nextGaussian();
@@ -46,7 +45,7 @@ public class RandomOrderGenerator implements Runnable {
 				
 			}
 			//double price=Math.round(t);
-			Order o=new Order(0,order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
+			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
 			return o;
 		}
 	}

@@ -32,35 +32,40 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public List<Order> GetOrderByUserId(Double UserId) {		
+	// TODO Auto-generated method stub
+	public List<Order> GetOrderByUserId(Double UserId, int quantity) {		
 		
 	List<Order> ordersid = new ArrayList<>();
-		
-	String GETORDERBYID = "SELECT * FROM order_details WHERE user_id_order = ?";
+	String GETORDERBYID = "SELECT TOP (?) * FROM order_details WHERE user_id_order = ? ORDER BY order_time DESC";
+	//String GETORDERBYID = "SELECT * FROM order_details WHERE user_id_order = ?";
 	
 	try(Connection con = MyConnection.openConnection();) {
 		PreparedStatement ps = con.prepareStatement(GETORDERBYID);
-		ps.setDouble(1, UserId);
+		ps.setInt(1, quantity);
+		ps.setDouble(2, UserId);
 		ResultSet set = ps.executeQuery();
 		while(set.next())
 		{
-			double orderid=set.getDouble("order_id");
 			String ordercat = set.getString("order_category");
 			String ordertype = set.getString("order_type");
+			//ps.setObject(3, new java.sql.Timestamp(order.getOrderTime().getTime()));
 			Date order_time = set.getDate("order_time");
-			double quantity = set.getDouble("quantity");
+			System.out.println(order_time);
+			double quant = set.getDouble("quantity");
 			double price = set.getDouble("price");
 			String orderst = set.getString("order_status");
 			boolean aon = set.getBoolean("aon");
-			double remaining=set.getDouble("remaining_quantity");
-	
-			Order order = new Order(orderid,ordercat, ordertype, order_time, quantity, price, UserId, orderst, aon,remaining);
-			ordersid.add(order);			
+			double orderid = set.getDouble("order_id");
+			
+			Order order1 = new Order(ordercat, ordertype, order_time, quant, price, UserId, orderst, aon);
+			order1.setOrderId(orderid);
+			ordersid.add(order1);
+			
 		}
 
 		
 	} catch (SQLException e) {
-		
+		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return ordersid;
@@ -68,11 +73,11 @@ public class OrderTableImpl implements OrderTable {
 
 	@Override
 	public List<Order> GetAllOrders(String status) {
-		
+		// TODO Auto-generated method stub
 		
 		List<Order> orders = new ArrayList<>();
 		
-		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS WHERE order_status = ?";
+		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS WHERE order_status = ? ORDER BY order_time DESC";
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETALLORDERS);
@@ -80,23 +85,24 @@ public class OrderTableImpl implements OrderTable {
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				double orderid=set.getDouble("order_id");
+				String orderst = set.getString(1);
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
 				Date order_time = set.getDate("order_time");
-				double quantity = set.getDouble("quantity");
+				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
-				double userid=set.getDouble("user_id_order");
-				String orderst = set.getString("order_status");
+				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
-				double remaining=set.getDouble("remaining_quantity");
-		
-				Order order = new Order(orderid,ordercat, ordertype, order_time, quantity, price, userid, orderst, aon,remaining);
+				double orderid = set.getDouble("order_id");
+				
+				Order order = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				order.setOrderId(orderid);
 				orders.add(order);
 				
 			}
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return orders;
@@ -104,64 +110,68 @@ public class OrderTableImpl implements OrderTable {
 
 	@Override
 	public int AddOrder(Order order) {
-		//while adding order_id is not added
+		// TODO Auto-generated method stub
+		
 		int rowsAdded = 0;
 		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?)";
 		//String ADDORDER = "insert into ORDER_DETAILS values('buy','limit',getdate(),12,12,100, 'pending',1, 10)";
-	
+
+					
 		Connection con = MyConnection.openConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(ADDORDER);
 			ps.setString(1, order.getOrderCategory());
 			ps.setString(2, order.getOrderType());
+			//ps.setDate(3, (java.sql.Date) order.getOrderTime());
 			ps.setObject(3, new java.sql.Timestamp(order.getOrderTime().getTime()));
 			ps.setDouble(4, order.getOrderQuantity());
 			ps.setDouble(5, order.getOrderPrice());
 			ps.setDouble(6, order.getUserId());
 			ps.setString(7, order.getOrderStatus());
 			ps.setBoolean(8, order.isAon());
-			ps.setDouble(9, order.getRemaining_quantity());
+			ps.setDouble(9, order.getOrderQuantity());
 			
 			rowsAdded = ps.executeUpdate();
 			
+			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			rowsAdded = 0;
 		}
 		return rowsAdded;
-
 	}
 	
 	@Override
 	public List<Order> GetAllOrders () {
+		// TODO Auto-generated method stub
 		
 		List<Order> ordersall = new ArrayList<>();
  		
-		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS";
+		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS ORDER BY order_time DESC";
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETALLORDERS);
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				double orderid=set.getDouble("order_id");
+				String orderst = set.getString("order_status");
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
 				Date order_time = set.getDate("order_time");
-				double quantity = set.getDouble("quantity");
+				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
-				double userid=set.getDouble("user_id_order");
-				String orderst = set.getString("order_status");
+				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
-				double remaining=set.getDouble("remaining_quantity");
-		
-				Order order = new Order(orderid,ordercat, ordertype, order_time, quantity, price, userid, orderst, aon,remaining);
-				ordersall.add(order);
+				double orderid = set.getDouble("order_id");
 				
-			}
-
-			
+				Order allorder = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				allorder.setOrderId(orderid);
+				ordersall.add(allorder);
+				
+			}			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ordersall;
@@ -169,45 +179,47 @@ public class OrderTableImpl implements OrderTable {
 
 
 	@Override
-	public List<Order> GetOrderForMatching(String order_categ, Double quantity) {
+	public List<Order> GetOrderForMatching(String order_categ, int quantity) {
+		// TODO Auto-generated method stub
 		String GETORDERSFORMATCH;
 		List<Order> ordersmatch = new ArrayList<>();
 		if(order_categ == "BUY")
 		{
-			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+			GETORDERSFORMATCH = "SELECT TOP (?) * FROM order_details WHERE order_category = ? "
 					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price DESC";
 		}
 		else
 		{
-			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+			GETORDERSFORMATCH = "SELECT TOP (?) * FROM order_details WHERE order_category = ? "
 					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price";
 
 		}
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETORDERSFORMATCH);
-			ps.setDouble(1, quantity);
+			ps.setInt(1, quantity);
 			ps.setString(2, order_categ);
 			
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				double orderid=set.getDouble("order_id");
-				String ordercat = set.getString("order_category");
-				String ordertype = set.getString("order_type");
-				Date order_time = set.getDate("order_time");
-				double quanti = set.getDouble("quantity");
-				double price = set.getDouble("price");
-				double userid=set.getDouble("user_id_order");
-				String orderst = set.getString("order_status");
-				boolean aon = set.getBoolean("aon");
-				double remaining=set.getDouble("remaining_quantity");
-		
-				Order order = new Order(orderid,ordercat, ordertype, order_time, quanti, price, userid, orderst, aon,remaining);
-				ordersmatch.add(order);
+				String orderst_m = set.getString("order_status");
+				String ordercat_m = set.getString("order_category");
+				String ordertype_m = set.getString("order_type");
+				Date order_time_m = set.getDate("order_time");
+				double quant_m = set.getDouble("quantity");
+				double price_m = set.getDouble("price");
+				double userid_m = set.getDouble("user_id_order");
+				boolean aon_m = set.getBoolean("aon");
+				double orderid_m = set.getDouble("order_id");
+				
+				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
+				ordermatch.setOrderId(orderid_m);
+				ordersmatch.add(ordermatch);
 			}
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ordersmatch;
@@ -229,7 +241,7 @@ public class OrderTableImpl implements OrderTable {
 			
 			isupdate = ps.executeUpdate();
 		} catch (SQLException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -239,6 +251,8 @@ public class OrderTableImpl implements OrderTable {
 
 	@Override
 	public int GetCount() {
+		// TODO Auto-generated method stub
+		
 		int count = 0;
 		
 		String getcount = "SELECT COUNT(order_id) from order_details WHERE DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
@@ -246,9 +260,9 @@ public class OrderTableImpl implements OrderTable {
 				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
-						
-			count = ps.executeUpdate();
+			count = ps.executeUpdate(); // executeUpdate is returning resultset???
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return count;
@@ -256,6 +270,7 @@ public class OrderTableImpl implements OrderTable {
 
 	@Override
 	public int GetCountUser(double user_id) {
+		// TODO Auto-generated method stub
 		
 		int count = 0;
 		
@@ -267,6 +282,7 @@ public class OrderTableImpl implements OrderTable {
 			ps.setDouble(1, user_id);
 			count = ps.executeUpdate();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return count;

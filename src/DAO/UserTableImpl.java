@@ -37,21 +37,20 @@ public class UserTableImpl implements UserTable {
 		// TODO Auto-generated method stub
 		List<User> usersall = new ArrayList<>();
 		
-		String GETALLUSERS = "SELECT * FROM user_details";
+		String GETALLUSERS = "SELECT * FROM user_details ORDER BY reg DESC";
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETALLUSERS);
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				double loginid = set.getDouble("login_id");
-				double userid = set.getDouble("user_id");
+				String loginid = set.getString("login_id");
 				String name = set.getString("name");
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
 				Date regist = set.getDate("reg");
 				
-				User alluser = new User(userid, loginid, password, contact, name, (java.sql.Date) regist);
+				User alluser = new User(loginid, password, contact, name, (java.sql.Date) regist);
 				usersall.add(alluser);
 				
 			}
@@ -70,7 +69,7 @@ public class UserTableImpl implements UserTable {
 		// TODO Auto-generated method stub
 		List<User> usersid = new ArrayList<>();
 		
-		String GETUSERBYNAME = "SELECT * FROM user_details WHERE login_id = ?";
+		String GETUSERBYNAME = "SELECT * FROM user_details WHERE login_id = ? ORDER BY reg DESC";
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETUSERBYNAME);
@@ -78,13 +77,12 @@ public class UserTableImpl implements UserTable {
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				double loginid = set.getDouble(1);
-				double userid = set.getDouble("user_id");
+				String loginid = set.getString(1);
 				String name = set.getString("name");
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
 				Date regist = set.getDate("reg");
-				User user1 = new User(userid, loginid, password, contact, name, (java.sql.Date) regist);
+				User user1 = new User(loginid, password, contact, name, (java.sql.Date) regist);
 				usersid.add(user1);
 				
 			}
@@ -110,7 +108,7 @@ public class UserTableImpl implements UserTable {
 			
 			ps.setDouble(1, user.getUserId());
 			ps.setString(2, user.getName());
-			ps.setDouble(3, user.getLoginId());
+			ps.setString(3, user.getLoginId());
 			ps.setString(4, user.getPassword());
 			ps.setDouble(5, user.getContact());
 			ps.setObject(6, new java.sql.Timestamp(user.getReg().getTime()));

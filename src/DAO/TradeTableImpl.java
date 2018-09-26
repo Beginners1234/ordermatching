@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import connection.MyConnection;
+import pojo.Order;
 import pojo.Trade;
 
 public class TradeTableImpl implements TradeTable {
@@ -37,11 +38,11 @@ public class TradeTableImpl implements TradeTable {
 		
 		List<Trade> tradesall = new ArrayList<>();
 		
-		String GETALLTRADES = "SELECT * FROM TRADE_DETAILS";
-		String uidbuy = "SELECT order_details.user_id FROM order_details INNER JOIN trade_details"
+		String GETALLTRADES = "SELECT * FROM TRADE_DETAILS ORDER BY traded_time DESC";
+		String uidbuy = "SELECT order_details.user_id_order FROM order_details INNER JOIN trade_details"
 				+ " ON order_details.order_id = trade_details.order_id_buy";
 		
-		String uidsell = "SELECT order_details.user_id FROM order_details INNER JOIN trade_details"
+		String uidsell = "SELECT order_details.user_id_order FROM order_details INNER JOIN trade_details"
 				+ " ON order_details.order_id = trade_details.order_id_sell";
 		
 		try(Connection con = MyConnection.openConnection();) {
@@ -56,7 +57,7 @@ public class TradeTableImpl implements TradeTable {
 				double orderidbuy = set.getDouble("order_id_buy");
 				double orderidsell = set.getDouble("order_id_sell");
 				
-				Trade alltrades = new Trade(tradeid, orderidbuy, orderidsell, Double.parseDouble(uidbuy), Double.parseDouble(uidsell), tradeprice, quantity, trade_time);
+				Trade alltrades = new Trade(orderidbuy, orderidsell, Double.parseDouble(uidbuy), Double.parseDouble(uidsell), tradeprice, quantity, trade_time);
 				tradesall.add(alltrades);
 				
 			}
@@ -134,5 +135,50 @@ public class TradeTableImpl implements TradeTable {
 			e.printStackTrace();
 		}
 		return count;
+	}
+
+	@Override
+	public List<Trade> GetTradesByUserId(Double UserId, int quantity) {
+		// TODO Auto-generated method stub
+		List<Trade> tradesid = new ArrayList<>();
+		
+		String GETORDERID = "SELECT order_id FROM order_details WHERE user_id_order = ?";
+		String GETTRADEBYOID = "SELECT * FROM trade_details WHERE order_id_buy = ? OR order_id_sell = ?";
+		
+		String uidbuy = "SELECT order_details.user_id_order FROM order_details INNER JOIN trade_details"
+				+ " ON order_details.order_id = trade_details.order_id_buy";
+		
+		String uidsell = "SELECT order_details.user_id_order FROM order_details INNER JOIN trade_details"
+				+ " ON order_details.order_id = trade_details.order_id_sell";
+
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(GETORDERID);
+			ps.setDouble(1, UserId);
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				PreparedStatement ps1 = con.prepareStatement(GETTRADEBYOID);
+				ps1.setDouble(1, set.getDouble("order_id"));
+				ps1.setDouble(2, set.getDouble("order_id"));
+				ResultSet set1 = ps1.executeQuery();
+				while(set1.next())
+				{
+					double orderidbuy = set.getDouble("order_id_buy");
+					double orderidsell = set.getDouble("order_id_sell");
+					double tradedprice = set.getDouble("traded_price");
+					double quant = set.getDouble("traded_quantity");
+					Date tradedtime = set.getDate("traded_time");
+					
+					Trade trade1 = new Trade(orderidbuy, orderidsell, Double.parseDouble(uidbuy), Double.parseDouble(uidsell), tradedprice, quant, tradedtime);
+					tradesid.add(trade1);
+
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tradesid;
+
 	}
 }
