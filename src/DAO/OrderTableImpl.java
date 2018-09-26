@@ -46,8 +46,6 @@ public class OrderTableImpl implements OrderTable {
 		ResultSet set = ps.executeQuery();
 		while(set.next())
 		{
-			double userid = set.getDouble(1);
-			double orderid = set.getDouble("order_id");
 			String ordercat = set.getString("order_category");
 			String ordertype = set.getString("order_type");
 			Date order_time = set.getDate("order_time");
@@ -55,8 +53,8 @@ public class OrderTableImpl implements OrderTable {
 			double price = set.getDouble("price");
 			String orderst = set.getString("order_status");
 			boolean aon = set.getBoolean("aon");
-			
-			Order order1 = new Order(orderid, ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+	
+			Order order1 = new Order(ordercat, ordertype, order_time, quant, price, UserId, orderst, aon);
 			ordersid.add(order1);
 			
 		}
@@ -84,7 +82,6 @@ public class OrderTableImpl implements OrderTable {
 			while(set.next())
 			{
 				String orderst = set.getString(1);
-				double orderid = set.getDouble("order_id");
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
 				Date order_time = set.getDate("order_time");
@@ -93,7 +90,7 @@ public class OrderTableImpl implements OrderTable {
 				double userid = set.getDouble("user_id");
 				boolean aon = set.getBoolean("aon");
 				
-				Order order = new Order(orderid, ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				Order order = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
 				orders.add(order);
 				
 			}
@@ -110,22 +107,23 @@ public class OrderTableImpl implements OrderTable {
 		// TODO Auto-generated method stub
 		
 		int rowsAdded = 0;
-		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?,?)";
-		
+		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?)";
+		//String ADDORDER = "insert into ORDER_DETAILS values('buy','limit',getdate(),12,12,100, 'pending',1, 10)";
+
+					
 		Connection con = MyConnection.openConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(ADDORDER);
-			
-			ps.setDouble(1, order.getOrderId());
-			ps.setString(2, order.getOrderCategory());
-			ps.setString(3, order.getOrderType());
-			ps.setDate(4, (java.sql.Date) order.getOrderTime());
-			ps.setDouble(5, order.getOrderQuantity());
-			ps.setDouble(6, order.getOrderPrice());
-			ps.setDouble(7, order.getUserId());
-			ps.setString(8, order.getOrderStatus());
-			ps.setBoolean(9, order.isAon());
-			ps.setDouble(10, order.getOrderQuantity());
+			ps.setString(1, order.getOrderCategory());
+			ps.setString(2, order.getOrderType());
+			//ps.setDate(3, (java.sql.Date) order.getOrderTime());
+			ps.setObject(3, new java.sql.Timestamp(order.getOrderTime().getTime()));
+			ps.setDouble(4, order.getOrderQuantity());
+			ps.setDouble(5, order.getOrderPrice());
+			ps.setDouble(6, order.getUserId());
+			ps.setString(7, order.getOrderStatus());
+			ps.setBoolean(8, order.isAon());
+			ps.setDouble(9, order.getOrderQuantity());
 			
 			rowsAdded = ps.executeUpdate();
 			
@@ -153,7 +151,6 @@ public class OrderTableImpl implements OrderTable {
 			while(set.next())
 			{
 				String orderst = set.getString("order_status");
-				double orderid = set.getDouble("order_id");
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
 				Date order_time = set.getDate("order_time");
@@ -162,7 +159,7 @@ public class OrderTableImpl implements OrderTable {
 				double userid = set.getDouble("user_id");
 				boolean aon = set.getBoolean("aon");
 				
-				Order allorder = new Order(orderid, ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				Order allorder = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
 				ordersall.add(allorder);
 				
 			}
@@ -202,7 +199,6 @@ public class OrderTableImpl implements OrderTable {
 			while(set.next())
 			{
 				String orderst_m = set.getString("order_status");
-				double orderid_m = set.getDouble("order_id");
 				String ordercat_m = set.getString("order_category");
 				String ordertype_m = set.getString("order_type");
 				Date order_time_m = set.getDate("order_time");
@@ -211,7 +207,7 @@ public class OrderTableImpl implements OrderTable {
 				double userid_m = set.getDouble("user_id");
 				boolean aon_m = set.getBoolean("aon");
 				
-				Order ordermatch = new Order(orderid_m, ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
+				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
 				ordersmatch.add(ordermatch);
 			}
 			

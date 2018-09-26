@@ -12,9 +12,10 @@ public class TestDAO {
 	@Test
 	public void testAddOrder() {
 		System.out.println("Test add order");
-		Order order=new Order(123, "buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+		Order order = new Order("buy", "limit", new Date(), 500, 155, 888, "pending", false);
+//		Order order=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
 		int ret=o.AddOrder(order);
-		System.out.println(ret);
+		System.out.println("Return: "+ret);
 	}
 	
 	@Test
