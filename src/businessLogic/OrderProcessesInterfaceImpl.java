@@ -1,6 +1,5 @@
 package businessLogic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import DAO.OrderTableImpl;
@@ -18,8 +17,8 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 	}
 
 	@Override
-	public List<Order> viewOrders(double userId) {
-		return o.GetOrderByUserId(userId);
+	public List<Order> viewOrders(double userId, int quantity) {
+		return o.GetOrderByUserId(userId, quantity);
 	}
 
 	@Override

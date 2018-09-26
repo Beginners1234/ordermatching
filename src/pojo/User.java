@@ -4,15 +4,14 @@ import java.sql.Date;
 
 public class User {
 	private double userId;// primary key
-	private double loginId;
+	private String loginId;
 	private String password;
 	private double contact;
 	private String name;
 	private Date reg;
 	
-	public User(double userId, double loginId, String password, double contact, String name, Date reg) {
+	public User(String loginId, String password, double contact, String name, Date reg) {
 		super();
-		this.userId = userId;
 		this.loginId = loginId;
 		this.password = password;
 		this.contact = contact;
@@ -26,10 +25,10 @@ public class User {
 	public void setUserId(double userId) {
 		this.userId = userId;
 	}
-	public double getLoginId() {
+	public String getLoginId() {
 		return loginId;
 	}
-	public void setLoginId(double loginId) {
+	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
 	public String getPassword() {

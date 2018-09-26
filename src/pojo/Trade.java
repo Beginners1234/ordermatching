@@ -12,10 +12,9 @@ public class Trade {
 	private double tradedQuantity;
 	private Date tradedTime;
 
-	public Trade(double tradeId, double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
+	public Trade(double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
 			double tradedPrice, double tradedQuantity, Date tradedTime) {
 		super();
-		this.tradeId = tradeId;
 		this.orderId_buy = orderId_buy;
 		this.orderId_sell = orderId_sell;
 		this.userId_buy = userId_buy;
