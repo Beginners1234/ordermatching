@@ -52,6 +52,10 @@ public class OrderMatching {
 				if(order.getRemaining_quantity()<=curSellOrder.getRemaining_quantity()) {
 					System.out.println("edge case\n");
 					//buy order completed
+					if(curSellOrder.isAon()&&(order.getRemaining_quantity()!=curSellOrder.getRemaining_quantity())) {
+						System.out.println("not using current sell order due to aon");
+						continue; //go to next sell order as this one is aon
+					}
 					trade.setTradedQuantity(order.getRemaining_quantity());
 					order.setOrderStatus("COMPLETED");
 					curSellOrder.setRemaining_quantity(curSellOrder.getRemaining_quantity()-order.getRemaining_quantity());
@@ -123,6 +127,10 @@ public class OrderMatching {
 				if(order.getRemaining_quantity()<=curBuyOrder.getRemaining_quantity()) {
 					System.out.println("edge case\n");
 					//sell order completed
+					if(curBuyOrder.isAon()&&(order.getRemaining_quantity()!=curBuyOrder.getRemaining_quantity())) {
+						System.out.println("not using current buy order due to aon");
+						continue; //go to next buy order as this one is aon
+					}
 					trade.setTradedQuantity(order.getRemaining_quantity());
 					
 					order.setOrderStatus("COMPLETED");
@@ -148,7 +156,7 @@ public class OrderMatching {
 			}
 			//update sell order in db
 			//if order is market
-			if (order.getOrderType().equalsIgnoreCase("market")) {
+			if (order.getOrderType().equalsIgnoreCase("market")&&order.getRemaining_quantity()!=order.getOrderQuantity()) {
 				order.setOrderStatus("PARTIAL");
 			}
 			//OrderTableImpl oimpl=new OrderTableImpl();

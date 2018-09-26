@@ -34,10 +34,10 @@ public class TestOrderMatching {
 
 		System.out.println("in test sell");
 		OrderMatching oms=new OrderMatching();
-		Order sellorder=new Order(123, "sell", "market", new Date(), 100, 40, 888, "PENDING", false);
+		Order sellorder=new Order(123, "sell", "limit", new Date(), 100, 40, 888, "PENDING", true);
 		//Order sellorder=new Order(999, "sell", "limit", new Date(), 100, 20, 777, "pending", false);
 		List<Order> buyerList=new ArrayList<Order>();
-		buyerList.add(new Order(999, "buy", "limit", new Date(), 40, 60, 777, "PENDING", false));
+		buyerList.add(new Order(999, "buy", "limit", new Date(), 100, 60, 777, "PENDING", true));
 		buyerList.add(new Order(999, "buy", "limit", new Date(), 30, 70, 777, "PENDING", false));
 		System.out.println(sellorder+"\n"+"\n");
 		oms.matchOrder(sellorder,null,buyerList);
