@@ -4,16 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.pojo.Order;
+import pojo.Order;
 
 public interface OrderProcessesInterface {
-	
-	
-	default HashMap<String, ArrayList<Object>>viewOrders()
-	{
+	public List<Order> viewOrders(String status);
+	public List<Order> viewOrders(double userId);
+	public List<Order> viewOrders();
 
-		
-		
-	}
-
+	
 }
