@@ -1,6 +1,5 @@
 package businessLogic;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
@@ -17,7 +16,7 @@ public class OrderMatching {
 		String type=order.getOrderCategory();// buy/sell
 		
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
-			System.out.println("Order is of type BUY");
+			System.out.println("Order is of type BUY\n");
 			//List<Order> sellerList = orderFunctions.GetOrderForMatching("sell",20.0); //todo
 			 
 			ListIterator<Order> litr = sellerList.listIterator();
@@ -93,7 +92,7 @@ public class OrderMatching {
 			System.out.println("update buy order in db\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
-			System.out.println("Order is of type SELL");
+			System.out.println("Order is of type SELL\n");
 			
 			//List<Order> buyerList = orderFunctions.GetOrderForMatching("buy",20.0); //todo
 			 
