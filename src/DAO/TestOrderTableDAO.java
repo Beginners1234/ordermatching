@@ -24,14 +24,16 @@ public class TestOrderTableDAO {
 	
 	@Test
 	public void testGetOrderByUserId() {
-		//List<Order> list=o.GetOrderByUserId(888.0);
-		//list.forEach(System.out::println);
-		//assert(list.get(0).getOrderId()==888.0);
+		List<Order> list=o.GetOrderByUserId(123.0,2);
+		list.forEach(System.out::println);
+		assert(list.get(0).getOrderId()==123.0);
 	}
 	
 	@Test
 	public void testGetAllOrdersWithStatus() {
-
+		
+		List<Order> list = o.GetAllOrders("Pending");
+		list.forEach(System.out::println);
 	}
 	
 	@Test
@@ -44,6 +46,9 @@ public class TestOrderTableDAO {
 	
 	@Test	
 	public void testGetCount() {
+		
+		int cou = o.GetCount();
+		System.out.println(cou);
 
 	}
 	@Test
@@ -58,17 +63,24 @@ public class TestOrderTableDAO {
 	@Test
 	public void testGetOrderForMatching() {
 
-		List<Order> list=o.GetOrderForMatching("sell",20.0);
+		List<Order> list=o.GetOrderForMatching("buy",5);// put check for quantity vs total no of orders available
 		list.forEach(System.out::println);
 	}
 	
 	@Test 
 	public void testUpdateOrderByOrderId() {
 		
+		Order order = new Order("buy", "limit", new Date(), 1000, 190, 1090, "rejected", true);
+		order.setOrderId(4);
+		int a = o.UpdateOrderByOrderId(order);
+		System.out.println(a);
+		
 	}
 	
 	@Test
 	public void testGetCountUser() {
-
+		
+		int a = o.GetCountUser(123);
+		System.out.println(a);
 	}
 }

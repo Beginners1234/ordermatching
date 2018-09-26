@@ -36,12 +36,12 @@ public class OrderTableImpl implements OrderTable {
 	public List<Order> GetOrderByUserId(Double UserId, int quantity) {		
 		
 	List<Order> ordersid = new ArrayList<>();
-	//String GETORDERBYID = "SELECT TOP ? * FROM order_details WHERE user_id = ? ORDER BY order_time DESC";
-	String GETORDERBYID = "SELECT * FROM order_details WHERE user_id_order = ?";
+	String GETORDERBYID = "SELECT TOP (?) * FROM order_details WHERE user_id_order = ? ORDER BY order_time DESC";
+	//String GETORDERBYID = "SELECT * FROM order_details WHERE user_id_order = ?";
 	
 	try(Connection con = MyConnection.openConnection();) {
 		PreparedStatement ps = con.prepareStatement(GETORDERBYID);
-		ps.setDouble(1, quantity);
+		ps.setInt(1, quantity);
 		ps.setDouble(2, UserId);
 		ResultSet set = ps.executeQuery();
 		while(set.next())
@@ -55,8 +55,10 @@ public class OrderTableImpl implements OrderTable {
 			double price = set.getDouble("price");
 			String orderst = set.getString("order_status");
 			boolean aon = set.getBoolean("aon");
-	
+			double orderid = set.getDouble("order_id");
+			
 			Order order1 = new Order(ordercat, ordertype, order_time, quant, price, UserId, orderst, aon);
+			order1.setOrderId(orderid);
 			ordersid.add(order1);
 			
 		}
@@ -91,8 +93,10 @@ public class OrderTableImpl implements OrderTable {
 				double price = set.getDouble("price");
 				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
+				double orderid = set.getDouble("order_id");
 				
 				Order order = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				order.setOrderId(orderid);
 				orders.add(order);
 				
 			}
@@ -159,8 +163,10 @@ public class OrderTableImpl implements OrderTable {
 				double price = set.getDouble("price");
 				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
+				double orderid = set.getDouble("order_id");
 				
 				Order allorder = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
+				allorder.setOrderId(orderid);
 				ordersall.add(allorder);
 				
 			}			
@@ -173,25 +179,25 @@ public class OrderTableImpl implements OrderTable {
 
 
 	@Override
-	public List<Order> GetOrderForMatching(String order_categ, Double quantity) {
+	public List<Order> GetOrderForMatching(String order_categ, int quantity) {
 		// TODO Auto-generated method stub
 		String GETORDERSFORMATCH;
 		List<Order> ordersmatch = new ArrayList<>();
 		if(order_categ == "BUY")
 		{
-			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+			GETORDERSFORMATCH = "SELECT TOP (?) * FROM order_details WHERE order_category = ? "
 					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price DESC";
 		}
 		else
 		{
-			GETORDERSFORMATCH = "SELECT TOP ? * FROM order_details WHERE order_category = ? "
+			GETORDERSFORMATCH = "SELECT TOP (?) * FROM order_details WHERE order_category = ? "
 					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price";
 
 		}
 		
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(GETORDERSFORMATCH);
-			ps.setDouble(1, quantity);
+			ps.setInt(1, quantity);
 			ps.setString(2, order_categ);
 			
 			ResultSet set = ps.executeQuery();
@@ -205,8 +211,10 @@ public class OrderTableImpl implements OrderTable {
 				double price_m = set.getDouble("price");
 				double userid_m = set.getDouble("user_id_order");
 				boolean aon_m = set.getBoolean("aon");
+				double orderid_m = set.getDouble("order_id");
 				
 				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
+				ordermatch.setOrderId(orderid_m);
 				ordersmatch.add(ordermatch);
 			}
 			
@@ -224,7 +232,7 @@ public class OrderTableImpl implements OrderTable {
 		double oid = order.getOrderId();
 		int isupdate = 0;
 		
-		String UpdateOrder = "UPDATE order_details SET order_status = ?, remianing_quantity = ? WHERE order_id = ?";
+		String UpdateOrder = "UPDATE order_details SET order_status = ?, remaining_quantity = ? WHERE order_id = ?";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(UpdateOrder);
 			ps.setString(1, order.getOrderStatus());
@@ -252,8 +260,7 @@ public class OrderTableImpl implements OrderTable {
 				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
-						
-			count = ps.executeUpdate();
+			count = ps.executeUpdate(); // executeUpdate is returning resultset???
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -267,7 +274,7 @@ public class OrderTableImpl implements OrderTable {
 		
 		int count = 0;
 		
-		String getcount = "SELECT COUNT(order_id) from order_details WHERE user_id = ? AND DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
+		String getcount = "SELECT COUNT(order_id) from order_details WHERE user_id_order = ? AND DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, order_time) = DATEPART(MM, GETDATE()) "
 				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
