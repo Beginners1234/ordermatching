@@ -48,7 +48,9 @@ public class OrderTableImpl implements OrderTable {
 		{
 			String ordercat = set.getString("order_category");
 			String ordertype = set.getString("order_type");
+			//ps.setObject(3, new java.sql.Timestamp(order.getOrderTime().getTime()));
 			Date order_time = set.getDate("order_time");
+			System.out.println(order_time);
 			double quant = set.getDouble("quantity");
 			double price = set.getDouble("price");
 			String orderst = set.getString("order_status");
@@ -87,7 +89,7 @@ public class OrderTableImpl implements OrderTable {
 				Date order_time = set.getDate("order_time");
 				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
-				double userid = set.getDouble("user_id");
+				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
 				
 				Order order = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
@@ -156,7 +158,7 @@ public class OrderTableImpl implements OrderTable {
 				Date order_time = set.getDate("order_time");
 				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
-				double userid = set.getDouble("user_id");
+				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
 				
 				Order allorder = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
@@ -204,7 +206,7 @@ public class OrderTableImpl implements OrderTable {
 				Date order_time_m = set.getDate("order_time");
 				double quant_m = set.getDouble("quantity");
 				double price_m = set.getDouble("price");
-				double userid_m = set.getDouble("user_id");
+				double userid_m = set.getDouble("user_id_order");
 				boolean aon_m = set.getBoolean("aon");
 				
 				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
