@@ -86,7 +86,8 @@ public class TradeTableImpl implements TradeTable {
 			ps.setDouble(3, trade.getOrderId_sell());
 			ps.setDouble(4, trade.getTradedPrice());
 			ps.setDouble(5, trade.getTradedQuantity());
-			ps.setDate(6, (java.sql.Date) trade.getTradedTime());
+			ps.setObject(6, new java.sql.Timestamp(trade.getTradedTime().getTime()));
+//			ps.setDate(6, (java.sql.Date) trade.getTradedTime());
 			
 			rowsAdded = ps.executeUpdate();		
 		} catch (SQLException e) {

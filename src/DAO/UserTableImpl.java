@@ -113,6 +113,7 @@ public class UserTableImpl implements UserTable {
 			ps.setDouble(3, user.getLoginId());
 			ps.setString(4, user.getPassword());
 			ps.setDouble(5, user.getContact());
+			ps.setObject(6, new java.sql.Timestamp(user.getReg().getTime()));
 			ps.setDate(6, user.getReg());
 			rowsAdded = ps.executeUpdate();
 			
