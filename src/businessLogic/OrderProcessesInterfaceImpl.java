@@ -29,11 +29,15 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 
 	@Override
 	public int PlaceOrder(Order order) {
-		// TODO Auto-generated method stub
+		//adds order to db and calls matching
+		int n=0;
+		//validate order details
+		//price 150-160
 		
-		int n = o.AddOrder(order);
+		n = o.AddOrder(order); //add to db via dao returns 1 if successful
+		
 		OrderMatching om = new OrderMatching();
-		om.matchOrder(order);
+		om.matchOrder(order); //send order for matching
 		return n;
 	}
 
