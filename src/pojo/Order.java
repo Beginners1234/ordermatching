@@ -13,6 +13,8 @@ public class Order {
 	private double userId;//foreign key from User
 	private String orderStatus;// rejected,waiting or successful
 	private boolean aon;//all or none
+	private double remaining_quantity;
+	
 	public double getOrderId() {
 		return orderId;
 	}
@@ -67,9 +69,11 @@ public class Order {
 	public void setAon(boolean aon) {
 		this.aon = aon;
 	}
+
+
+	
 	public Order(double orderId, String orderCategory, String orderType, Date orderTime, double orderQuantity,
-			double orderPrice, double userId, String orderStatus, boolean aon) {
-		super();
+			double orderPrice, double userId, String orderStatus, boolean aon, double remaining_quantity) {
 		this.orderId = orderId;
 		this.orderCategory = orderCategory;
 		this.orderType = orderType;
@@ -79,12 +83,20 @@ public class Order {
 		this.userId = userId;
 		this.orderStatus = orderStatus;
 		this.aon = aon;
+		this.remaining_quantity = remaining_quantity;
+	}
+	public double getRemaining_quantity() {
+		return remaining_quantity;
+	}
+	public void setRemaining_quantity(double remaining_quantity) {
+		this.remaining_quantity = remaining_quantity;
 	}
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderCategory=" + orderCategory + ", orderType=" + orderType
 				+ ", orderTime=" + orderTime + ", orderQuantity=" + orderQuantity + ", orderPrice=" + orderPrice
-				+ ", userId=" + userId + ", orderStatus=" + orderStatus + ", aon=" + aon + "]";
+				+ ", userId=" + userId + ", orderStatus=" + orderStatus + ", aon=" + aon + ", remaining_quantity="
+				+ remaining_quantity + "]";
 	}
 
 }

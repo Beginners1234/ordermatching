@@ -11,6 +11,7 @@ public class Trade {
 	private double tradedPrice;
 	private double tradedQuantity;
 	private Date tradedTime;
+
 	public Trade(double tradeId, double orderId_buy, double orderId_sell, double userId_buy, double userId_sell,
 			double tradedPrice, double tradedQuantity, Date tradedTime) {
 		super();
@@ -77,6 +78,10 @@ public class Trade {
 				+ ", userId_buy=" + userId_buy + ", userId_sell=" + userId_sell + ", tradedPrice=" + tradedPrice
 				+ ", tradedQuantity=" + tradedQuantity + ", tradedTime=" + tradedTime + "]";
 	}
-
+	public Trade() {
+		super();
+	}
+	
+	
 	
 }

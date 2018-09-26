@@ -5,8 +5,9 @@ import java.util.List;
 import pojo.Trade;
 
 public interface TradeTable {
-	public void DropTradeTable();
-	public List GetAllTrades();
-	public double AddTrade(Trade trade);
-
+	public int DropTradeTable();
+	public List<Trade> GetAllTrades();
+	public int AddTrade(Trade trade);
+	public int GetCount();
+	public int GetCountUser(double user_id);
 }
