@@ -15,7 +15,7 @@ import pojo.User;
 public class UserTableImpl implements UserTable {
 
 	@Override
-	public double DropUserTable() {
+	public int DropUserTable() {
 		// TODO Auto-generated method stub
 		int delete = 0;
 		Connection con = MyConnection.openConnection();
@@ -99,7 +99,7 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public double AddUser(User user) {
+	public int AddUser(User user) {
 		// TODO Auto-generated method stub
 		int rowsAdded = 0;
 		String ADDUSER = "insert into user_details values(?,?,?,?,?,?)";
@@ -141,6 +141,38 @@ public class UserTableImpl implements UserTable {
 			e.printStackTrace();
 		}
 		return count;
+	}
+
+	@Override
+	public int GetPosition(double user_id) {
+		// TODO Auto-generated method stub
+		
+		int bposition = 0;
+		int sposition = 0;
+		int position = 0;
+		
+		String buyposition = "SELECT SUM(quantity*price) FROM order_details WHERE user_id = ? AND "
+				+ "order_status = 'COMPLETED' AND order_category = 'BUY'";
+
+		String sellposition = "SELECT SUM(quantity*price) FROM order_details WHERE user_id = ? AND "
+				+ "order_status = 'COMPLETED' AND order_category = 'SELL'";
+
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(buyposition);
+			ps.setDouble(1, user_id);
+			PreparedStatement ps1 = con.prepareStatement(sellposition);
+			ps1.setDouble(1, user_id);
+			
+			bposition = ps.executeUpdate();
+			sposition = ps1.executeUpdate();
+			position = bposition - sposition;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return position;
 	}
 
 }

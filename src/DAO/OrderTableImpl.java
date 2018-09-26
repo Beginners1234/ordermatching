@@ -15,7 +15,7 @@ import pojo.Order;
 public class OrderTableImpl implements OrderTable {
 
 	@Override
-	public double DropOrderTable() {
+	public int DropOrderTable() {
 		// TODO Auto-generated method stub
 		
 		int delete = 0;
@@ -224,10 +224,10 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public double UpdateOrderByOrderId(Order order) {
+	public int UpdateOrderByOrderId(Order order) {
 		
 		double oid = order.getOrderId();
-		double isupdate = 0;
+		int isupdate = 0;
 		
 		String UpdateOrder = "UPDATE order_details SET order_status = ?, remianing_quantity = ? WHERE order_id = ?";
 		try(Connection con = MyConnection.openConnection();) {
@@ -265,4 +265,27 @@ public class OrderTableImpl implements OrderTable {
 		}
 		return count;
 	}
+
+	@Override
+	public int GetCountUser(double user_id) {
+		// TODO Auto-generated method stub
+		
+		int count = 0;
+		
+		String getcount = "SELECT COUNT(order_id) from order_details WHERE user_id = ? AND DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
+				+ "AND DATEPART(MM, order_time) = DATEPART(MM, GETDATE()) "
+				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(getcount);
+			ps.setDouble(1, user_id);
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+
+		
+	}
+
 }
