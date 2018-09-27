@@ -482,7 +482,7 @@
               <%
               int stats_user1 = (int)request.getAttribute("stats_user");
               %>
-              <span class="info-box-number" style = "text-align: center">stats_user1</span>
+              <span class="info-box-number" style = "text-align: center"><%= stats_user1%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -500,7 +500,7 @@
               <%
               int stats_trade1 = (int)request.getAttribute("stats_trade");
               %>
-              <span class="info-box-number">stats_trade1</span>
+              <span class="info-box-number"><%= stats_trade1%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
