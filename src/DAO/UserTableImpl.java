@@ -65,15 +65,15 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public List<User> GetUserByUsername(Double LoginId) {
+	public List<User> GetUserByLoginid(String LoginId) {
 		// TODO Auto-generated method stub
 		List<User> usersid = new ArrayList<>();
 		
-		String GETUSERBYNAME = "SELECT * FROM user_details WHERE login_id = ? ORDER BY reg DESC";
+		String GETUSERBYLoginid = "SELECT * FROM user_details WHERE login_id = ? ORDER BY reg DESC";
 		
 		try(Connection con = MyConnection.openConnection();) {
-			PreparedStatement ps = con.prepareStatement(GETUSERBYNAME);
-			ps.setDouble(1, LoginId);
+			PreparedStatement ps = con.prepareStatement(GETUSERBYLoginid);
+			ps.setString(1, LoginId);
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
@@ -86,8 +86,6 @@ public class UserTableImpl implements UserTable {
 				usersid.add(user1);
 				
 			}
-
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,19 +98,17 @@ public class UserTableImpl implements UserTable {
 	public int AddUser(User user) {
 		// TODO Auto-generated method stub
 		int rowsAdded = 0;
-		String ADDUSER = "insert into user_details values(?,?,?,?,?,?)";
+		String ADDUSER = "insert into user_details values(?,?,?,?,?)";
 		
 		Connection con = MyConnection.openConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(ADDUSER);
 			
-			ps.setDouble(1, user.getUserId());
-			ps.setString(2, user.getName());
-			ps.setString(3, user.getLoginId());
-			ps.setString(4, user.getPassword());
-			ps.setDouble(5, user.getContact());
-			ps.setObject(6, new java.sql.Timestamp(user.getReg().getTime()));
-			ps.setDate(6, user.getReg());
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getLoginId());
+			ps.setString(3, user.getPassword());
+			ps.setDouble(4, user.getContact());
+			ps.setObject(5, new java.sql.Timestamp(user.getReg().getTime()));
 			rowsAdded = ps.executeUpdate();
 			
 			

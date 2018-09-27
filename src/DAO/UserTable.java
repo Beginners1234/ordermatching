@@ -6,7 +6,7 @@ import pojo.User;
 
 public interface UserTable {
 	public int DropUserTable();
-	public List<User> GetUserByUsername(Double LoginId);
+	public List<User> GetUserByLoginid(String LoginId);
 	public List<User> GetAllUsers();
 	public int AddUser(User user);
 	public int GetCount();

@@ -15,6 +15,7 @@ import DAO.OrderTableImpl;
 import DAO.TradeTableImpl;
 import DAO.UserTableImpl;
 import businessLogic.OrderProcessesInterfaceImpl;
+import pojo.Order;
 import pojo.Trade;
 import pojo.User;
 
@@ -42,9 +43,12 @@ public class UserServlet extends HttpServlet {
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
-		String username=(String)session.getAttribute("username");
-		Double userID=(Double)request.getAttribute(username);
-		List<User>u=a.GetUserByUsername(userID);
+		HttpSession session=request.getSession();
+		String loginId=(String)session.getAttribute("loginId");
+		
+		Double loginID=Double.parseDouble(loginId);
+		
+		List<User>u=a.GetUserByUsername(loginID);
 		User user=u.get(0);
 		int number_orders=b.GetStatisticsUser(user.getUserId(),"order");
 		int number_trades=b.GetStatisticsUser(user.getUserId(),"trade");
@@ -54,11 +58,11 @@ public class UserServlet extends HttpServlet {
 		request.setAttribute("statistics_position", number_position);
 		int n=20;
 		List<Order>list_orders=i.GetOrderByUserId(user.getUserId(),n);
-		List<Trade>list_trades=t.GetTradesByUserId(user.getUserId(),n);s
+		List<Trade>list_trades=t.GetTradesByUserId(user.getUserId(),n);
 	    request.setAttribute("list_orders",list_orders);
 		request.setAttribute("list_trades",list_trades);
 		RequestDispatcher d=request.getRequestDispatcher("user.jsp");
-		d.forward(request, response);
+		d.forward(request, response);  
 		
 	}
 

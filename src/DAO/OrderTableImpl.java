@@ -56,9 +56,11 @@ public class OrderTableImpl implements OrderTable {
 			String orderst = set.getString("order_status");
 			boolean aon = set.getBoolean("aon");
 			double orderid = set.getDouble("order_id");
+			double remquan = set.getDouble("remaining_quantity");
 			
 			Order order1 = new Order(ordercat, ordertype, order_time, quant, price, UserId, orderst, aon);
 			order1.setOrderId(orderid);
+			order1.setRemaining_quantity(remquan);
 			ordersid.add(order1);
 			
 		}
@@ -94,9 +96,11 @@ public class OrderTableImpl implements OrderTable {
 				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
 				double orderid = set.getDouble("order_id");
+				double remquan = set.getDouble("remaining_quantity");
 				
 				Order order = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
 				order.setOrderId(orderid);
+				order.setRemaining_quantity(remquan);
 				orders.add(order);
 				
 			}
@@ -164,9 +168,11 @@ public class OrderTableImpl implements OrderTable {
 				double userid = set.getDouble("user_id_order");
 				boolean aon = set.getBoolean("aon");
 				double orderid = set.getDouble("order_id");
+				double remquan = set.getDouble("remaining_quantity");
 				
 				Order allorder = new Order(ordercat, ordertype, order_time, quant, price, userid, orderst, aon);
 				allorder.setOrderId(orderid);
+				allorder.setRemaining_quantity(remquan);
 				ordersall.add(allorder);
 				
 			}			
@@ -212,9 +218,11 @@ public class OrderTableImpl implements OrderTable {
 				double userid_m = set.getDouble("user_id_order");
 				boolean aon_m = set.getBoolean("aon");
 				double orderid_m = set.getDouble("order_id");
+				double remquan_m = set.getDouble("remining_quantity");
 				
 				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
 				ordermatch.setOrderId(orderid_m);
+				ordermatch.setRemaining_quantity(remquan_m);
 				ordersmatch.add(ordermatch);
 			}
 			
@@ -255,12 +263,16 @@ public class OrderTableImpl implements OrderTable {
 		
 		int count = 0;
 		
-		String getcount = "SELECT COUNT(order_id) from order_details WHERE DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
+		String getcount = "SELECT COUNT(order_id) AS cnt from order_details WHERE DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, order_time) = DATEPART(MM, GETDATE()) "
 				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
-			count = ps.executeUpdate(); // executeUpdate is returning resultset???
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				count = set.getInt("cnt");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -274,20 +286,22 @@ public class OrderTableImpl implements OrderTable {
 		
 		int count = 0;
 		
-		String getcount = "SELECT COUNT(order_id) from order_details WHERE user_id_order = ? AND DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
+		String getcount = "SELECT COUNT(order_id) AS cnt from order_details WHERE user_id_order = ? AND DATEPART(DD, order_time) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, order_time) = DATEPART(MM, GETDATE()) "
 				+ "AND DATEPART(YYYY, order_time) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
 			ps.setDouble(1, user_id);
-			count = ps.executeUpdate();
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				count = set.getInt("cnt");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return count;
-
-		
+	
 	}
-
 }
