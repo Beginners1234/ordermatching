@@ -93,7 +93,7 @@ public class loginServlet extends HttpServlet {
           		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
           		OrderTableImpl i=new OrderTableImpl();
           		TradeTableImpl t=new TradeTableImpl();
-          		//HttpSession session2=request.getSession();
+          		HttpSession session2=request.getSession();
           		//Boolean check=session2.getAttribute("loginId").equals(null);
 //          		if(check==false)
 //          		{
@@ -112,6 +112,8 @@ public class loginServlet extends HttpServlet {
           		request.setAttribute("statistics_trade", number_trades);
           		request.setAttribute("statistics_position", number_position);
           		request.setAttribute("name", user.getName());
+          		System.out.println(user.getName());
+          		System.out.println(number_orders+" "+number_trades+" "+number_position);
           		int n=5;
           		List<Order>list_orders=i.GetOrderByUserId(user.getUserId(),n);
           		List<Trade>list_trades=t.GetTradesByUserId(user.getUserId(),n);

@@ -263,12 +263,12 @@
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
               
-              	<script>
+              	<%
               
-	              String name = (String) request.getAttribute("name");
-	              out.println(name + "<br>");
+	              String name1 = (String) request.getAttribute("name");
+	              out.println(name1 + "<br>");
               
-              </script>
+          		%>
               </span>
             </a>
             <ul class="dropdown-menu">
@@ -298,24 +298,22 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
+       <div class="user-panel">
+<!--         <div class="pull-left image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
+        </div> -->
         <br>
         <div class="pull-left info">
 <          
           <p>Hello, 
           
-          <script>
+          <%
               
-              String name = (String) request.getAttribute("name");
-              out.print(name + "<br>");
+              out.print(name1 + "<br>");
               
-            </script>
+          %>
           
           </p>
->>>>>>> 263d742e90e976e03ed50630edd22448b2654b5f
         </div>
       </div>
       <br>
@@ -366,8 +364,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\orderhistory.jsp"><i class="fa fa-circle-o"></i> Order History</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\tradehistory.jsp"><i class="fa fa-circle-o"></i> Trade History</a></li>
+            <li><a href="userorder"><i class="fa fa-circle-o"></i> Order History</a></li>
+            <li><a href="usertrades"><i class="fa fa-circle-o"></i> Trade History</a></li>
           </ul>
           <br>
         </li>
@@ -473,12 +471,12 @@
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Orders</span>
               <span class="info-box-number" style = "text-align: center">
               
-              <script>
+              <%
               
-              int order_stats = (Integer) request.getAttribute("statistics_order");
+              Integer order_stats = (Integer) request.getAttribute("statistics_order");
               out.println(order_stats + "<br>");
               
-              </script>
+              %>
               
               </span>
             </div>
@@ -496,12 +494,12 @@
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Trades</span>
               <span class="info-box-number"style="text-align: center">
               
-              <script>
+              <%
               
               int trade_stats = (Integer) request.getAttribute("statistics_trade");
               out.println(trade_stats + "<br>");
               
-              </script>
+              %>
               
               </span>
             </div>
@@ -521,10 +519,10 @@
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">POSITION QUANTITY</span>
               <span class="info-box-number"style="text-align: center">
               
-              <script>
-              int trade_stats = (Integer) request.getAttribute("statistics_trade");
-              out.println(trade_stats + "<br>");
-              </script>
+              <%
+              int position_stats = (Integer) request.getAttribute("statistics_position");
+              out.println(position_stats + "<br>");
+              %>
               
               </span>
             </div>
