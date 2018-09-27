@@ -72,7 +72,6 @@ public class loginServlet extends HttpServlet {
             	}
             else	
             	{
-            		//redirect to user servletsas
             	response.sendRedirect("user");
             	}
            
