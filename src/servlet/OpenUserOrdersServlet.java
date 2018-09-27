@@ -35,7 +35,9 @@ public class OpenUserOrdersServlet extends HttpServlet implements Servlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("user order servlet");
+		
 		HttpSession session=request.getSession();
 		String loginId=(String)session.getAttribute("loginId");
 		UserTableImpl u=new UserTableImpl();
@@ -44,7 +46,7 @@ public class OpenUserOrdersServlet extends HttpServlet implements Servlet {
 	    OrderTableImpl o=new OrderTableImpl();
 	    List<Order>orders= o.GetOrderByUserId(user.getUserId(),100);
 	    request.setAttribute("allOrders", orders);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("userorders.jsp");
+        RequestDispatcher dispatcher= request.getRequestDispatcher("pages/tables/orderhistory.jsp");
         dispatcher.forward(request, response);
 		
 	}

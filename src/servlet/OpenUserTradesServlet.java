@@ -35,7 +35,10 @@ public class OpenUserTradesServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("user trades servlet");
 		HttpSession session=request.getSession();
 		String loginId=(String)session.getAttribute("loginId");
 		UserTableImpl u=new UserTableImpl();
@@ -44,7 +47,7 @@ public class OpenUserTradesServlet extends HttpServlet {
 	    TradeTableImpl o=new TradeTableImpl();
 	    List<Trade>trades= o.GetTradesByUserId(user.getUserId(),100);
 	    request.setAttribute("allOrders", trades);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("userorders.jsp");
+        RequestDispatcher dispatcher= request.getRequestDispatcher("pages/tables/tradehistory.jsp");
         dispatcher.forward(request, response);
 	}
 
