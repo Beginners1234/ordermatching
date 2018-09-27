@@ -263,12 +263,12 @@
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
               
-              	<script>
+              	<%
               
 	              String name1 = (String) request.getAttribute("name");
 	              out.println(name1 + "<br>");
               
-              </script>
+          		%>
               </span>
             </a>
             <ul class="dropdown-menu">
@@ -298,21 +298,20 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
+       <div class="user-panel">
+<!--         <div class="pull-left image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
+        </div> -->
         <br>
         <div class="pull-left info">
 <          
           <p>Hello, 
           
-          <script>
+          <%
               
-              String name1 = (String) request.getAttribute("name");
               out.print(name1 + "<br>");
               
-            </script>
+          %>
           
           </p>
         </div>
@@ -474,7 +473,7 @@
               
               <%
               
-              int order_stats = (Integer) request.getAttribute("statistics_order");
+              Integer order_stats = (Integer) request.getAttribute("statistics_order");
               out.println(order_stats + "<br>");
               
               %>
@@ -521,8 +520,8 @@
               <span class="info-box-number"style="text-align: center">
               
               <%
-              int trade_stats = (Integer) request.getAttribute("statistics_trade");
-              out.println(trade_stats + "<br>");
+              int position_stats = (Integer) request.getAttribute("statistics_position");
+              out.println(position_stats + "<br>");
               %>
               
               </span>
