@@ -30,35 +30,37 @@ public class loginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userName = request.getParameter("userName");
+		String loginId = request.getParameter("loginId");
         String password = request.getParameter("password");       
  
        
         boolean hasError = false;
         String errorString = null;
  
-        if (userName == null || password == null || userName.length() == 0 || password.length() == 0) {
+        if (loginId == null || password == null || password.length() == 0 || loginId.length() == 0)
+        {
             hasError = true;
             errorString = "Required username and password!";
-        } else {
-            //check validation function
-        	//errorString = "User Name or password invalid";
-           
+        }
+        else 
+        {
+        	
+
         }
         
-        if (hasError) {
+        if (hasError) 
+        {
             request.setAttribute("errorString", errorString);
             // Forward to /WEB-INF/views/login.jsp
             RequestDispatcher dispatcher= request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
- 
             dispatcher.forward(request, response);
         }
         else {
             HttpSession session = request.getSession();
-            session.setAttribute("username", userName);
-            if(userName.equals("admin"))
+            session.setAttribute("loginId", loginId);
+            if(loginId.equals("admin"))
             	{	
-            		//redirect to admin servlet
+        
                 RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
                 dispatcher.forward(request, response);	
             	
