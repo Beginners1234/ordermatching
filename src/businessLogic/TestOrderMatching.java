@@ -79,7 +79,7 @@ public class TestOrderMatching {
 		buyerList.add(new Order("buy", "limit", new Date(), 40, 60, 777, "PENDING", false));
 		buyerList.add(new Order("buy", "limit", new Date(), 30, 70, 777, "PENDING", false));
 		System.out.println(sellorder+"\n"+"\n");
-		oms.matchOrder(sellorder,null,buyerList);
+	    oms.matchOrder(sellorder,null,buyerList);
 	}
 
 }

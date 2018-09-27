@@ -42,13 +42,13 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// TODO Auto-generated method stub
-
+        System.out.println("user servlet accessed");
 		UserTableImpl a=new UserTableImpl();
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
 		HttpSession session=request.getSession();
-		Boolean check=session.getAttribute("loginId").equals(request.getAttribute("loginId"));
+		Boolean check=session.getAttribute("loginId").equals(null);
 		if(check==false)
 		{
 			RequestDispatcher d=request.getRequestDispatcher("/pages/examples/login.jsp");
