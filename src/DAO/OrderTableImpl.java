@@ -143,6 +143,7 @@ public class OrderTableImpl implements OrderTable {
 			{
 			order.setOrderId(rs.getDouble(1));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

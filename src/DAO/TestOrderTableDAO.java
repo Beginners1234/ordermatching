@@ -39,7 +39,7 @@ public class TestOrderTableDAO {
 	@Test
 	public void testAddOrder() {
 		System.out.println("Test add order");
-		Order order = new Order("buy", "limit", new Date(), 500, 198, 123, "Pending", false);
+		Order order = new Order("buy", "market", new Date(), 121, 122,827, "Pending", false);
 		order=o.AddOrder(order);
 		System.out.println("Return: "+order);
 	}
