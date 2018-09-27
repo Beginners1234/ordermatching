@@ -16,7 +16,6 @@ public class TestUserTableDAO {
 	{
 		List<User> list = u.GetUserByLoginid("chiragtnak");
 		list.forEach(System.out::println);
-		assert(list.get(0).getUserId()==1003);
 	}
 	
 	@Test
@@ -33,7 +32,7 @@ public class TestUserTableDAO {
 	public void testAddUser()
 	{
 		System.out.println("Test add user");
-		User user1 = new User("hello", "qwer", 122423, "sjfskjf", (java.sql.Date) new Date());
+		User user1 = new User("hello", "qwer", 122423, "sjfskjf", new Date());
 		int ret=u.AddUser(user1);
 		System.out.println("Return: "+ret);
 	}
@@ -46,9 +45,10 @@ public class TestUserTableDAO {
 	}
 	
 	@Test
-	public void testGetPosition(double user_id)
+	public void testGetPosition()
 	{
-		
+		int pos = u.GetPosition(1001.0);
+		System.out.println(pos);
 	}
 	
 

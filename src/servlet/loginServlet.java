@@ -66,17 +66,24 @@ public class loginServlet extends HttpServlet {
             session.setAttribute("loginId", loginId);
             request.setAttribute("loginId", loginId);
             if(loginId.equals("admin"))
+
             	{	
         
                 RequestDispatcher dispatcher=request.getRequestDispatcher("admin");
                 dispatcher.forward(request, response);	
+
+            	{
+            	response.sendRedirect("admin");
             	
             	}
             else	
             	{
             		//redirect to user servlet
+
                 RequestDispatcher dispatcher=request.getRequestDispatcher("user");
                 dispatcher.forward(request, response);	
+
+            	response.sendRedirect("user");
             	}
            
         	}

@@ -13,7 +13,7 @@ public class ValidationImpl implements Validation {
 	public int Authenticationcheck(String loginid, String passwrd) {
 		// TODO Auto-generated method stub
 		String CHECKPSWRD="SELECT password FROM user_details where login_id=?";
-		int num = 0;
+		int num = 0;//password wrong
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(CHECKPSWRD);
 			ps.setString(1, loginid);
@@ -21,9 +21,9 @@ public class ValidationImpl implements Validation {
 			while(set.next())
 			{
 				String pswd = set.getString("password");
-				if(pswd == passwrd)
+				if(pswd.equals(passwrd))
 				{
-					num = 1;
+					num = 1;//successful user
 				}
 				else
 				{
@@ -34,7 +34,7 @@ public class ValidationImpl implements Validation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			num = 2;
+			num = 2;//such loginId does not exist
 		}
 		return num;
 
@@ -44,12 +44,18 @@ public class ValidationImpl implements Validation {
 	public int ValidateUser(String loginid) {
 		// TODO Auto-generated method stub
 		
-		String CHECKLOGINID="SELECT COUNT(*) FROM user_details where login_id=?";
+		String CHECKLOGINID="SELECT COUNT(*) AS cnt FROM user_details where login_id=?";
 		int num = 0;
+		int count = 0;
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(CHECKLOGINID);
 			ps.setString(1, loginid);
-			int count = ps.executeUpdate();
+			
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				count = set.getInt("cnt");
+			}
 			if(count == 0)
 			{
 				num = 1; // user doesn't exist ... registration successful
