@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
 		Boolean check=session.getAttribute("loginId").equals(request.getAttribute("loginId"));
 		if(check==false)
 		{
-			RequestDispatcher d=request.getRequestDispatcher("/pages/login.jsp");
+			RequestDispatcher d=request.getRequestDispatcher("/pages/examples/login.jsp");
 			d.forward(request, response); 
 		}
 
