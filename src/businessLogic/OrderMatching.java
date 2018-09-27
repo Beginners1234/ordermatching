@@ -14,21 +14,15 @@ import pojo.Trade;
 public class OrderMatching {
 	OrderTableImpl oimpl=new OrderTableImpl();
 	TradeTableImpl timpl=new TradeTableImpl();
-	public void matchOrder(Order order) {
-		
-		List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
-		
-		matchOrder(order, sellerList,null);
-	}
 	
-	public void matchOrder(Order order,List<Order> sellerList,List<Order> buyerList) {
+	public void matchOrder(Order order) {
 		//OrderTableImpl orderFunctions=new OrderTableImpl();
 		String type=order.getOrderCategory();// buy/sell
 		
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
 			System.out.println("Order is of type BUY\n");
-			//List<Order> sellerList = orderFunctions.GetOrderForMatching("sell",20.0); //todo
-			 
+			
+			List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
 			ListIterator<Order> litr = sellerList.listIterator();
 			
 			while(order.getRemaining_quantity()>0) {
@@ -100,14 +94,13 @@ public class OrderMatching {
 					order.setOrderStatus("REJECTED");
 			}
 			
-			//OrderTableImpl oimpl=new OrderTableImpl();
-			oimpl.AddOrder(order); //todo
+			oimpl.UpdateOrderByOrderId(order); //todo
 			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
 			System.out.println("Order is of type SELL\n");
 			
-			//List<Order> buyerList = orderFunctions.GetOrderForMatching("buy",20.0); //todo
+			List<Order> buyerList = oimpl.GetOrderForMatching("buy",20); //todo
 			 
 			ListIterator<Order> litr = buyerList.listIterator();
 			
@@ -157,13 +150,13 @@ public class OrderMatching {
 					curBuyOrder.setOrderStatus("COMPLETED");
 				}
 				//update buy orders in db
-				//OrderTableImpl oimpl=new OrderTableImpl();
-				//oimpl.updateOrder(curBuyOrder); //todo
+				
+				oimpl.UpdateOrderByOrderId(curBuyOrder); //todo
 				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
 				
 				//update trade in db
-				//TradeTableImpl impl=new TradeTableImpl();
-				//impl.AddTrade(trade);
+				
+				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			//update sell order in db
@@ -174,8 +167,8 @@ public class OrderMatching {
 				else
 					order.setOrderStatus("REJECTED");
 			}
-			//OrderTableImpl oimpl=new OrderTableImpl();
-			//oimpl.updateOrder(order); //todo
+			
+			oimpl.UpdateOrderByOrderId(order);
 			System.out.println("update sell order in db after trade\n"+order+"\n");
 		}
 		

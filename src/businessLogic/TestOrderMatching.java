@@ -20,8 +20,11 @@ public class TestOrderMatching {
 	@Test
 	public void matchtest() {
 		OrderMatching m=new OrderMatching();
+		OrderTableImpl oimpl=new OrderTableImpl();
 		System.out.println("Calling match from test");
-		m.matchOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false) );
+		Order order= new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+		order=oimpl.AddOrder(order);
+		m.matchOrder( order);
 		System.out.println("TTTTTTSSSST over");
 	}
 
@@ -46,9 +49,9 @@ public class TestOrderMatching {
 	public void addOrderstoDB() {
 		OrderTableImpl orderFunctions=new OrderTableImpl();
 		//Order buyorder=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
-		orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false));
-		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 100, 150, 888, "PENDING", false));
-		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 500, 150, 888, "PENDING", false));
+		//orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 80, 155, 888, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 10, 15,99, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 50, 10, 999, "PENDING", false));
 	}
 	
 	//@Test
@@ -62,7 +65,7 @@ public class TestOrderMatching {
 		//sellerList.add(new Order(111, "sell", "limit", new Date(), 3000, 156, 11, "PENDING", false));
 		//sellerList.add(new Order(222, "sell", "limit", new Date(), 100, 80, 22, "PENDING", false));
 		System.out.println(buyorder+"\n"+"\n");
-		oms.matchOrder(buyorder,sellerList,null);
+		//oms.matchOrder(buyorder,sellerList,null);
 	}
 	
 	//@Test
@@ -76,7 +79,7 @@ public class TestOrderMatching {
 		buyerList.add(new Order("buy", "limit", new Date(), 40, 60, 777, "PENDING", false));
 		buyerList.add(new Order("buy", "limit", new Date(), 30, 70, 777, "PENDING", false));
 		System.out.println(sellorder+"\n"+"\n");
-		oms.matchOrder(sellorder,null,buyerList);
+		//oms.matchOrder(sellorder,null,buyerList);
 	}
 
 }
