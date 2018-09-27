@@ -8,7 +8,7 @@ public interface OrderTable {
 	public int DropOrderTable();
 	public List<Order> GetOrderByUserId(Double UserId, int quantity);
 	public List<Order> GetAllOrders(String status);
-	public int AddOrder(Order order);
+	public Order AddOrder(Order order);
 	public int GetCount();
 	public List<Order> GetAllOrders();
 	public List<Order> GetOrderForMatching(String order_category, int quantity);

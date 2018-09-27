@@ -113,13 +113,16 @@ public class OrderTableImpl implements OrderTable {
 	}
 
 	@Override
-	public int AddOrder(Order order) {
-		// TODO Auto-generated method stub
+	public Order AddOrder(Order order) {
+		//adds order to db and gets irder_id and adds ot object
+		order.setOrderCategory(order.getOrderCategory().toUpperCase());
+		order.setOrderType(order.getOrderType().toUpperCase());
+		order.setOrderStatus(order.getOrderStatus().toUpperCase());
 		
-		int rowsAdded = 0;
-		String ADDORDER = "insert into order_details values(?,?,?,?,?,?,?,?,?)";
+		String ADDORDER = "insert into order_details OUTPUT Inserted.* values(?,?,?,?,?,?,?,?,?);SELECT SCOPE_IDENTITY();";
 		//String ADDORDER = "insert into ORDER_DETAILS values('buy','limit',getdate(),12,12,100, 'pending',1, 10)";
 
+		
 					
 		Connection con = MyConnection.openConnection();
 		try {
@@ -135,15 +138,16 @@ public class OrderTableImpl implements OrderTable {
 			ps.setBoolean(8, order.isAon());
 			ps.setDouble(9, order.getOrderQuantity());
 			
-			rowsAdded = ps.executeUpdate();
-			
-			
+			ResultSet rs= ps.executeQuery();
+			if(rs.next())
+			{
+			order.setOrderId(rs.getDouble(1));
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			rowsAdded = 0;
 		}
-		return rowsAdded;
+		
+		return order;
 	}
 	
 	@Override
@@ -218,7 +222,7 @@ public class OrderTableImpl implements OrderTable {
 				double userid_m = set.getDouble("user_id_order");
 				boolean aon_m = set.getBoolean("aon");
 				double orderid_m = set.getDouble("order_id");
-				double remquan_m = set.getDouble("remining_quantity");
+				double remquan_m = set.getDouble("remaining_quantity");
 				
 				Order ordermatch = new Order(ordercat_m, ordertype_m, order_time_m, quant_m, price_m, userid_m, orderst_m, aon_m);
 				ordermatch.setOrderId(orderid_m);

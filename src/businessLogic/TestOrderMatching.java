@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import DAO.OrderTableImpl;
 import pojo.Order;
 
 public class TestOrderMatching {
@@ -15,8 +16,42 @@ public class TestOrderMatching {
 	 * double orderId, String orderCategory, String orderType, Date orderTime, double orderQuantity,
 			double orderPrice, double userId, String orderStatus, boolean aon
 	 */
+	
+	@Test
+	public void matchtest() {
+		OrderMatching m=new OrderMatching();
+		System.out.println("Calling match from test");
+		m.matchOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false) );
+		System.out.println("TTTTTTSSSST over");
+	}
 
 	@Test
+	public void testGetStuff() {
+		System.out.println("innnn");
+		OrderTableImpl orderFunctions=new OrderTableImpl();
+		
+		Order order=new Order("buy", "limit", new Date(), 500, 155, 888, "COMPLETED", false);
+		order.setOrderId(18.0);
+		order.setRemaining_quantity(45.0);
+		orderFunctions.UpdateOrderByOrderId(order);
+		
+//		Order buyorder=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+//		List<Order> sellerList = orderFunctions.GetOrderForMatching("sell",20);
+//		for(Order o:sellerList) {
+//			System.out.println(o);
+//		}
+	}
+	
+	@Test
+	public void addOrderstoDB() {
+		OrderTableImpl orderFunctions=new OrderTableImpl();
+		//Order buyorder=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+		orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 100, 150, 888, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 500, 150, 888, "PENDING", false));
+	}
+	
+	//@Test
 	public void testOrderMatchingBuy() {
 		System.out.println("in test buy");
 		OrderMatching oms=new OrderMatching();
