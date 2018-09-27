@@ -14,11 +14,6 @@ import pojo.Trade;
 public class OrderMatching {
 	OrderTableImpl oimpl=new OrderTableImpl();
 	TradeTableImpl timpl=new TradeTableImpl();
-	public void matchOrdjer(Order order) {
-		
-		
-		
-	}
 	
 	public void matchOrder(Order order) {
 		//OrderTableImpl orderFunctions=new OrderTableImpl();

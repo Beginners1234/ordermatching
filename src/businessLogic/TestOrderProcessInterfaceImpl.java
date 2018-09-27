@@ -42,8 +42,9 @@ public class TestOrderProcessInterfaceImpl {
 	@Test
 	public void PlaceOrder()
 	{
-		Order order = new Order("buy", "limit", new Date(), 1000, 190, 1090, "rejected", true);
-		order.setOrderId(12.0);
+		System.out.println("Hello");
+		Order order = new Order("buy", "limit", new Date(), 100, 90, 90, "PENDING", true);
+		System.out.println(order);
 		int n = op.PlaceOrder(order);
 		System.out.println(n);
 		
