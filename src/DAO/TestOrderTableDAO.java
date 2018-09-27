@@ -40,8 +40,8 @@ public class TestOrderTableDAO {
 	public void testAddOrder() {
 		System.out.println("Test add order");
 		Order order = new Order("buy", "limit", new Date(), 500, 198, 123, "Pending", false);
-		int ret=o.AddOrder(order);
-		System.out.println("Return: "+ret);
+		order=o.AddOrder(order);
+		System.out.println("Return: "+order);
 	}
 	
 	@Test	

@@ -4,14 +4,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
 
+import DAO.OrderTableImpl;
+import DAO.TradeTableImpl;
 //import DAO.OrderTableImpl;
 //import DAO.TradeTableImpl;
 import pojo.Order;
 import pojo.Trade;
 
 public class OrderMatching {
+	OrderTableImpl oimpl=new OrderTableImpl();
+	TradeTableImpl timpl=new TradeTableImpl();
 	public void matchOrder(Order order) {
-		;//created temporarily
+		
+		List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
+		
+		matchOrder(order, sellerList,null);
 	}
 	
 	public void matchOrder(Order order,List<Order> sellerList,List<Order> buyerList) {
@@ -74,24 +81,27 @@ public class OrderMatching {
 				}
 				
 				//update sell orders in db
-				//OrderTableImpl oimpl=new OrderTableImpl();
-				//oimpl.updateOrder(curSellOrder); //todo
+				
+				oimpl.UpdateOrderByOrderId(curSellOrder); //todo
 				System.out.println("updated sell order\n"+curSellOrder+"\n");
 				
 				//update trade in db
-				//TradeTableImpl impl=new TradeTableImpl();
-				//impl.AddTrade(trade);
+				
+				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			
 			//update buy order in db
 			//if buy is market then mark rejected
 			if (order.getOrderType().equalsIgnoreCase("market")) {
-				order.setOrderStatus("PARTIAL");
+				if(order.getRemaining_quantity()!=order.getOrderQuantity())
+					order.setOrderStatus("PARTIAL");
+				else
+					order.setOrderStatus("REJECTED");
 			}
 			
 			//OrderTableImpl oimpl=new OrderTableImpl();
-			//oimpl.updateOrder(order); //todo
+			oimpl.AddOrder(order); //todo
 			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
@@ -158,8 +168,11 @@ public class OrderMatching {
 			}
 			//update sell order in db
 			//if order is market
-			if (order.getOrderType().equalsIgnoreCase("market")&&order.getRemaining_quantity()!=order.getOrderQuantity()) {
-				order.setOrderStatus("PARTIAL");
+			if (order.getOrderType().equalsIgnoreCase("market")) {
+				if(order.getRemaining_quantity()!=order.getOrderQuantity())
+					order.setOrderStatus("PARTIAL");
+				else
+					order.setOrderStatus("REJECTED");
 			}
 			//OrderTableImpl oimpl=new OrderTableImpl();
 			//oimpl.updateOrder(order); //todo
