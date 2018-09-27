@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="pojo.Order"%>
+    <%@ page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -388,59 +390,46 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="orderhistorytable" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Order Status</th>
-                  <th>Buy/Sell</th>
-                  <th>Type</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>All/None</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>12345</td>
-                  <td><span class = "label label-warning"> Pending </span></td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>147</td>
-                  <td>50</td>
-                  <td>25-09-2018</td>
-                  <td>15:34</td>
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>23456</td>
-                  <td><span class = "label label-warning"> Pending </span></td>
-                  <td>Sell</td>
-                  <td>Limit</td>
-                  <td>152</td>
-                  <td>150</td>
-                  <td>25-09-2018</td>
-                  <td>11:05</td>
-
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>34567</td>
-                  <td><span class = "label label-danger"> Rejected </span></td>
-
-                  <td>Sell</td>
-                  <td>Limit</td>
-                  <td>155</td>
-                  <td>150</td>
-                  <td>25-09-2018</td>
-                  <td>09:05</td>
-                  <td>No</td>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
+            
+            		<!-- change the input of getAttribute -->
+							<%
+							List<Order> list=(List<Order>)request.getAttribute("order");
+							%>							 
+							<table id="orderhistorytable" class="table table-bordered table-striped" border="120">			
+							<thead>
+			                <tr>
+			                  <th>Order ID</th>
+			                  <th>Order Status</th>
+			                  <th>Buy/Sell</th>
+			                  <th>Type</th>
+			                  <th>Price</th>
+			                  <th>Quantity</th>
+			                  <th>Time</th>
+			                  <th>All/None</th>
+			                </tr>
+			                </thead>
+			                <tbody>				 
+							<% 
+							for(Order b:list)
+							{
+							%>
+							<tr>
+								<td><%= b.getOrderId()%></td>
+								<td><%= b.getOrderStatus()%></td>	
+								<td><%= b.getOrderCategory()%></td>
+								<td><%= b.getOrderType()%></td>
+								<td><%= b.getOrderPrice()%></td>
+								<td><%= b.getOrderQuantity()%></td>
+								<td><%= b.getOrderTime()%></td>		
+								<td><%= b.isAon()%></td>		 
+							</tr>
+							
+							<% } %> 
+							
+							</tbody>
+							</table>
+              
+                   </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
