@@ -472,12 +472,12 @@
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Orders</span>
               <span class="info-box-number" style = "text-align: center">
               
-              <script>
+              <%
               
               int order_stats = (Integer) request.getAttribute("statistics_order");
               out.println(order_stats + "<br>");
               
-              </script>
+              %>
               
               </span>
             </div>
@@ -495,12 +495,12 @@
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Trades</span>
               <span class="info-box-number"style="text-align: center">
               
-              <script>
+              <%
               
               int trade_stats = (Integer) request.getAttribute("statistics_trade");
               out.println(trade_stats + "<br>");
               
-              </script>
+              %>
               
               </span>
             </div>
@@ -520,10 +520,10 @@
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">POSITION QUANTITY</span>
               <span class="info-box-number"style="text-align: center">
               
-              <script>
+              <%
               int trade_stats = (Integer) request.getAttribute("statistics_trade");
               out.println(trade_stats + "<br>");
-              </script>
+              %>
               
               </span>
             </div>
