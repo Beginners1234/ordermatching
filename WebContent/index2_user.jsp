@@ -276,17 +276,6 @@
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>
-<<<<<<< HEAD
-                <%=name1 %>
-=======
-                   
-                  <script>
-                  
-                  
-                  </script>
->>>>>>> 263d742e90e976e03ed50630edd22448b2654b5f
-                </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -315,9 +304,7 @@
         </div>
         <br>
         <div class="pull-left info">
-<<<<<<< HEAD
-          <p>Hello, <%=name1 %></p>
-=======
+<          
           <p>Hello, 
           
           <script>
