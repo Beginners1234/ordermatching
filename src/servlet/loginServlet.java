@@ -72,7 +72,7 @@ public class loginServlet extends HttpServlet {
             	}
             else	
             	{
-            		//redirect to user servlet
+            		//redirect to user servletsas
             	response.sendRedirect("user");
             	}
            
