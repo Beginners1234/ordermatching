@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="pojo.Order"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -261,10 +263,11 @@
               <span class="hidden-xs">
               	
               	<script>
-              		
-              		String name = (String) request.getAttribute()
-              		
-              	</script>
+              
+	              String name = (String) request.getAttribute("name");
+	              out.println(name + "<br>");
+              
+              </script>
               
               </span>
             </a>
@@ -274,8 +277,11 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Sakshi Goel - Web Developer
-                  <small>Member since Nov. 2012</small>
+                   
+                  <script>
+                  
+                  
+                  </script>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -305,7 +311,16 @@
         </div>
         <br>
         <div class="pull-left info">
-          <p>Hello, Sakshi Goel!</p>
+          <p>Hello, 
+          
+          <script>
+              
+              String name = (String) request.getAttribute("name");
+              out.print(name + "<br>");
+              
+            </script>
+          
+          </p>
         </div>
       </div>
       <br>
@@ -462,7 +477,16 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Orders</span>
-              <span class="info-box-number" style = "text-align: center">90</span>
+              <span class="info-box-number" style = "text-align: center">
+              
+              <script>
+              
+              int order_stats = (Integer) request.getAttribute("statistics_order");
+              out.println(order_stats + "<br>");
+              
+              </script>
+              
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -476,7 +500,16 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Trades</span>
-              <span class="info-box-number"style="text-align: center">47</span>
+              <span class="info-box-number"style="text-align: center">
+              
+              <script>
+              
+              int trade_stats = (Integer) request.getAttribute("statistics_trade");
+              out.println(trade_stats + "<br>");
+              
+              </script>
+              
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -492,7 +525,14 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">POSITION QUANTITY</span>
-              <span class="info-box-number"style="text-align: center">1500</span>
+              <span class="info-box-number"style="text-align: center">
+              
+              <script>
+              int trade_stats = (Integer) request.getAttribute("statistics_trade");
+              out.println(trade_stats + "<br>");
+              </script>
+              
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -516,6 +556,11 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
+              
+              <%
+              	List <Order> list_order = (List<Order>)request.getAttribute("list_orders");
+              %>
+              
                 <table class="table no-margin">
                   <thead>
                   <tr>
@@ -525,67 +570,23 @@
                     <th>Order Type</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th>Timestamp</th>
                     <th>All or None</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
+                  
+                  <% for (Order o: list_order) {%>
+                  	<tr>
+                  	<td> <%= o.getOrderId() %></td>
+                  	<td> <%= o.getOrderStatus() %></td>
+                  	<td> <%= o.getOrderCategory() %></td>
+                  	<td> <%= o.getOrderType() %></td>
+                  	<td> <%= o.getOrderPrice() %></td>
+                  	<td> <%= o.getOrderQuantity() %></td>
+                  	<td> <%= o.getOrderTime() %></td>
+                  	<td> <%= o.isAon() %></td>
+                  	<%} %> 
                   </tr>
                   </tbody>
                 </table>
