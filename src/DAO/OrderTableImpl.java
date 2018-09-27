@@ -76,7 +76,7 @@ public class OrderTableImpl implements OrderTable {
 	@Override
 	public List<Order> GetAllOrders(String status) {
 		// TODO Auto-generated method stub
-		
+		status=status.toUpperCase();
 		List<Order> orders = new ArrayList<>();
 		
 		String GETALLORDERS = "SELECT * FROM ORDER_DETAILS WHERE order_status = ? ORDER BY order_time DESC";
@@ -119,7 +119,7 @@ public class OrderTableImpl implements OrderTable {
 		order.setOrderType(order.getOrderType().toUpperCase());
 		order.setOrderStatus(order.getOrderStatus().toUpperCase());
 		
-		String ADDORDER = "insert into order_details OUTPUT Inserted.* values(?,?,?,?,?,?,?,?,?);SELECT SCOPE_IDENTITY();";
+		String ADDORDER = "insert into order_details output inserted.* values(?,?,?,?,?,?,?,?,?);SELECT SCOPE_IDENTITY();";
 		//String ADDORDER = "insert into ORDER_DETAILS values('buy','limit',getdate(),12,12,100, 'pending',1, 10)";
 
 		
@@ -136,13 +136,14 @@ public class OrderTableImpl implements OrderTable {
 			ps.setDouble(6, order.getUserId());
 			ps.setString(7, order.getOrderStatus());
 			ps.setBoolean(8, order.isAon());
-			ps.setDouble(9, order.getOrderQuantity());
+			ps.setDouble(9, order.getRemaining_quantity());
 			
 			ResultSet rs= ps.executeQuery();
 			if(rs.next())
 			{
 			order.setOrderId(rs.getDouble(1));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

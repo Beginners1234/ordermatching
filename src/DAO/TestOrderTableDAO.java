@@ -39,7 +39,10 @@ public class TestOrderTableDAO {
 	@Test
 	public void testAddOrder() {
 		System.out.println("Test add order");
-		Order order = new Order("buy", "limit", new Date(), 500, 198, 123, "Pending", false);
+
+		Order order = new Order("buy", "limit", new Date(), 80, 99, 10, "Pending", false);
+		System.out.println(order);
+
 		order=o.AddOrder(order);
 		System.out.println("Return: "+order);
 	}
@@ -71,7 +74,7 @@ public class TestOrderTableDAO {
 	public void testUpdateOrderByOrderId() {
 		
 		Order order = new Order("buy", "limit", new Date(), 1000, 190, 1090, "rejected", true);
-		order.setOrderId(4);
+		order.setOrderId(61);
 		int a = o.UpdateOrderByOrderId(order);
 		System.out.println(a);
 		
