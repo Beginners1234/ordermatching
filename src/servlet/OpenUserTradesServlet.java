@@ -38,9 +38,8 @@ public class OpenUserTradesServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String loginId=(String)session.getAttribute("loginId");
-		Double loginID=Double.parseDouble(loginId);
 		UserTableImpl u=new UserTableImpl();
-		List<User>us=u.GetUserByUsername(loginID);
+		List<User>us=u.GetUserByLoginid(loginId);
 		User user=us.get(0);
 	    TradeTableImpl o=new TradeTableImpl();
 	    List<Trade>trades= o.GetTradesByUserId(user.getUserId(),100);

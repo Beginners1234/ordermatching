@@ -38,17 +38,22 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
 		UserTableImpl a=new UserTableImpl();
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
 		HttpSession session=request.getSession();
-		String loginId=(String)session.getAttribute("loginId");
+		Boolean check=session.getAttribute("loginId").equals(request.getAttribute("loginId"));
+		if(check==false)
+		{
+			RequestDispatcher d=request.getRequestDispatcher("/pages/login.jsp");
+			d.forward(request, response); 
+		}
+
 		
-		Double loginID=Double.parseDouble(loginId);
-		
-		List<User>u=a.GetUserByUsername(loginID);
+		String loginId=(String)session.getAttribute("loginId");		
+		List<User>u=a.GetUserByLoginid(loginId);
 		User user=u.get(0);
 		int number_orders=b.GetStatisticsUser(user.getUserId(),"order");
 		int number_trades=b.GetStatisticsUser(user.getUserId(),"trade");
@@ -56,12 +61,13 @@ public class UserServlet extends HttpServlet {
 		request.setAttribute("statistics_order", number_orders);
 		request.setAttribute("statistics_trade", number_trades);
 		request.setAttribute("statistics_position", number_position);
-		int n=20;
+		request.setAttribute("name", user.getName());
+		int n=5;
 		List<Order>list_orders=i.GetOrderByUserId(user.getUserId(),n);
 		List<Trade>list_trades=t.GetTradesByUserId(user.getUserId(),n);
 	    request.setAttribute("list_orders",list_orders);
 		request.setAttribute("list_trades",list_trades);
-		RequestDispatcher d=request.getRequestDispatcher("user.jsp");
+		RequestDispatcher d=request.getRequestDispatcher("index2_user.jsp");
 		d.forward(request, response);  
 		
 	}

@@ -38,9 +38,8 @@ public class OpenUserOrdersServlet extends HttpServlet implements Servlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String loginId=(String)session.getAttribute("loginId");
-		Double loginID=Double.parseDouble(loginId);
 		UserTableImpl u=new UserTableImpl();
-		List<User>us=u.GetUserByUsername(loginID);
+		List<User>us=u.GetUserByLoginid(loginId);
 		User user=us.get(0);
 	    OrderTableImpl o=new OrderTableImpl();
 	    List<Order>orders= o.GetOrderByUserId(user.getUserId(),100);

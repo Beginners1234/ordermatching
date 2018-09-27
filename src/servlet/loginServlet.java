@@ -64,17 +64,18 @@ public class loginServlet extends HttpServlet {
         else {
             HttpSession session = request.getSession();
             session.setAttribute("loginId", loginId);
+            request.setAttribute("loginId", loginId);
             if(loginId.equals("admin"))
             	{	
         
-                RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+                RequestDispatcher dispatcher=request.getRequestDispatcher("admin");
                 dispatcher.forward(request, response);	
             	
             	}
             else	
             	{
             		//redirect to user servlet
-                RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+                RequestDispatcher dispatcher=request.getRequestDispatcher("user");
                 dispatcher.forward(request, response);	
             	}
            

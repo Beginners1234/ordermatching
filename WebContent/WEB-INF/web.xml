@@ -3,6 +3,5 @@
   <display-name>OrderMatchingSystem</display-name>
   <welcome-file-list>
     <welcome-file>/pages/examples/login.jsp</welcome-file>
-   
   </welcome-file-list>
 </web-app>

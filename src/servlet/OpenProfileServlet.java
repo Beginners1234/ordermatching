@@ -35,12 +35,10 @@ public class OpenProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String loginId=(String)session.getAttribute("loginId");
-		Double loginID=Double.parseDouble(loginId);
 		UserTableImpl u=new UserTableImpl();
-		List<User>us=u.GetUserByUsername(loginID);
+		List<User>us=u.GetUserByLoginid(loginId);
 		User user=us.get(0);
-		
-        RequestDispatcher dispatcher= request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+        RequestDispatcher dispatcher= request.getRequestDispatcher("index2_user.jsp");
         dispatcher.forward(request, response);
 	}
 
