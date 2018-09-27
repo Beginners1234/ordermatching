@@ -53,7 +53,7 @@
 		%>
     
 
-    <form action="/login2" method="post">
+    <form action="login2" method="post">
       <div class="form-group has-feedback">
         <input type="text" name = "loginId" class="form-control" placeholder="User ID">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

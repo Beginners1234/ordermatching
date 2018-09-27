@@ -15,7 +15,7 @@ import businessLogic.ValidationImpl;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("/login")
+@WebServlet("/login2")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,6 +32,7 @@ public class loginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("welcome to login2servlet");
 		String loginId = request.getParameter("loginId");
         String password = request.getParameter("password");       
  
@@ -41,6 +42,7 @@ public class loginServlet extends HttpServlet {
  
         if (loginId == null || password == null || password.length() == 0 || loginId.length() == 0)
         {
+        	System.out.println("no input error");
             hasError = true;
             errorString = "Required username and password!";
         }
@@ -57,13 +59,15 @@ public class loginServlet extends HttpServlet {
         if (hasError) 
         {
             request.setAttribute("errorString", errorString);
+            System.out.println(errorString);
             // Forward to /WEB-INF/views/login.jsp
             //System.out.println("");
-            RequestDispatcher dispatcher= request.getRequestDispatcher("/pages/examples/login.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("./login.jsp");
             dispatcher.forward(request, response);
             
         }
         else {
+        	System.out.println("success");
             HttpSession session = request.getSession();
             session.setAttribute("loginId", loginId);
             request.setAttribute("loginId", loginId);
