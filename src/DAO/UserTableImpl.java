@@ -49,8 +49,11 @@ public class UserTableImpl implements UserTable {
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
 				Date regist = set.getDate("reg");
+				double userid = set.getDouble("user_id");
 				
 				User alluser = new User(loginid, password, contact, name, (java.sql.Date) regist);
+				alluser.setUserId(userid);
+				System.out.println(alluser);
 				usersall.add(alluser);
 				
 			}
@@ -77,12 +80,15 @@ public class UserTableImpl implements UserTable {
 			ResultSet set = ps.executeQuery();
 			while(set.next())
 			{
-				String loginid = set.getString(1);
+				String loginid = set.getString("login_id");
 				String name = set.getString("name");
 				String password = set.getString("password");
 				double contact = set.getDouble("contact");
 				Date regist = set.getDate("reg");
+				Double userid = set.getDouble("user_id");
+				
 				User user1 = new User(loginid, password, contact, name, (java.sql.Date) regist);
+				user1.setUserId(userid);
 				usersid.add(user1);
 				
 			}
@@ -124,13 +130,16 @@ public class UserTableImpl implements UserTable {
 		// TODO Auto-generated method stub
 		int count = 0;
 		
-		String getcount = "SELECT COUNT(user_id) from user_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
+		String getcount = "SELECT COUNT(user_id) AS cnt from user_details WHERE DATEPART(DD, reg) = DATEPART(DD, GETDATE())"
 				+ "AND DATEPART(MM, reg) = DATEPART(MM, GETDATE()) "
 				+ "AND DATEPART(YYYY, reg) = DATEPART(YYYY, GETDATE())";
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(getcount);
-
-			count = ps.executeUpdate();
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				count = set.getInt("cnt");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,10 +155,10 @@ public class UserTableImpl implements UserTable {
 		int sposition = 0;
 		int position = 0;
 		
-		String buyposition = "SELECT SUM(quantity*price) FROM order_details WHERE user_id = ? AND "
+		String buyposition = "SELECT SUM(quantity*price) AS sumbuy FROM order_details WHERE user_id_order = ? AND "
 				+ "order_status = 'COMPLETED' AND order_category = 'BUY'";
 
-		String sellposition = "SELECT SUM(quantity*price) FROM order_details WHERE user_id = ? AND "
+		String sellposition = "SELECT SUM(quantity*price) AS sumsell FROM order_details WHERE user_id_order = ? AND "
 				+ "order_status = 'COMPLETED' AND order_category = 'SELL'";
 
 		try(Connection con = MyConnection.openConnection();) {
@@ -158,8 +167,18 @@ public class UserTableImpl implements UserTable {
 			PreparedStatement ps1 = con.prepareStatement(sellposition);
 			ps1.setDouble(1, user_id);
 			
-			bposition = ps.executeUpdate();
-			sposition = ps1.executeUpdate();
+			ResultSet set1 = ps.executeQuery();
+			while(set1.next())
+			{
+				bposition = set1.getInt("sumbuy");
+			}
+			
+			ResultSet set2 = ps1.executeQuery();
+			while(set2.next())
+			{
+				sposition = set2.getInt("sumsell");
+			}
+
 			position = bposition - sposition;
 			
 			
