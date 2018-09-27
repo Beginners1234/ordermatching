@@ -44,50 +44,50 @@ public class AdminServlet extends HttpServlet {
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
-		System.out.println("Hello");
 		HttpSession session=request.getSession();
-		
-		String loginId = "admin";
-	//	Boolean check=session.getAttribute("loginId").equals("admin");
-/*//		if(check==false)
+		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+		d.forward(request, response); 
+//
+//		Boolean check=session.getAttribute("loginId").equals("admin");
+//		if(check==false)
 //		{
-//			RequestDispatcher d=request.getRequestDispatcher("/pages/examples/login.jsp");
-//			d.forward(request, response); 
+//			RequestDispatcher d2=request.getRequestDispatcher("login.jsp");
+//			d2.forward(request, response); 
 //		}
-
-		
+//
+//		
 //		String loginId=(String)session.getAttribute("loginId");		
-*/		List<User>u=a.GetUserByLoginid(loginId);
-		User user=u.get(0);
-		System.out.println(u.get(0));
+//		List<User>u=a.GetUserByLoginid(loginId);
+//		User user=u.get(0);
+//		System.out.println(u.get(0));
 		int number_orders=b.GetStatistics("order");
 		int number_trades=b.GetStatistics("trade");
 		int number_users=b.GetStatistics("user");
-		System.out.println(number_orders+ number_trades+ number_users);
 		request.setAttribute("stats_order", number_orders);//attributes names
 		request.setAttribute("stats_trade", number_trades);
 		request.setAttribute("stats_user", number_users);
-		request.setAttribute("name", user.getName());
+//		request.setAttribute("name", user.getName());
 		List<Order>list_orders=i.GetAllOrders();
-		System.out.println(list_orders);
-		List<Order> list_orders1=new ArrayList<>();
-		for(int ii=0;ii<1;ii++)
+		ArrayList<Order> list_orders_buy = new ArrayList<>();
+		ArrayList<Order> list_orders_sell = new ArrayList<>();
+		for(int k=0; k<list_orders.size(); k++)
 		{
-			list_orders1.set(ii, list_orders.get(ii)); 
+			if(list_orders.get(k).getOrderCategory().equals("BUY"))
+			{
+				list_orders_buy.add(list_orders.get(k));
+			}
+			else if(list_orders.get(k).getOrderCategory().equals("SELL"))
+			{
+				list_orders_sell.add(list_orders.get(k));
+			}
 		}
-		System.out.println(list_orders1);
 		List<Trade>list_trades=t.GetAllTrades();
 		System.out.println(list_trades);
-		List<Trade> list_trades1=new ArrayList<>();
-		for(int ii=0;ii<1;ii++)
-		{
-			list_trades1.set(ii, list_trades.get(ii)); 
-		}
-		System.out.println(list_trades1);
-	    request.setAttribute("list_orders",list_orders1);
-		request.setAttribute("list_trades",list_trades1);
-//		RequestDispatcher d=request.getRequestDispatcher("index2_admin.jsp");//put admin html page name
-//		d.forward(request, response);  
+	    request.setAttribute("buy_order",list_orders_buy);
+	    request.setAttribute("sell_order",list_orders_sell);
+		request.setAttribute("trade_order",list_trades);
+		RequestDispatcher d1=request.getRequestDispatcher("index2.jsp");
+		d1.forward(request, response);  
 	}
 
 	/**

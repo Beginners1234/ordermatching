@@ -59,8 +59,6 @@ public class TradeTableImpl implements TradeTable {
 				tradesall.add(trade);
 				
 			}
-
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

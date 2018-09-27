@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.OrderTableImpl;
 
@@ -31,7 +32,18 @@ public class PlaceOrderServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		OrderTableImpl o=new OrderTableImpl();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session=request.getSession();
+		var x = DOM.getElementByTagName("DIV")[0];
+		if(x.id == "tab_buy") // buy function
+		{
+			
+		}
+		else
+		{
+			
+		}
+		String order_cat = session.getAttribute("orderCategory");
+		
 	}
 
 	/**
