@@ -334,7 +334,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="OrderMatchingSystem\pages\tables\executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>
+            <li><a href="./pages/tables/executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>
             <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\pendingorders.jsp"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
             <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\rejectedorders.jsp"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
           </ul>

@@ -52,7 +52,7 @@ public class loginServlet extends HttpServlet {
         {
             request.setAttribute("errorString", errorString);
             // Forward to /WEB-INF/views/login.jsp
-            RequestDispatcher dispatcher= request.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("./pages/examples/login.jsp");
             dispatcher.forward(request, response);
         }
         else {
