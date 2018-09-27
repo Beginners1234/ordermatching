@@ -35,8 +35,11 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 		
 
 		order = o.AddOrder(order); //add to db via dao returns 1 if successful
-
-		
+		System.out.println(order.getOrderId());
+		if(order.getOrderId()!=0.0) {
+			//has been added to db
+			n=1;
+		}
 		OrderMatching om = new OrderMatching();
 		om.matchOrder(order); //send order for matching
 		return n;

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>    
+<%@page import="pojo.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | User Profile</title>
+  <title> OMS | User Profile</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -39,9 +40,9 @@
     <!-- Logo -->
     <a href="../../index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>O</b>MS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -251,17 +252,22 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nina Mcintire</span>
+              <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="user-image" alt="User Image">
+              <span class="hidden-xs">
+              <%
+              String name1=(String)request.getAttribute("name");
+              %>
+              
+              <%=name1 %>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+                <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
 
                 <p>
-                  Nina Mcintire
-                  <small>Member since Nov. 2012</small>
+                <%=name1 %>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -294,10 +300,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+          <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nina Mcintire</p>
+          <p>Hello, <%=name1 %></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -333,7 +339,7 @@
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
-              <small class = "label pull-right bg-green">Hot</small>
+              
             </span>
           </a>
           <br>
@@ -458,26 +464,39 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="C:\Users\Grad\Downloads\Profile.png" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+               <%
+               
+               User u=(User)request.getAttribute("user");
+               
+               
+               %>
+               
+
+
+              <h3 class="profile-username text-center"><%=name1 %></h3>
 
               
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>User ID</b> <a class="pull-right">NM2345</a>
+                  <b>User ID</b> <a class="pull-right">
+                  <%=u.getUserId()%>
+                  </a>
+                </li>
+                
+                <li class="list-group-item">
+                  <b>Username</b> <a class="pull-right"><%=u.getUserId()%></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Username</b> <a class="pull-right">nina2345</a>
+                  <b>Password</b> <a class="pull-right"><%=u.getPassword()%></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Password</b> <a class="pull-right">******</a>
+                  <b>Contact</b> <a class="pull-right"><%=u.getContact()%></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Contact</b> <a class="pull-right">99999</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Email ID</b> <a class="pull-right">nina@gmail.com</a>
+                  <b>Email ID</b> <a class="pull-right"><%=u.getLoginId()%></a>
                 </li>             
               </ul>
 
@@ -487,7 +506,7 @@
           </div>
           <!-- /.box -->
 
-          <!-- About Me Box -->
+          <!-- About Me Box ->
                        
             </div>
             <!-- /.box-header -->

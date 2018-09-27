@@ -44,13 +44,22 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
     
-		<%
+	  	<%-- <%
 		//java code in here
 		
 		String message = (String) request.getAttribute("errorString");
 		if (message!=null) out.println(message + "<br>");
 		
-		%>
+		%> --%> 
+		
+		<% 
+		String message = (String) request.getAttribute("errorString");
+		if(message!=null) 
+			{ %>
+		    <div id="noEntry" class = "alert" style = "margin:10px 0px; text-align:center; vertical-align:middle; padding-bottom:20px; line-height:5px; height:10px;  color: #D8000C; background-color: #FFD2D2;">
+		        <p> <% out.println(message + "<br>"); %>   </p>
+		    </div>
+		<%	} %>
     
 
     <form action="login2" method="post">
