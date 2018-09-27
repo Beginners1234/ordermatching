@@ -33,7 +33,9 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 		//validate order details
 		//price 150-160
 		
+
 		order = o.AddOrder(order); //add to db via dao returns 1 if successful
+
 		
 		OrderMatching om = new OrderMatching();
 		om.matchOrder(order); //send order for matching
