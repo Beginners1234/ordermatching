@@ -33,7 +33,13 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 		//validate order details
 		//price 150-160
 		
-
+		if(order.getOrderType().equalsIgnoreCase("market"))
+		{
+			if(order.getOrderCategory().equalsIgnoreCase("buy"))
+				order.setOrderPrice(1000);
+			else order.setOrderPrice(0);
+		}
+		
 		order = o.AddOrder(order); //add to db via dao returns 1 if successful
 		System.out.println(order.getOrderId());
 		if(order.getOrderId()!=0.0) {
