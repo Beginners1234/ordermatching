@@ -40,11 +40,20 @@ public class AdminServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+        HttpSession session = request.getSession();
+		String loginId=(String)session.getAttribute("loginId");	
+		if(!(loginId != null && !loginId.isEmpty())) {
+        	request.setAttribute("errorString", "session expired");
+        	//System.out.println("no session 1");
+    		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+    		d.forward(request, response);  
+ 
+        }
 		UserTableImpl a=new UserTableImpl();
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
-		HttpSession session=request.getSession();
+		//HttpSession session=request.getSession();
 		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
 		d.forward(request, response); 
 //

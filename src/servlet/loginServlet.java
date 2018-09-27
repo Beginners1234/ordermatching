@@ -69,61 +69,27 @@ public class loginServlet extends HttpServlet {
         {
             request.setAttribute("errorString", errorString);
             System.out.println(errorString);
-            // Forward to /WEB-INF/views/login.jsp
-            //System.out.println("");
-            RequestDispatcher dispatcher= request.getRequestDispatcher("./login.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
             
         }
         else {
-        	System.out.println("success user found");
-            HttpSession session = request.getSession();
-            session.setAttribute("loginId", loginId);
-            request.setAttribute("loginId", loginId);
-            if(loginId.equals("admin"))
-            	{
-            	response.sendRedirect("admin");
-            	return;
-            	
-            	}
-            else	
-            	{
-            	  System.out.println("user servlet accessed");
-          		UserTableImpl a=new UserTableImpl();
-          		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
-          		OrderTableImpl i=new OrderTableImpl();
-          		TradeTableImpl t=new TradeTableImpl();
-          		HttpSession session2=request.getSession();
-          		//Boolean check=session2.getAttribute("loginId").equals(null);
-//          		if(check==false)
-//          		{
-//          			RequestDispatcher d=request.getRequestDispatcher("/pages/examples/login.jsp");
-//          			d.forward(request, response); 
-//          		}
+        		if(loginId.equals("admin"))
+        		{
+        			System.out.println("admin is found");
+            		HttpSession session = request.getSession(true);
+            		session.setAttribute("loginId", loginId);
+            		response.sendRedirect("admin");
+        			
+        		}
+        		else {
+        		System.out.println("success user found");
+        		HttpSession session = request.getSession(true);
+        		session.setAttribute("loginId", loginId);
+        		response.sendRedirect("user");}
 
-          		
-          		//String loginId2=(String)session.getAttribute("loginId");		
-          		List<User>u=a.GetUserByLoginid(loginId);
-          		User user=u.get(0);
-          		int number_orders=b.GetStatisticsUser(user.getUserId(),"order");
-          		int number_trades=b.GetStatisticsUser(user.getUserId(),"trade");
-          		int number_position=b.GetStatisticsUser(user.getUserId(), "positon");
-          		request.setAttribute("statistics_order", number_orders);
-          		request.setAttribute("statistics_trade", number_trades);
-          		request.setAttribute("statistics_position", number_position);
-          		request.setAttribute("name", user.getName());
-          		System.out.println(user.getName());
-          		System.out.println(number_orders+" "+number_trades+" "+number_position);
-          		int n=5;
-          		List<Order>list_orders=i.GetOrderByUserId(user.getUserId(),n);
-          		List<Trade>list_trades=t.GetTradesByUserId(user.getUserId(),n);
-          	    request.setAttribute("list_orders",list_orders);
-          		request.setAttribute("list_trades",list_trades);
-          		RequestDispatcher d=request.getRequestDispatcher("index2_user.jsp");
-          		d.forward(request, response);
-            	}
+            }
            
-        	}
 
 	}
 }

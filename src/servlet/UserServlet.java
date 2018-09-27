@@ -42,21 +42,24 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// TODO Auto-generated method stub
+
+        HttpSession session = request.getSession();
+		String loginId=(String)session.getAttribute("loginId");	
+		if(!(loginId != null && !loginId.isEmpty())) {
+        	request.setAttribute("errorString", "session expired");
+        	//System.out.println("no session 1");
+    		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+    		d.forward(request, response);  
+ 
+        }
+
         System.out.println("user servlet accessed");
 		UserTableImpl a=new UserTableImpl();
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
-		HttpSession session=request.getSession();
-		Boolean check=session.getAttribute("loginId").equals(null);
-		if(check==false)
-		{
-			RequestDispatcher d=request.getRequestDispatcher("/pages/examples/login.jsp");
-			d.forward(request, response); 
-		}
 
-		
-		String loginId=(String)session.getAttribute("loginId");		
+		System.out.println(loginId);
 		List<User>u=a.GetUserByLoginid(loginId);
 		User user=u.get(0);
 		int number_orders=b.GetStatisticsUser(user.getUserId(),"order");
@@ -74,9 +77,5 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher d=request.getRequestDispatcher("index2_user.jsp");
 		d.forward(request, response);  
     }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-		
-	}
 
 }

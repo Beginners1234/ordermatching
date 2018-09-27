@@ -13,7 +13,7 @@ public class ValidationImpl implements Validation {
 	public int Authenticationcheck(String loginid, String passwrd) {
 		// TODO Auto-generated method stub
 		String CHECKPSWRD="SELECT password FROM user_details where login_id=?";
-		int num = 0;//password wrong
+		int num = 2;
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(CHECKPSWRD);
 			ps.setString(1, loginid);
@@ -27,6 +27,7 @@ public class ValidationImpl implements Validation {
 				}
 				else
 				{
+					num=0;
 					break;
 				}
 			}
