@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+    <%@ page import="pojo.Order"%>
+    <%@ page import="pojo.Trade"%>
+    <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -459,7 +463,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">New Orders</span>
-              <span class="info-box-number">90</span>
+              <%
+              int stats_order1 = (int)request.getAttribute("stats_order");
+              %>
+              <span class="info-box-number"><%= stats_order1%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -472,7 +479,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold; word-wrap: break-word;">New Registrations</span>
-              <span class="info-box-number" style = "text-align: center">41,410</span>
+              <%
+              int stats_user1 = (int)request.getAttribute("stats_user");
+              %>
+              <span class="info-box-number" style = "text-align: center">stats_user1</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -487,7 +497,10 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Trades done Today</span>
-              <span class="info-box-number">2,000</span>
+              <%
+              int stats_trade1 = (int)request.getAttribute("stats_trade");
+              %>
+              <span class="info-box-number">stats_trade1</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -497,10 +510,11 @@
       </div>
       <!-- /.row -->
 
-          <!-- TABLE: LATEST ORDERS -->
+
+			<!-- TABLE: BUY ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Order History</h3>
+              <h3 class="box-title">Buy Orders</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -511,83 +525,138 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
+              				<%
+							List<Order> list=(List<Order>)request.getAttribute("buy_order");
+							%>	
                 <table class="table no-margin">
                   <thead>
                   <tr>
                     <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Time</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.jsp">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
+                  
+                    <%-- <% 
+							for(Order b:list)
+							{
+					%>
+							<tr>
+								<td><%= b.getOrderId()%></td>
+								<td><%= b.getOrderPrice()%></td>
+								<td><%= b.getOrderQuantity()%></td>
+								<td><%= b.getOrderTime()%></td>		 
+							</tr>
+							
+					<% } %>  --%>
+					
+                  
                   </tbody>
                 </table>
               </div>
               <!-- /.table-responsive -->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+		<!-- ----------------------------------------------------------------------------------------------------------------- -->
+		
+		<!-- TABLE: SELL ORDERS -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sell Orders</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
             </div>
-            <!-- /.box-footer -->
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+              				<%
+							List<Order> list1=(List<Order>)request.getAttribute("sell_order");
+							%>	
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Time</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                 <%--    <% 
+							for(Order b1:list1)
+							{
+					%>
+							<tr>
+								<td><%= b1.getOrderId()%></td>
+								<td><%= b1.getOrderPrice()%></td>
+								<td><%= b1.getOrderQuantity()%></td>
+								<td><%= b1.getOrderTime()%></td>		 
+							</tr>
+							
+					<% } %>  --%>
+					
+                  
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+		<!-- ------------------------------------------------------------------------------------------------------------- -->
+		<!-- TABLE: TRADE ORDERS -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Trades</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+              				<%
+							List<Trade> list2=(List<Trade>)request.getAttribute("trade_order");
+              				
+							%>	
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Trade ID</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Time</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <%--    <% 
+							for(Trade b2:list2)
+							{
+					%>
+							<tr>
+								<td><%= b2.getTradeId()%></td>
+								<td><%= b2.getTradedPrice()%></td>
+								<td><%= b2.getTradedQuantity()%></td>
+								<td><%= b2.getTradedTime()%></td>		 
+							</tr>
+					<% } %>  --%>
+
+                  
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+		<!-- ---------------------------------------------------------------------------------------------------------- -->
+		
+		
           </div>
           <!-- /.box -->
         </div>
