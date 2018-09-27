@@ -40,25 +40,25 @@
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form action="index2.jsp" method="post">
+    <form action="RegisterUser" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name">
+        <input type="text" name = "fullname" class="form-control" placeholder="Full name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" name = "email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name = "password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype password">
+        <input type="password"  name = "repassword" class="form-control" placeholder="Retype password">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="tel" class="form-control" placeholder="Contact Number" onkeypress="return isNumberKey(event)">
+        <input type="tel" name = "contact" class="form-control" placeholder="Contact Number" onkeypress="return isNumberKey(event)">
           
           <script>
             function isNumberKey(evt){
@@ -72,7 +72,7 @@
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
           <div class="form-group has-feedback">
-        <input type="number" class="form-control" placeholder="Balance">
+        <input type="number" name = "balance" class="form-control" placeholder="Balance">
         <span class="glyphicon glyphicon glyphicon-usd form-control-feedback"></span>
       </div>
       
@@ -80,7 +80,7 @@
        <div class="col-xs-8"> -->
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox">    I agree to the <a href="#">terms and conditions</a>
+              <input name = "agreeterms" type="checkbox">    I agree to the <a href="#">terms and conditions</a>
             </label>
           </div>
         <!--</div> -->
@@ -90,7 +90,14 @@
         <!-- /.col 
       </div> -->
     </form>
-
+	<% 
+		String message = (String) request.getAttribute("errorString");
+		if(message!=null) 
+			{ %>
+		    <div id="noEntry" class = "alert" style = "margin:10px 0px; text-align:center; vertical-align:middle; padding-bottom:20px; line-height:5px; height:10px;  color: #D8000C; background-color: #FFD2D2;">
+		        <p> <% out.println(message + "<br>"); %>   </p>
+		    </div>
+		<%	} %>
     <br>
     Already registered? <a href="login.jsp" class="text-center">Sign in</a>
   </div>
