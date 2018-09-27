@@ -58,8 +58,10 @@ public class loginServlet extends HttpServlet {
         {
             request.setAttribute("errorString", errorString);
             // Forward to /WEB-INF/views/login.jsp
+            //System.out.println("");
             RequestDispatcher dispatcher= request.getRequestDispatcher("/pages/examples/login.jsp");
             dispatcher.forward(request, response);
+            
         }
         else {
             HttpSession session = request.getSession();
