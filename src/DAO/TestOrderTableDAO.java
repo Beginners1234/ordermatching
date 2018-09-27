@@ -80,7 +80,7 @@ public class TestOrderTableDAO {
 	@Test
 	public void testGetCountUser() {
 		
-		int a = o.GetCountUser(123);
+		int a = o.GetCountUser(1002);
 		System.out.println(a);
 	}
 }
