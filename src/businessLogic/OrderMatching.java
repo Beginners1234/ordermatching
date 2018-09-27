@@ -155,13 +155,13 @@ public class OrderMatching {
 					curBuyOrder.setOrderStatus("COMPLETED");
 				}
 				//update buy orders in db
-				//OrderTableImpl oimpl=new OrderTableImpl();
-				//oimpl.updateOrder(curBuyOrder); //todo
+				
+				oimpl.UpdateOrderByOrderId(curBuyOrder); //todo
 				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
 				
 				//update trade in db
-				//TradeTableImpl impl=new TradeTableImpl();
-				//impl.AddTrade(trade);
+				
+				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			}
 			//update sell order in db
@@ -172,8 +172,8 @@ public class OrderMatching {
 				else
 					order.setOrderStatus("REJECTED");
 			}
-			//OrderTableImpl oimpl=new OrderTableImpl();
-			//oimpl.updateOrder(order); //todo
+			
+			oimpl.UpdateOrderByOrderId(order);
 			System.out.println("update sell order in db after trade\n"+order+"\n");
 		}
 		
