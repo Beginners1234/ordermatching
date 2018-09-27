@@ -10,12 +10,18 @@ public class TestValidationImpl {
 	public void Authenticationcheck()
 	{
 		System.out.println("In Authenticationcheck");
-		int result=v.Authenticationcheck("asnjd", "klcm");
+		int result=v.Authenticationcheck("pratyushsnehi10", "dsf");
+		System.out.println(result);
+		
 		if(result==0)
+		{
 			System.out.println("WRONG CREDENTIALS");
+		}
 		else if(result==1)
 			System.out.println("SUCCESSFUL LOGIN");
-		else 
+		else if(result == 2)
+			System.out.println("Wrong login id");
+		else
 			System.out.println("UNIDENTIFIED ERROR");
 	}
 	
@@ -23,7 +29,7 @@ public class TestValidationImpl {
 	public void ValidateUser()
 	{
 		System.out.println("In ValidateUser");
-		int result=v.ValidateUser("asnjd");
+		int result=v.ValidateUser("pratyushsnehi10");
 		if(result==0)
 			System.out.println("USER ALREADY EXISTS");
 		else if(result==1)
