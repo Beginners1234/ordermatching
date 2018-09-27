@@ -13,7 +13,7 @@ public class ValidationImpl implements Validation {
 	public int Authenticationcheck(String loginid, String passwrd) {
 		// TODO Auto-generated method stub
 		String CHECKPSWRD="SELECT password FROM user_details where login_id=?";
-		int num = 0;
+		int num = 0;//password wrong
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(CHECKPSWRD);
 			ps.setString(1, loginid);
@@ -23,7 +23,7 @@ public class ValidationImpl implements Validation {
 				String pswd = set.getString("password");
 				if(pswd == passwrd)
 				{
-					num = 1;
+					num = 1;//successful user
 				}
 				else
 				{
@@ -34,7 +34,7 @@ public class ValidationImpl implements Validation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			num = 2;
+			num = 2;//such loginId does not exist
 		}
 		return num;
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import businessLogic.ValidationImpl;
+
 /**
  * Servlet implementation class loginServlet
  */
@@ -44,15 +46,19 @@ public class loginServlet extends HttpServlet {
         }
         else 
         {
+        	ValidationImpl v=new ValidationImpl();
+        	int res=v.Authenticationcheck(loginId, password);
+        	if(res==1) {hasError=false;}
+        	else if(res==2) {hasError=true;errorString="User does not exist";}
+        	else if(res==0) {hasError=true;errorString="Wrong password";}
         	
-
         }
         
         if (hasError) 
         {
             request.setAttribute("errorString", errorString);
             // Forward to /WEB-INF/views/login.jsp
-            RequestDispatcher dispatcher= request.getRequestDispatcher("./pages/examples/login.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("/pages/examples/login.jsp");
             dispatcher.forward(request, response);
         }
         else {
