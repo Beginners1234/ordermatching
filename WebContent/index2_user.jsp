@@ -265,8 +265,8 @@
               
               	<script>
               
-	              String name = (String) request.getAttribute("name");
-	              out.println(name + "<br>");
+	              String name1 = (String) request.getAttribute("name");
+	              out.println(name1 + "<br>");
               
               </script>
               </span>
@@ -309,13 +309,12 @@
           
           <script>
               
-              String name = (String) request.getAttribute("name");
-              out.print(name + "<br>");
+              String name1 = (String) request.getAttribute("name");
+              out.print(name1 + "<br>");
               
             </script>
           
           </p>
->>>>>>> 263d742e90e976e03ed50630edd22448b2654b5f
         </div>
       </div>
       <br>
