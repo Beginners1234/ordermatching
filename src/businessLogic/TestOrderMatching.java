@@ -20,8 +20,11 @@ public class TestOrderMatching {
 	@Test
 	public void matchtest() {
 		OrderMatching m=new OrderMatching();
+		OrderTableImpl oimpl=new OrderTableImpl();
 		System.out.println("Calling match from test");
-		m.matchOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false) );
+		Order order= new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
+		order=oimpl.AddOrder(order);
+		m.matchOrder( order);
 		System.out.println("TTTTTTSSSST over");
 	}
 
@@ -46,9 +49,9 @@ public class TestOrderMatching {
 	public void addOrderstoDB() {
 		OrderTableImpl orderFunctions=new OrderTableImpl();
 		//Order buyorder=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
-		orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false));
-		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 100, 150, 888, "PENDING", false));
-		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 500, 150, 888, "PENDING", false));
+		orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 80, 155, 888, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 10, 15,99, "PENDING", false));
+		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 50, 10, 999, "PENDING", false));
 	}
 	
 	//@Test

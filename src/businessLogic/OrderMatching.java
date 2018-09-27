@@ -100,8 +100,7 @@ public class OrderMatching {
 					order.setOrderStatus("REJECTED");
 			}
 			
-			//OrderTableImpl oimpl=new OrderTableImpl();
-			oimpl.AddOrder(order); //todo
+			oimpl.UpdateOrderByOrderId(order); //todo
 			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////

@@ -69,7 +69,7 @@ public class Order {
 	}
 	public Order(String orderCategory, String orderType, Date orderTime, double orderQuantity,
 			double orderPrice, double userId, String orderStatus, boolean aon) {
-		super();
+		
 		this.orderCategory = orderCategory;
 		this.orderType = orderType;
 		this.orderTime = orderTime;

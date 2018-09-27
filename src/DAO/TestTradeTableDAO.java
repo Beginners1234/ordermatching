@@ -27,7 +27,7 @@ public class TestTradeTableDAO {
 	
 	@Test
 	public void testAddTrade() {
-		Trade trade=new Trade(81, 91, 99, 88, 100, 100, new Date());
+		Trade trade=new Trade(81, 6, 97, 80, 10, 90, new Date());
 		int ret=impl.AddTrade(trade);
 		//System.out.println(ret);
 		assert(ret==1);
