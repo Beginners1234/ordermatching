@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="pojo.Trade"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -251,18 +253,24 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nina Mcintire</span>
+              <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="user-image" alt="User Image">
+              <span class="hidden-xs">
+              <%
+              String name1=(String)request.getAttribute("name");
+              %>
+              
+              <%=name1 %>
+              
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+                <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
 
                 <p>
-                  Nina Mcintire
-                  <small>Member since Nov. 2012</small>
-                </p>
+                  <%=name1 %>
+                  </p>
               </li>
               <!-- Menu Body -->
               
@@ -294,10 +302,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+          <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nina Mcintire</p>
+          <p><%=name1 %></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -333,7 +341,7 @@
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
-              <small class = "label pull-right bg-green">Hot</small>
+              
             </span>
           </a>
           <br>
@@ -459,60 +467,37 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+            <%
+
+              List<Trade> list=(List<Trade>)request.getAttribute("list_tradehistory");
+
+               %>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Trade ID</th>
-                  <th>Buy/Sell</th>
-                  <th>Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Date</th>
                   <th>Time</th>
                   <th>All/None</th>
                 </tr>
                 </thead>
-                <tbody>
+                                <tbody>
+                <%
+                for(Trade t:list)
+                {
+                %>
                 <tr>
-                  <td>E4567</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>150</td>
-                  <td>75</td>
-                  <td>23-09-2018</td>
-                  <td>18:09</td>
-                  <td>No</td>
+                <td><%= t.getTradeId() %></td>
+                <td><%= t.getTradedPrice() %></td>
+                <td><%= t.getTradedQuantity() %></td>
+                <td><%= t.getTradedTime()%></td>
                 </tr>
-                 <tr>
-                  <td>E4568</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>149</td>
-                  <td>60</td>
-                  <td>23-09-2018</td>
-                  <td>18:10</td>
-                  <td>No</td>
-                </tr>
-                 <tr>
-                  <td>E4569</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>147</td>
-                  <td>80</td>
-                  <td>23-09-2018</td>
-                  <td>18:11</td>
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>E1234</td>
-                  <td>Sell</td>
-                  <td>Market</td>
-                  <td> - </td>
-                  <td>80</td>
-                  <td>20-09-2018</td>
-                  <td>12:24</td>
-                  <td>No</td>
-                </tr>
+                <%  }  %>
+                
+                
+                
+                
                 </tfoot>
               </table>
             </div>

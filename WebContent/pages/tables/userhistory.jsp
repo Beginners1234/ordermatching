@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>    
+<%@page import="pojo.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,9 +40,9 @@
     <!-- Logo -->
     <a href="../../index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>User </b>Dashboard</span>
+      <span class="logo-lg"><b>O</b>MS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -251,17 +252,22 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nina Mcintire</span>
+              <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="user-image" alt="User Image">
+              <span class="hidden-xs">
+              <%
+              String name1=(String)request.getAttribute("name");
+              %>
+              
+              <%=name1 %>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+                <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
 
                 <p>
-                  Nina Mcintire
-                  <small>Member since Nov. 2012</small>
+                <%=name1 %>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -269,7 +275,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" class="btn btn-default btn-flat">Profile</a>
+                  <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat">Sign out</a>
@@ -279,7 +285,7 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -294,10 +300,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+          <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nina Mcintire</p>
+          <p>Hello, <%=name1 %></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

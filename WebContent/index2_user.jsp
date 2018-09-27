@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -260,11 +261,10 @@
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
               	
-              	<script>
-              		
-              		String name = (String) request.getAttribute()
-              		
-              	</script>
+              	<%
+              	String name1=(String)request.getAttribute("name");
+              	%>
+              	<%=name1 %>
               
               </span>
             </a>
@@ -274,8 +274,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Sakshi Goel - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <%=name1 %>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -305,7 +304,7 @@
         </div>
         <br>
         <div class="pull-left info">
-          <p>Hello, Sakshi Goel!</p>
+          <p>Hello, <%=name1 %></p>
         </div>
       </div>
       <br>
@@ -341,9 +340,8 @@
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
-              <small class = "label pull-right bg-green">Hot</small>
-            </span>
-          </a>
+              </span>
+                       </a>
           <br>
         </li>
 

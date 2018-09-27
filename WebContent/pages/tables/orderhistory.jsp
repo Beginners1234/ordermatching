@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="pojo.Order"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -252,7 +254,15 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nina Mcintire</span>
+              <span class="hidden-xs">
+              
+              <%
+              String name1=(String)request.getAttribute("name");
+              %>
+              
+              <%=name1 %>
+              
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -260,8 +270,8 @@
                 <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
 
                 <p>
-                  Nina Mcintire
-                  <small>Member since Nov. 2012</small>
+                  <%=name1 %>
+                  
                 </p>
               </li>
               <!-- Menu Body -->
@@ -297,7 +307,9 @@
           <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nina Mcintire</p>
+          <p>
+          <%=name1 %>
+          </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -456,6 +468,11 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+             <%
+
+              List<Order> list=(List<Order>)request.getAttribute("list_orderhistory");
+
+               %>
               <table id="orderhistorytable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -465,48 +482,32 @@
                   <th>Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Date</th>
                   <th>Time</th>
                   <th>All/None</th>
                 </tr>
                 </thead>
                 <tbody>
+                <%
+                for(Order t:list)
+                {
+                %>
                 <tr>
-                  <td>12345</td>
-                  <td><span class = "label label-warning"> Pending </span></td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>147</td>
-                  <td>50</td>
-                  <td>25-09-2018</td>
-                  <td>15:34</td>
-                  <td>No</td>
+                <td><%= t.getOrderId() %></td>
+                <td><%= t.getOrderStatus() %></td>
+                <td><%= t.getOrderCategory() %></td>
+                <td><%= t.getOrderType()%></td>
+                <td><%= t.getOrderPrice()%></td>
+                <td><%= t.getOrderQuantity()%></td>
+                <td><%= t.getOrderTime()%></td>
+                <td><%= t.isAon()%></td>
                 </tr>
-                <tr>
-                  <td>23456</td>
-                  <td><span class = "label label-warning"> Pending </span></td>
-                  <td>Sell</td>
-                  <td>Limit</td>
-                  <td>152</td>
-                  <td>150</td>
-                  <td>25-09-2018</td>
-                  <td>11:05</td>
-
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>34567</td>
-                  <td><span class = "label label-danger"> Rejected </span></td>
-
-                  <td>Sell</td>
-                  <td>Limit</td>
-                  <td>155</td>
-                  <td>150</td>
-                  <td>25-09-2018</td>
-                  <td>09:05</td>
-                  <td>No</td>
-                </tr>
+                <%  }  %>
+                
+                
+                
+                
                 </tfoot>
+
               </table>
             </div>
             <!-- /.box-body -->
