@@ -364,8 +364,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\orderhistory.jsp"><i class="fa fa-circle-o"></i> Order History</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\tradehistory.jsp"><i class="fa fa-circle-o"></i> Trade History</a></li>
+            <li><a href="userorder"><i class="fa fa-circle-o"></i> Order History</a></li>
+            <li><a href="usertrades"><i class="fa fa-circle-o"></i> Trade History</a></li>
           </ul>
           <br>
         </li>
