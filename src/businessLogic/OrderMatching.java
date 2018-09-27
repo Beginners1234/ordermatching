@@ -14,21 +14,20 @@ import pojo.Trade;
 public class OrderMatching {
 	OrderTableImpl oimpl=new OrderTableImpl();
 	TradeTableImpl timpl=new TradeTableImpl();
-	public void matchOrder(Order order) {
+	public void matchOrdjer(Order order) {
 		
-		List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
 		
-		matchOrder(order, sellerList,null);
+		
 	}
 	
-	public void matchOrder(Order order,List<Order> sellerList,List<Order> buyerList) {
+	public void matchOrder(Order order) {
 		//OrderTableImpl orderFunctions=new OrderTableImpl();
 		String type=order.getOrderCategory();// buy/sell
 		
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
 			System.out.println("Order is of type BUY\n");
-			//List<Order> sellerList = orderFunctions.GetOrderForMatching("sell",20.0); //todo
-			 
+			
+			List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
 			ListIterator<Order> litr = sellerList.listIterator();
 			
 			while(order.getRemaining_quantity()>0) {
@@ -106,7 +105,7 @@ public class OrderMatching {
 		}else { //current order is to sell /////////////////////////////////////////////////////////
 			System.out.println("Order is of type SELL\n");
 			
-			//List<Order> buyerList = orderFunctions.GetOrderForMatching("buy",20.0); //todo
+			List<Order> buyerList = oimpl.GetOrderForMatching("buy",20); //todo
 			 
 			ListIterator<Order> litr = buyerList.listIterator();
 			

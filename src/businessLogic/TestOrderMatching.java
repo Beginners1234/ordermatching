@@ -49,7 +49,7 @@ public class TestOrderMatching {
 	public void addOrderstoDB() {
 		OrderTableImpl orderFunctions=new OrderTableImpl();
 		//Order buyorder=new Order("buy", "limit", new Date(), 500, 155, 888, "PENDING", false);
-		orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 80, 155, 888, "PENDING", false));
+		//orderFunctions.AddOrder(new Order("buy", "limit", new Date(), 80, 155, 888, "PENDING", false));
 		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 10, 15,99, "PENDING", false));
 		orderFunctions.AddOrder(new Order("sell", "limit", new Date(), 50, 10, 999, "PENDING", false));
 	}
