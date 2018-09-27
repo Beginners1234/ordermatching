@@ -539,7 +539,7 @@
                   </thead>
                   <tbody>
                   
-                    <%-- <% 
+                     <% 
 							for(Order b:list)
 							{
 					%>
@@ -550,7 +550,7 @@
 								<td><%= b.getOrderTime()%></td>		 
 							</tr>
 							
-					<% } %>  --%>
+					<% } %>  
 					
                   
                   </tbody>
@@ -588,7 +588,7 @@
                   </thead>
                   <tbody>
                   
-                 <%--    <% 
+                    <% 
 							for(Order b1:list1)
 							{
 					%>
@@ -599,7 +599,7 @@
 								<td><%= b1.getOrderTime()%></td>		 
 							</tr>
 							
-					<% } %>  --%>
+					<% } %>  
 					
                   
                   </tbody>
@@ -636,7 +636,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <%--    <% 
+                      <% 
 							for(Trade b2:list2)
 							{
 					%>
@@ -646,7 +646,7 @@
 								<td><%= b2.getTradedQuantity()%></td>
 								<td><%= b2.getTradedTime()%></td>		 
 							</tr>
-					<% } %>  --%>
+					<% } %>  
 
                   
                   </tbody>
