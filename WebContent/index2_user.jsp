@@ -4,8 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w...content-available-to-author-only...3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://w...content-available-to-author-only...3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
@@ -262,11 +262,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
-              
-              	<%
+              <%
               
 	              String name1 = (String) request.getAttribute("name");
-	              out.println(name1 + "<br>");
               
           		%>
               </span>
@@ -275,7 +273,10 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+				<p>
+                  <%= name1%> - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -298,22 +299,13 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-       <div class="user-panel">
-<!--         <div class="pull-left image">
+ <div class="user-panel">
+        <div class="pull-left image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div> -->
-        <br>
+        </div>
         <div class="pull-left info">
-<          
-          <p>Hello, 
-          
-          <%
-              
-              out.print(name1 + "<br>");
-              
-          %>
-          
-          </p>
+          <p><%= name1%></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <br>
