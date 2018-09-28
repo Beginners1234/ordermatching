@@ -11,7 +11,6 @@ import pojo.User;
 public class SMSsender {
 	 public void sendsms(Order o,User u,Trade t) {
          try {
-        	     
                  String recipient = "8826623010";
                  String message = "Hey There!!!";
                  String username = "admin";
