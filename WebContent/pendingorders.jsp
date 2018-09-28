@@ -471,7 +471,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <%
-							List<Order> list=(List<Order>)request.getAttribute("order_rejected");
+							List<Order> list=(List<Order>)request.getAttribute("order_pending");
 				%>	
               <table id="orderhistorytable" class="table table-bordered table-striped">
                 <thead>

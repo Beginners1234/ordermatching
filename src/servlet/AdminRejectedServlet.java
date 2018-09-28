@@ -35,8 +35,8 @@ public class AdminRejectedServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	
 		OrderTableImpl o = new OrderTableImpl();
-		List<Order>list_orders_pending = o.GetAllOrders("REJECTED");
-		request.setAttribute("order_rejected",list_orders_pending);
+		List<Order>list_orders_rejected = o.GetAllOrders("REJECTED");
+		request.setAttribute("order_rejected",list_orders_rejected);
 		RequestDispatcher d1=request.getRequestDispatcher("rejectedorders.jsp");
 		d1.forward(request, response);
 	}

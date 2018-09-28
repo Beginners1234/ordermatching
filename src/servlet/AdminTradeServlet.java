@@ -9,15 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import DAO.TradeTableImpl;
 import pojo.Trade;
 
 /**
  * Servlet implementation class AdminTradeServlet
  */
-@WebServlet("/admintrade")
+@WebServlet("/ats")
 public class AdminTradeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,6 +34,7 @@ public class AdminTradeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		TradeTableImpl t=new TradeTableImpl();
 		List<Trade>list_trades=t.GetAllTrades();
+		System.out.println(list_trades);
 		request.setAttribute("trade_order",list_trades);
 		RequestDispatcher d1=request.getRequestDispatcher("trade.jsp");
 		d1.forward(request, response);
