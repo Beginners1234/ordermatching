@@ -48,6 +48,7 @@ public class AdminServlet extends HttpServlet {
         	//System.out.println("no session 1");
     		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
     		d.forward(request, response);  
+    		return;
  
         }
 		
@@ -58,6 +59,7 @@ public class AdminServlet extends HttpServlet {
 			session.invalidate();	           
 			RequestDispatcher d=request.getRequestDispatcher("login.jsp");
     		d.forward(request, response);  
+    		return;
 		}
 		
 		UserTableImpl a=new UserTableImpl();
