@@ -49,7 +49,8 @@ public class PlaceOrderServlet extends HttpServlet {
 		String quantitysellstr=request.getParameter("quantitysell") != null?request.getParameter("quantitysell"):"0";
 		String pricebuystr=request.getParameter("pricebuy") != null?request.getParameter("pricebuy"):"0";
 		String pricesellstr=request.getParameter("pricesell") != null?request.getParameter("pricesell"):"0";
-		System.out.println("price in serv  "+pricebuystr);
+		
+		
 		double price=0;
 		double quantity=0;
 		String aon=null;
@@ -58,6 +59,7 @@ public class PlaceOrderServlet extends HttpServlet {
 			if(orderType.equalsIgnoreCase("market")) {
 				price=1000;
 			}else {
+				if(pricebuystr.equals("")) {doGet(request, response);return;}
 				price=Double.parseDouble(pricebuystr);
 				aon=request.getParameter("aonbuy");
 			}
@@ -66,6 +68,7 @@ public class PlaceOrderServlet extends HttpServlet {
 			if(orderType.equalsIgnoreCase("market")) {
 				price=0;
 			}else {
+				if(pricebuystr.equals("")) {doGet(request, response);return;}
 				price=Double.parseDouble(pricesellstr);
 				aon=request.getParameter("aonsell");
 			}
@@ -88,10 +91,10 @@ public class PlaceOrderServlet extends HttpServlet {
 		
 		Order order=new Order(buyorsell.toUpperCase(), orderType.toUpperCase(), new Date(), quantity, price, userid, "PENDING", allornone);
 		OrderProcessesInterfaceImpl impl=new OrderProcessesInterfaceImpl();
-		int resu=impl.PlaceOrder(order);
+		//int resu=impl.PlaceOrder(order);
 		System.out.println("got post order req");
 		PrintWriter out = response.getWriter();
-	     out.println("<h1>"+user+"<br> "+order+"<br> "+resu+ "</h1>");
+	     out.println("<h1>"+user+"<br> "+order+"<br> "+ "</h1>");
 		
 		
 	}
