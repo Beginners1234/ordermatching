@@ -52,6 +52,7 @@ public class UserServlet extends HttpServlet {
         	
     		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
     		d.forward(request, response);  
+    		return;
  
         }
 //		System.out.println("\n\nlogin id is "+ loginId);
@@ -62,6 +63,7 @@ public class UserServlet extends HttpServlet {
 			session.invalidate();	           
 			RequestDispatcher d=request.getRequestDispatcher("login.jsp");
     		d.forward(request, response);  
+    		return;
 		}
 //		System.out.println("didn't enter check\n\n");
 
