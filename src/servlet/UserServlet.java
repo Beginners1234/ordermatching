@@ -78,10 +78,10 @@ public class UserServlet extends HttpServlet {
 		User user=u.get(0);
 		int number_orders=b.GetStatisticsUser(user.getUserId(),"order");
 		int number_trades=b.GetStatisticsUser(user.getUserId(),"trade");
-		int number_position=b.GetStatisticsUser(user.getUserId(), "positon");
+		String position_type=b.GetStatisticsUser(user.getUserId());
 		request.setAttribute("statistics_order", number_orders);
 		request.setAttribute("statistics_trade", number_trades);
-		request.setAttribute("statistics_position", number_position);
+		request.setAttribute("statistics_position", position_type);
 		request.setAttribute("name", user.getName());
 		int n=5;
 		List<Order>list_orders=i.GetOrderByUserId(user.getUserId(),n);

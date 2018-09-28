@@ -11,4 +11,5 @@ public interface OrderProcessesInterface {
 	public int PlaceOrder(Order order);
 	public int GetStatistics(String cat);
 	public int GetStatisticsUser(double user_id, String cat);
+	public String GetStatisticsUser(double user_id);
 }

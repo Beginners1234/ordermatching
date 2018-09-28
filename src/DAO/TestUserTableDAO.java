@@ -47,7 +47,7 @@ public class TestUserTableDAO {
 	@Test
 	public void testGetPosition()
 	{
-		int pos = u.GetPosition(1103.0);
+		String pos = u.GetPosition(1103.0);
 		System.out.println(pos);
 	}
 	

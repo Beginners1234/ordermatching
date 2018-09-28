@@ -10,6 +10,6 @@ public interface UserTable {
 	public List<User> GetAllUsers();
 	public int AddUser(User user);
 	public int GetCount();
-	public int GetPosition(double user_id);
+	public String GetPosition(double user_id);
 }
 

@@ -453,11 +453,11 @@
             <span class="info-box-icon bg-red" style="height: 84px !important"><i class="fa fa-money"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">POSITION QUANTITY</span>
+              <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">POSITION</span>
               <span class="info-box-number"style="text-align: center">
               
               <%
-              int position_stats = (Integer) request.getAttribute("statistics_position");
+              String position_stats = (String) request.getAttribute("statistics_position");
               out.println(position_stats + "<br>");
               %>
               

@@ -93,18 +93,22 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 			int n = t.GetCountUser(user_id);
 			return n;
 		}
-		else if(cat == "position")
-		{
-			UserTableImpl u = new UserTableImpl();
-			int n = u.GetPosition(user_id);
-			return n;
-		}
+		
 		else
 		{
 			System.out.println("Please Enter valid argument for the function");
 			return 0;
 		}
 			
+	}
+
+	@Override
+	public String GetStatisticsUser(double user_id) {
+		// TODO Auto-generated method stub
+		
+		UserTableImpl u = new UserTableImpl();
+		String n = u.GetPosition(user_id);
+		return n;
 	}
 	
 

@@ -148,18 +148,19 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public int GetPosition(double user_id) {
+	public String GetPosition(double user_id) {
 		// TODO Auto-generated method stub
 		
 		int bposition = 0;
 		int sposition = 0;
 		int position = 0;
+		String pos = null;
 		
-		String buyposition = "SELECT SUM(quantity*price) AS sumbuy FROM order_details WHERE user_id_order = ? AND "
-				+ "order_status <> 'REJECTED' AND order_category = 'BUY'";
+		String buyposition = "SELECT SUM(quantity) AS sumbuy FROM order_details WHERE user_id_order = ? AND "
+				+ "order_status = 'COMPLETED' AND order_category = 'BUY'";
 
-		String sellposition = "SELECT SUM(quantity*price) AS sumsell FROM order_details WHERE user_id_order = ? AND "
-				+ "order_status = 'REJECTED' AND order_category = 'SELL'";
+		String sellposition = "SELECT SUM(quantity) AS sumsell FROM order_details WHERE user_id_order = ? AND "
+				+ "order_status = 'COMPLETED' AND order_category = 'SELL'";
 
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(buyposition);
@@ -181,13 +182,20 @@ public class UserTableImpl implements UserTable {
 			
 
 			position = bposition - sposition;
-			
+			if(position != 0)
+			{
+				pos = "OPEN";
+			}
+			else
+			{
+				pos = "CLOSE";
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return position;
+		return pos;
 	}
 
 }
