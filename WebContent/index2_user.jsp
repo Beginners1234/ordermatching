@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@page import="pojo.Order"%>
 <%@page import="java.util.List"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -490,24 +492,25 @@
                   <thead>
                   <tr>
                     <th>Order ID</th>
-                    <th>Order Status</th>
                     <th>Buy/Sell</th>
                     <th>Order Type</th>
+                     <th>Order Status</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Remaining</th>
                     <th>Timestamp</th>
                     <th>All or None</th>
                   </tr>
                   </thead>
                   <tbody>
                   
-                 <% for (Order o: list_order) {%>
+                <% for (Order o: list_order) {%>
                   	<tr>
                   	<td> <%= o.getOrderId() %></td>
-                  	<td> <%= o.getOrderStatus() %></td>
+ 
                   	<td> <%= o.getOrderCategory() %></td>
                   	<td> <%= o.getOrderType() %></td>
- 
+                  	<td> <%= o.getOrderStatus() %></td>
                   	 <%
  
                   	if((o.getOrderType()).equalsIgnoreCase("MARKET"))
@@ -519,6 +522,7 @@
                   	<td><%=o.getOrderPrice()%></td>
                   	<%} %>
                   	<td> <%=o.getOrderQuantity() %></td>
+                  	<td> <%=o.getRemaining_quantity() %></td>
                   	<td> <%=o.getOrderTime() %></td>
                   	<td> <%=o.isAon() %></td>
  

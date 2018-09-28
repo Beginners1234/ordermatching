@@ -90,6 +90,8 @@ public class OrderMatching {
 			if (order.getOrderType().equalsIgnoreCase("market")) {
 				if(order.getRemaining_quantity()!=order.getOrderQuantity())
 					order.setOrderStatus("PARTIAL");
+				else if(order.getRemaining_quantity()==0)
+					order.setOrderStatus("COMPLETED");
 				else
 					order.setOrderStatus("REJECTED");
 			}
@@ -164,6 +166,8 @@ public class OrderMatching {
 			if (order.getOrderType().equalsIgnoreCase("market")) {
 				if(order.getRemaining_quantity()!=order.getOrderQuantity())
 					order.setOrderStatus("PARTIAL");
+				if(order.getRemaining_quantity()==0)
+					order.setOrderStatus("COMPLETED");
 				else
 					order.setOrderStatus("REJECTED");
 			}
