@@ -8,6 +8,7 @@ import pojo.Order;
 
 public class RandomOrderGenerator implements Runnable {
 	//helper functions	
+	static int seeder=0;
 	private Order Generate(Random val, String type, String cat)
 	{
 		String order_cat = cat;
@@ -53,17 +54,30 @@ public class RandomOrderGenerator implements Runnable {
 	//test generate order
 	public List<Order> GeneraterandomOrderFinite(int numberOfOrders)
 	{
+		seeder=seeder+1;
 		List<Order>listOfOrders=new ArrayList<>();
 		String[] o_type = {"buy", "sell"};
 		int[] num = {2,4,5,6,8};
 		String[] o_cat = {"limit", "market"};
 		Boolean[]o_aon= {true,false};
-		Random val_1=new Random(150);
-		Random val_2=new Random(100);
-		Random val_user=new Random(70);
-		Random quantity=new Random(60);
-		Random val=new Random(10);
-		Random g=new Random(900);
+		int a_1=150;
+		a_1=a_1+seeder;
+		Random val_1=new Random(a_1);
+		int b_1=100;
+		b_1=b_1+seeder;
+		Random val_2=new Random(b_1);
+		int c_1=70;
+		c_1=c_1+seeder;
+		Random val_user=new Random(c_1);
+		int d_1=700;
+		d_1=d_1+seeder;
+		Random quantity=new Random(d_1);
+		int e_1=10;
+		e_1=e_1+seeder;
+		Random val=new Random(e_1);
+		int f_1=91;
+		f_1=f_1+seeder;
+		Random g=new Random(f_1);
 		for(int i=0;i<numberOfOrders;i++)
 		{
 			Boolean aon_random=o_aon[g.nextInt(2)];
