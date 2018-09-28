@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,19 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import DAO.OrderTableImpl;
+import pojo.Order;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class AdminRejectedServlet
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/ars")
+public class AdminRejectedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public AdminRejectedServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +33,20 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-	     HttpSession oldSession = request.getSession(false);
-	        if (oldSession != null) {
-	            oldSession.invalidate();
-	            request.setAttribute("errorString", "session logout");
-	    		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
-	    		d.forward(request, response);  
+	
+		OrderTableImpl o = new OrderTableImpl();
+		List<Order>list_orders_rejected = o.GetAllOrders("REJECTED");
+		request.setAttribute("order_rejected",list_orders_rejected);
+		RequestDispatcher d1=request.getRequestDispatcher("rejectedorders.jsp");
+		d1.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
-}
 }

@@ -46,8 +46,9 @@ public class OpenUserTradesServlet extends HttpServlet {
 		User user=us.get(0);
 	    TradeTableImpl o=new TradeTableImpl();
 	    List<Trade>trades= o.GetTradesByUserId(user.getUserId(),100);
-	    request.setAttribute("allOrders", trades);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("pages/tables/tradehistory.jsp");
+	    request.setAttribute("allTrades", trades);
+	    request.setAttribute("name", user.getName());
+        RequestDispatcher dispatcher= request.getRequestDispatcher("tradehistory.jsp");
         dispatcher.forward(request, response);
 	}
 

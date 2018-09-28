@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="pojo.Trade"%>
+<%@page import="pojo.Order"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,30 +9,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | User Profile</title>
+  <title>User | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <script src="https://o...content-available-to-author-only...n.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://o...content-available-to-author-only...n.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"
+        href="https://f...content-available-to-author-only...s.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -253,8 +256,9 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="user-image" alt="User Image">
+              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
               <span class="hidden-xs">
+              
               <%
               String name1=(String)request.getAttribute("name");
               %>
@@ -266,18 +270,19 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
+                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
 
                 <p>
                   <%=name1 %>
-                  </p>
+                  
+                </p>
               </li>
               <!-- Menu Body -->
               
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" class="btn btn-default btn-flat">Profile</a>
+                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat">Sign out</a>
@@ -287,7 +292,7 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -302,10 +307,12 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
+          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><%=name1 %></p>
+          <p>
+          <%=name1 %>
+          </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -341,15 +348,11 @@
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
-              
+              <small class = "label pull-right bg-green">Hot</small>
             </span>
           </a>
           <br>
         </li>
-
-        
-        
-
         
         <li class="treeview">
           <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\userhistory.jsp">
@@ -364,6 +367,8 @@
           </ul>
           <br>
         </li>
+      
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
@@ -456,42 +461,48 @@
       </ol>
     </section>
 
-    
-          <!-- /.box -->
-<section class="content">
+    <!-- Main content -->
+    <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Trade History</h3>
+              <h3 class="box-title">Order History</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <%
+             <%
 
-              List<Trade> list=(List<Trade>)request.getAttribute("list_tradehistory");
+              List<Order> list=(List<Order>)request.getAttribute("allOrders");
 
                %>
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="orderhistorytable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Trade ID</th>
+                  <th>Order ID</th>
+                  <th>Order Status</th>
+                  <th>Buy/Sell</th>
+                  <th>Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Time</th>
                   <th>All/None</th>
                 </tr>
                 </thead>
-                                <tbody>
+                <tbody>
                 <%
-                for(Trade t:list)
+                for(Order t:list)
                 {
                 %>
                 <tr>
-                <td><%= t.getTradeId() %></td>
-                <td><%= t.getTradedPrice() %></td>
-                <td><%= t.getTradedQuantity() %></td>
-                <td><%= t.getTradedTime()%></td>
+                <td><%= t.getOrderId() %></td>
+                <td><%= t.getOrderStatus() %></td>
+                <td><%= t.getOrderCategory() %></td>
+                <td><%= t.getOrderType()%></td>
+                <td><%= t.getOrderPrice()%></td>
+                <td><%= t.getOrderQuantity()%></td>
+                <td><%= t.getOrderTime()%></td>
+                <td><%= t.isAon()%></td>
                 </tr>
                 <%  }  %>
                 
@@ -499,20 +510,18 @@
                 
                 
                 </tfoot>
+
               </table>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-        </div>
+      </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
+          
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

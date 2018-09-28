@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+    <%@ page import="pojo.Order"%>
+    <%@ page import="pojo.Trade"%>
+    <%@ page import="java.util.List"%>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Users</title>
+  <title>Admin | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -23,21 +26,17 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  
-<style src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </style>
-
-<style src = "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"></style>
-
+ 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <script src="https://o...content-available-to-author-only...n.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://o...content-available-to-author-only...n.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+ 
   <!-- Google Font -->
   <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        href="https://f...content-available-to-author-only...s.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -280,7 +279,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -300,7 +299,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Himanshu Singh</p>
+          <p>Sakshi Goel</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -309,8 +308,7 @@
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
         </div>
@@ -319,6 +317,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+
+        
         <li>
           <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
             <i class="fa fa-table"></i> <span>Dashboard</span>
@@ -363,8 +363,8 @@
         </li>
 
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/users.jsp">
-            <i class="fa fa-user"></i> <span>Users</span>
+          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\users.jsp">
+            <i class="fa fa-users"></i> <span>Users</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -379,19 +379,19 @@
           </a>
           <br>
         </li>
+
         <li>
-          <a href="pages/calendar.jsp">
+          <a href="../calendar.jsp">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
               <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
+          
         </li>
         <li>
-
-        <li>
-          <a href="pages/mailbox/mailbox.jsp">
+          <a href="../mailbox/mailbox.jsp">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-yellow">12</small>
@@ -400,10 +400,39 @@
             </span>
           </a>
         </li>
-        <li class="active treeview menu-open">
-          <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\users.jsp">
-            <i class="fa fa-users"></i> <span>Users</span>
+      
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Level One
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li class="treeview">
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
         </li>
       </ul>
     </section>
@@ -413,73 +442,85 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Rejected Orders
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>Orders</li>
+        <li class="active">Rejected Orders</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Trade History</h3>
-            </div>
+      <!-- Info boxes -->
+      
+        <!-- /.col -->
+       
+        <!-- /.col -->
+
+        <!-- /.col -->
+        
+      <!-- /.row -->
+
+          <!-- TABLE: LATEST ORDERS -->
+          <div class="box box-info">
+            
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+                <%
+							List<Order> list=(List<Order>)request.getAttribute("order_rejected");
+				%>	
+              <table id="orderhistorytable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Trade ID</th>
+                  <th>Order ID</th>
                   <th>Buy/Sell</th>
                   <th>Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Date</th>
                   <th>Time</th>
                   <th>All/None</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>E4567</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>150</td>
-                  <td>75</td>
-                  <td>23-09-2018</td>
-                  <td>18:09</td>
-                  <td>No</td>
-                </tr>
-                 <tr>
-                  <td>E4568</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>149</td>
-                  <td>60</td>
-                  <td>23-09-2018</td>
-                  <td>18:10</td>
-                  <td>No</td>
-                </tr>
-                 <tr>
-                  <td>E4569</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>147</td>
-                  <td>80</td>
-                  <td>23-09-2018</td>
-                  <td>18:11</td>
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>E1234</td>
-                  <td>Sell</td>
-                  <td>Market</td>
-                  <td> - </td>
-                  <td>80</td>
-                  <td>20-09-2018</td>
-                  <td>12:24</td>
-                  <td>No</td>
-                </tr>
+               	  <% 
+							for(Order b:list)
+							{
+					%>
+							<tr>
+								<td><%= b.getOrderId()%></td>
+								<td><%= b.getOrderCategory()%></td>
+								<td><%= b.getOrderType()%></td>
+								<td><%= b.getOrderPrice()%></td>
+								<td><%= b.getOrderQuantity()%></td>
+								<td><%= b.getOrderTime()%></td>
+								<td><%= b.isAon()%></td>		 
+							</tr>
+ 
+					<% } %> 
                 </tfoot>
               </table>
             </div>
+              <!-- /.table-responsive -->
+            </div>
             <!-- /.box-body -->
+            
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+        <!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+            <!-- /.box-header -->
+            <!-- /.footer -->
+          </div>
+          <!-- /.box -->
+            <!-- /.box-footer -->
           </div>
           <!-- /.box -->
         </div>
@@ -487,16 +528,6 @@
       </div>
       <!-- /.row -->
     </section>
-
-          <!-- TABLE: LATEST ORDERS -->
-          
-        <!-- /.col -->
-
-        <!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
-            <!-- /.box-header -->
-            <!-- /.footer -->
-          
-        
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -533,8 +564,5 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
-
-
 </body>
 </html>

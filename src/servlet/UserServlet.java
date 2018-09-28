@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,10 +49,21 @@ public class UserServlet extends HttpServlet {
 		if(!(loginId != null && !loginId.isEmpty())) {
         	request.setAttribute("errorString", "session expired");
         	//System.out.println("no session 1");
+        	
     		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
     		d.forward(request, response);  
  
         }
+//		System.out.println("\n\nlogin id is "+ loginId);
+		if(Objects.equals(loginId, "admin"))
+		{
+//			System.out.println("entered check\n\n");
+			request.setAttribute("errorString", "You're not a registered user. Login Again.");
+			session.invalidate();	           
+			RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+    		d.forward(request, response);  
+		}
+//		System.out.println("didn't enter check\n\n");
 
         System.out.println("user servlet accessed");
 		UserTableImpl a=new UserTableImpl();

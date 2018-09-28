@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,6 +50,16 @@ public class AdminServlet extends HttpServlet {
     		d.forward(request, response);  
  
         }
+		
+		if(!Objects.equals(loginId, "admin"))
+		{
+//			System.out.println("entered check\n\n");
+			request.setAttribute("errorString", "You're not an admin. Login Again.");
+			session.invalidate();	           
+			RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+    		d.forward(request, response);  
+		}
+		
 		UserTableImpl a=new UserTableImpl();
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();

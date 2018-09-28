@@ -17,14 +17,14 @@ public class demo {
 //		t.setName("bob");
 //		t.start();
 		RandomOrderGenerator r=new RandomOrderGenerator();
-	   List<Order>list=r.GeneraterandomOrderFinite(50);
-	   List<Order>list2=r.GeneraterandomOrderFinite(50);
+	   List<Order>list=r.GeneraterandomOrderFinite(500);
+	  // List<Order>list2=r.GeneraterandomOrderFinite(500);
         OrderTableImpl ot=new OrderTableImpl();
-        for(int i=0;i<50;i++)
+        for(int i=0;i<500;i++)
         {
         	Order b=list.get(i);
-        	Order c=list2.get(i);
-        	System.out.println(b);
+        	//Order c=list2.get(i);
+        	//System.out.println(b);
         	
         	ot.AddOrder(b);
         }

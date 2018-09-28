@@ -43,12 +43,19 @@ SELECT * FROM TRADE_DETAILS
 SELECT * FROM USER_DETAILS
 
 
-insert into USER_DETAILS values ('chirag','chiragtnak','abc',70219,GETDATE())
-insert into ORDER_DETAILS values('buy','limit',getdate(),12,12,100, 'pending',1, 10)
-insert into TRADE_DETAILS values(11,12,123,1234,getdate());
+insert into USER_DETAILS values ('himanshu','hs123','qwertyuiop',7021219,GETDATE())
+insert into USER_DETAILS values ('pratyush','admin','admin',702439,GETDATE())
+
+insert into ORDER_DETAILS values('SELL','limit',getdate(),223,155,1450, 'pending',1, 10)
+insert into TRADE_DETAILS values(11,12,1010,1210,123,1234,getdate());
 
 SP_HELP 'TRADE_DETAILS'
 SP_HELP 'ORDER_DETAILS'
 SP_HELP 'USER_DETAILS'
 
 
+SELECT * FROM TRADE_DETAILS ORDER BY traded_time DESC
+
+delete from order_details
+delete from trade_details
+delete from user_details

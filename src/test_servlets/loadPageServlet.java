@@ -1,6 +1,7 @@
-package servlet;
+package test_servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,19 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import pojo.Order;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class loadPageServlet
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/test")
+public class loadPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public loadPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +32,14 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-	     HttpSession oldSession = request.getSession(false);
-	        if (oldSession != null) {
-	            oldSession.invalidate();
-	            request.setAttribute("errorString", "session logout");
-	    		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
-	    		d.forward(request, response);  
+		System.out.println("test servlet");
+		Order o=new Order("BUY", "Limit", null, 100, 152, 1, "pending", true);
+		staticOrdersCl.addToList(o);
+		List<Order> l=staticOrdersCl.getList();		
+	
+		request.setAttribute("order", l);
+		RequestDispatcher dis=request.getRequestDispatcher("admin_test.jsp");
+		dis.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-
-}
 }

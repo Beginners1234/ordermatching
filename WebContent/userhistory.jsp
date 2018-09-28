@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>    
+<%@page import="pojo.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title> OMS | User Profile</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -36,22 +37,23 @@
 <div class="wrapper">
 
   <header class="main-header">
-
     <!-- Logo -->
-    <a href="index2.jsp" class="logo">
+    <a href="../../index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>OMS</b></span>
+      <span class="logo-lg"><b>O</b>MS</span>
     </a>
-
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
-      <!-- Navbar Right Menu -->
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
@@ -68,7 +70,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -81,7 +83,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -93,7 +95,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -105,7 +107,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -117,7 +119,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -191,8 +193,7 @@
                         <small class="pull-right">20%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">20% Complete</span>
                         </div>
                       </div>
@@ -206,8 +207,7 @@
                         <small class="pull-right">40%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">40% Complete</span>
                         </div>
                       </div>
@@ -221,8 +221,7 @@
                         <small class="pull-right">60%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
@@ -236,8 +235,7 @@
                         <small class="pull-right">80%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">80% Complete</span>
                         </div>
                       </div>
@@ -254,46 +252,58 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Himanshu Singh</span>
+              <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="user-image" alt="User Image">
+              <span class="hidden-xs">
+              <%
+              String name1=(String)request.getAttribute("name");
+              %>
+              
+              <%=name1 %>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
 
                 <p>
-                  Himanshu Singh - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <%=name1 %>
                 </p>
               </li>
+              <!-- Menu Body -->
+              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
         </ul>
       </div>
-
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
+  
+  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="https://www.chsbuffalo.org/sites/default/files/styles/crop_230x230/public/default_images/profile-default_0.jpg?itok=DTiAzsNA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Sakshi Goel</p>
+          <p>Hello, <%=name1 %></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -312,32 +322,48 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
 
-        
+        <!-- Place order -->
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
-            <i class="fa fa-table"></i> <span>Dashboard</span>
+          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2_user.jsp">
+            <i class = "fa fa-th"></i> 
+            <span>Home</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <br>
         </li>
-      
+
+        <!-- Place order -->
+        <li>
+          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\examples\placeOrder.jsp">
+            <i class = "fa fa-th"></i> 
+            <span>Place Order</span>
+            <span class="pull-right-container">
+              <small class = "label pull-right bg-green">Hot</small>
+            </span>
+          </a>
+          <br>
+        </li>
+
+        
+        
+
+        
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pencil-square-o "></i>
-            <span>Orders</span>
+          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\userhistory.jsp">
+            <i class="fa fa-table"></i> <span>User History</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\pendingorders.jsp"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\rejectedorders.jsp"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
+            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\orderhistory.jsp"><i class="fa fa-circle-o"></i> Order History</a></li>
+            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\tradehistory.jsp"><i class="fa fa-circle-o"></i> Trade History</a></li>
           </ul>
           <br>
+
         </li>
+      
 
         <li class="treeview">
           <a href="#">
@@ -353,25 +379,6 @@
             <li><a href="../charts/flot.jsp"><i class="fa fa-circle-o"></i> Flot</a></li>
             <li><a href="../charts/inline.jsp"><i class="fa fa-circle-o"></i> Inline charts</a></li>
           </ul>
-          <br>
-        </li>
-
-
-        <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\users.jsp">
-            <i class="fa fa-users"></i> <span>Users</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-          <br>
-        </li>
-
-        <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/admin_test.jsp">
-            <i class="fa fa-user"></i> <span>Test</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
           <br>
         </li>
 
@@ -434,130 +441,219 @@
     <!-- /.sidebar -->
   </aside>
 
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Executed Orders
-        
+        User History
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Orders</li>
-        <li class="active">Executed Orders</li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data tables</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Info boxes -->
       
-        <!-- /.col -->
-       
-        <!-- /.col -->
+  
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-        <!-- /.col -->
-        
-      <!-- /.row -->
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-          <!-- TABLE: LATEST ORDERS -->
-          <div class="box box-info">
-            
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Trade ID</th>
-                  <th>Buy/Sell</th>
-                  <th>Type</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>All/None</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>E4567</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>150</td>
-                  <td>75</td>
-                  <td>23-09-2018</td>
-                  <td>18:09</td>
-                  <td>No</td>
-                </tr>
-                 <tr>
-                  <td>E4568</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>149</td>
-                  <td>60</td>
-                  <td>23-09-2018</td>
-                  <td>18:10</td>
-                  <td>No</td>
-                </tr>
-                 <tr>
-                  <td>E4569</td>
-                  <td>Buy</td>
-                  <td>Limit</td>
-                  <td>147</td>
-                  <td>80</td>
-                  <td>23-09-2018</td>
-                  <td>18:11</td>
-                  <td>No</td>
-                </tr>
-                <tr>
-                  <td>E1234</td>
-                  <td>Sell</td>
-                  <td>Market</td>
-                  <td> - </td>
-                  <td>80</td>
-                  <td>20-09-2018</td>
-                  <td>12:24</td>
-                  <td>No</td>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-              <!-- /.table-responsive -->
-            </div>
-            <!-- /.box-body -->
-            
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-user bg-yellow"></i>
 
-        <!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
-            <!-- /.box-header -->
-            <!-- /.footer -->
-          </div>
-          <!-- /.box -->
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                <p>New phone +1(800)555-1234</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                <p>nora@example.com</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                <p>Execution time 5 seconds</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Update Resume
+                <span class="label label-success pull-right">95%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Laravel Integration
+                <span class="label label-warning pull-right">50%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Back End Framework
+                <span class="label label-primary pull-right">68%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
 
-  
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
 
-  
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Allow mail redirect
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Other sets of options are available
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Expose author name in posts
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Allow the user to show his name in blog posts
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Show me as online
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Turn off notifications
+              <input type="checkbox" class="pull-right">
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Delete chat history
+              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+            </label>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
 </div>
 <!-- ./wrapper -->
 
@@ -565,6 +661,9 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -573,9 +672,18 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<!-- page script -->
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
   })
 </script>
 </body>
