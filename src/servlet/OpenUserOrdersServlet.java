@@ -46,6 +46,7 @@ public class OpenUserOrdersServlet extends HttpServlet implements Servlet {
 	    OrderTableImpl o=new OrderTableImpl();
 	    List<Order>orders= o.GetOrderByUserId(user.getUserId(),100);
 	    request.setAttribute("allOrders", orders);
+	    request.setAttribute("name", user.getName());
         RequestDispatcher dispatcher= request.getRequestDispatcher("orderhistory.jsp");
         dispatcher.forward(request, response);
 		

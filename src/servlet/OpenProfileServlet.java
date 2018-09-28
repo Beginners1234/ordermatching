@@ -38,7 +38,9 @@ public class OpenProfileServlet extends HttpServlet {
 		UserTableImpl u=new UserTableImpl();
 		List<User>us=u.GetUserByLoginid(loginId);
 		User user=us.get(0);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("pages/examples/profile.jsp");
+		request.setAttribute("name", user.getName());
+		request.setAttribute("user", user);
+        RequestDispatcher dispatcher= request.getRequestDispatcher("profile.jsp");
         dispatcher.forward(request, response);
 	}
 
