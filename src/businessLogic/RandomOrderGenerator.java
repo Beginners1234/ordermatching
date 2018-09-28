@@ -28,7 +28,7 @@ public class RandomOrderGenerator implements Runnable {
 			}
 			
 	        
-			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding
+			Order o=new Order(order_type,order_cat,time_stamp,0,price,1,"pending",false);//id and time to be set when adding
 			return o;
 
 		}
@@ -45,7 +45,7 @@ public class RandomOrderGenerator implements Runnable {
 				
 			}
 			//double price=Math.round(t);
-			Order o=new Order(order_cat,order_type,time_stamp,0,price,1,"waiting",false);//id and time to be set when adding 
+			Order o=new Order(order_type,order_cat,time_stamp,0,price,1,"pending",false);//id and time to be set when adding 
 			return o;
 		}
 	}
@@ -70,8 +70,8 @@ public class RandomOrderGenerator implements Runnable {
 			int o_t = new Random().nextInt(o_type.length);
 			double userId_buy =100+val_user.nextInt(10);
 			double userId_sell=111+val_user.nextInt(10);
-			double quant_buy=quantity.nextInt(100);
-			double quant_sell=quantity.nextInt(100);
+			double quant_buy=1+quantity.nextInt(100);
+			double quant_sell=1+quantity.nextInt(100);
 			if(o_type[o_t] == "buy")
 			{
 				if(num[val.nextInt(5)] %2 == 0)
@@ -86,7 +86,7 @@ public class RandomOrderGenerator implements Runnable {
 				}
 				else
 				{
-					double pri = Double.MAX_VALUE;
+					double pri = 1000;
 					Order o = Generate(val_1, o_type[o_t], o_cat[1]);
 					o.setOrderPrice(pri);
 					o.setUserId(userId_buy);
@@ -111,7 +111,7 @@ public class RandomOrderGenerator implements Runnable {
 				}
 				else
 				{
-					double pri = -Double.MAX_VALUE;
+					double pri = -1000;
 					Order o = Generate(val_2, o_type[o_t], o_cat[1]);
 					o.setUserId(userId_sell);
 					o.setOrderQuantity(quant_sell);
@@ -158,8 +158,8 @@ public class RandomOrderGenerator implements Runnable {
 		}
 		double userId_buy =100+val_user.nextInt(10);
 		double userId_sell=111+val_user.nextInt(10);
-		double quant_buy=quantity.nextInt(100);
-		double quant_sell=quantity.nextInt(100);
+		double quant_buy=1+quantity.nextInt(100);
+		double quant_sell=1+quantity.nextInt(100);
 		if(o_type[o_t] == "buy")
 		{
 			if(num[o_c] %2 == 0)

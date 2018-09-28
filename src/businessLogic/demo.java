@@ -1,8 +1,10 @@
 package businessLogic;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import DAO.OrderTableImpl;
 import pojo.Order;
 
 public class demo {
@@ -16,11 +18,15 @@ public class demo {
 //		t.start();
 		RandomOrderGenerator r=new RandomOrderGenerator();
 	   List<Order>list=r.GeneraterandomOrderFinite(50);
-	   for(Order i:list)
-	   {
-		   System.out.println(i);
-	   }
-		//r.GeneraterandomOrderInfinite();
-
+	   List<Order>list2=r.GeneraterandomOrderFinite(50);
+        OrderTableImpl ot=new OrderTableImpl();
+        for(int i=0;i<50;i++)
+        {
+        	Order b=list.get(i);
+        	Order c=list2.get(i);
+        	System.out.println(b);
+        	
+        	ot.AddOrder(b);
+        }
 }
 }
