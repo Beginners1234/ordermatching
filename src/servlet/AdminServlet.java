@@ -54,8 +54,8 @@ public class AdminServlet extends HttpServlet {
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
 		//HttpSession session=request.getSession();
-		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
-		d.forward(request, response); 
+		//RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+		//d.forward(request, response); 
 //
 //		Boolean check=session.getAttribute("loginId").equals("admin");
 //		if(check==false)

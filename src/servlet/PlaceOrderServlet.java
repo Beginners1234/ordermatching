@@ -42,7 +42,6 @@ public class PlaceOrderServlet extends HttpServlet {
 		{
 			
 		}
-		String order_cat = session.getAttribute("orderCategory");
 		
 	}
 
