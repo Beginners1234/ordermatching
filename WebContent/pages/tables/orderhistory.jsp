@@ -470,7 +470,7 @@
             <div class="box-body">
              <%
 
-              List<Order> list=(List<Order>)request.getAttribute("list_orderhistory");
+              List<Order> list=(List<Order>)request.getAttribute("allOrders");
 
                %>
               <table id="orderhistorytable" class="table table-bordered table-striped">

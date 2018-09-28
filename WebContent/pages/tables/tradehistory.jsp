@@ -469,7 +469,7 @@
             <div class="box-body">
             <%
 
-              List<Trade> list=(List<Trade>)request.getAttribute("list_tradehistory");
+              List<Trade> list=(List<Trade>)request.getAttribute("allTrades");
 
                %>
               <table id="example1" class="table table-bordered table-striped">
@@ -498,7 +498,7 @@
                 
                 
                 
-                </tfoot>
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->
