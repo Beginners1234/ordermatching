@@ -39,34 +39,35 @@ public class RegisterUser extends HttpServlet {
 		String password=request.getParameter("password");
 		String repassword=request.getParameter("repassword");
 		String contact=request.getParameter("contact");
-		String balance=request.getParameter("balance");
 		String agreeterms=request.getParameter("agreeterms");
 		System.out.println(agreeterms);
 		String messageOnJsp="Invalid Input";
 		
+		if(fullname.isEmpty()||email.isEmpty()||password.isEmpty()||repassword.isEmpty()||contact.isEmpty()) {
+			request.setAttribute("errorString", "Invalid Input");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+		}
 		if(agreeterms == null)
 		{	//not agreed to terms
 			messageOnJsp="Please Agree to Terms";
 		}else if(!password.equals(repassword)){
 			messageOnJsp="Passwords dont match";
-		}else {
-			//registration sucessful
 		}
 		ValidationImpl validation=new ValidationImpl();
 		UserTableImpl uimpl=new UserTableImpl();
-		int res=validation.ValidateUser(fullname);
+		int res=validation.ValidateUser(email);
 		if(res==1) {
 			//go ahead
 			System.out.println("Regg user");
 			double contactno=Double.parseDouble(contact);
 			System.out.println(contactno);
-			int ret=uimpl.AddUser(new User(fullname, password, contactno, fullname, new Date()));
+			int ret=uimpl.AddUser(new User(email, password, contactno, fullname, new Date()));
 			if(ret==1)
 				messageOnJsp="Success!! Please Login ";
 		}
 		else if(res==0) {
 			//already exists
-			messageOnJsp="Username already exists!!";
+			messageOnJsp="Email already exists!!";
 		}
 		
 		

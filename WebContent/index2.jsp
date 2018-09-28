@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+ 
     <%@ page import="pojo.Order"%>
     <%@ page import="pojo.Trade"%>
     <%@ page import="java.util.List"%>
@@ -26,23 +26,23 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+ 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://o...content-available-to-author-only...n.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://o...content-available-to-author-only...n.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+ 
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://f...content-available-to-author-only...s.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
+ 
   <header class="main-header">
-
+ 
     <!-- Logo -->
     <a href="index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -50,7 +50,7 @@
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>OMS</b></span>
     </a>
-
+ 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -261,15 +261,18 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Himanshu Singh</span>
+              <% 
+              String name1 = (String)request.getAttribute("name");
+              %>
+              <span class="hidden-xs"><%= name1%></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+ 
                 <p>
-                  Himanshu Singh - Web Developer
+                  <%= name1%> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -286,7 +289,7 @@
           </li>
         </ul>
       </div>
-
+ 
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -299,7 +302,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Sakshi Goel</p>
+          <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -317,8 +320,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-
-        
+ 
+ 
         <li>
           <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
             <i class="fa fa-table"></i> <span>Dashboard</span>
@@ -328,7 +331,7 @@
           </a>
           <br>
         </li>
-      
+ 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o "></i>
@@ -344,7 +347,7 @@
           </ul>
           <br>
         </li>
-
+ 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
@@ -361,7 +364,7 @@
           </ul>
           <br>
         </li>
-
+ 
         <li>
           <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/users.jsp">
             <i class="fa fa-user"></i> <span>Users</span>
@@ -370,7 +373,7 @@
           </a>
           <br>
         </li>
-
+ 
         <li>
           <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/admin_test.jsp">
             <i class="fa fa-user"></i> <span>Test</span>
@@ -379,7 +382,7 @@
           </a>
           <br>
         </li>
-
+ 
         <li>
           <a href="../calendar.jsp">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -388,7 +391,7 @@
               <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
-          
+ 
         </li>
         <li>
           <a href="../mailbox/mailbox.jsp">
@@ -400,7 +403,7 @@
             </span>
           </a>
         </li>
-      
+ 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-share"></i> <span>Multilevel</span>
@@ -438,7 +441,7 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-
+ 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -452,7 +455,7 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
+ 
     <!-- Main content -->
     <section class="content">
       <!-- Info boxes -->
@@ -460,13 +463,13 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-
+ 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">New Orders</span>
               <%
               int stats_order1 = (int)request.getAttribute("stats_order");
               %>
-              <span class="info-box-number"><%= stats_order1%></span>
+              <span class="info-box-number" style = "text-align: center"><%= stats_order1%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -476,7 +479,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-
+ 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold; word-wrap: break-word;">New Registrations</span>
               <%
@@ -489,18 +492,18 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-
+ 
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
+ 
             <div class="info-box-content">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Trades done Today</span>
               <%
               int stats_trade1 = (int)request.getAttribute("stats_trade");
               %>
-              <span class="info-box-number"><%= stats_trade1%></span>
+              <span class="info-box-number" style = "text-align: center"><%= stats_trade1%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -509,13 +512,13 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
-
+ 
+ 
 			<!-- TABLE: BUY ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Buy Orders</h3>
-
+ 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -538,7 +541,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
+ 
                      <% 
 							for(Order b:list)
 							{
@@ -549,22 +552,22 @@
 								<td><%= b.getOrderQuantity()%></td>
 								<td><%= b.getOrderTime()%></td>		 
 							</tr>
-							
+ 
 					<% } %>  
-					
-                  
+ 
+ 
                   </tbody>
                 </table>
               </div>
               <!-- /.table-responsive -->
             </div>
 		<!-- ----------------------------------------------------------------------------------------------------------------- -->
-		
+ 
 		<!-- TABLE: SELL ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Sell Orders</h3>
-
+ 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -576,7 +579,7 @@
               <div class="table-responsive">
               				<%
 							List<Order> list1=(List<Order>)request.getAttribute("sell_order");
-							%>	
+							%> 
                 <table class="table no-margin">
                   <thead>
                   <tr>
@@ -587,8 +590,8 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
-                    <% 
+ 
+                     <% 
 							for(Order b1:list1)
 							{
 					%>
@@ -598,10 +601,10 @@
 								<td><%= b1.getOrderQuantity()%></td>
 								<td><%= b1.getOrderTime()%></td>		 
 							</tr>
-							
-					<% } %>  
-					
-                
+ 
+					<% } %> 
+ 
+ 
                   </tbody>
                 </table>
               </div>
@@ -612,7 +615,7 @@
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Trades</h3>
-
+ 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -624,7 +627,6 @@
               <div class="table-responsive">
               				<%
 							List<Trade> list2=(List<Trade>)request.getAttribute("trade_order");
-              				
 							%>	
                 <table class="table no-margin">
                   <thead>
@@ -647,21 +649,21 @@
 								<td><%= b2.getTradedTime()%></td>		 
 							</tr>
 					<% } %>  
-
-                  
+ 
+ 
                   </tbody>
                 </table>
               </div>
               <!-- /.table-responsive -->
             </div>
 		<!-- ---------------------------------------------------------------------------------------------------------- -->
-		
-		
+ 
+ 
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
-
+ 
         <!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
             <!-- /.box-header -->
             <!-- /.footer -->
@@ -678,7 +680,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+ 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
@@ -686,16 +688,16 @@
     <strong>Copyright &copy; 2014-2016 <a href="https://a...content-available-to-author-only...e.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
-
-  
+ 
+ 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
+ 
 </div>
 <!-- ./wrapper -->
-
+ 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
