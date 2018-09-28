@@ -412,7 +412,7 @@
 
                         <br>
                         <div id = "qtyDiv" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" name ="quantitybuy" class="form-control" placeholder="Quantity">
+                          <input type="number" name ="quantitybuy" class="form-control" placeholder="Quantity" required>
                           <br>
                         </div>
 
@@ -444,6 +444,7 @@
                           <script>
                             function checkmkt(evt){
                               document.getElementById("priceDiv").style.display = "none";
+                              document.getElementById("priceDiv").value = "0";
                               document.getElementById("qtyDiv").style.display = "block";
                               document.getElementById("aon").style.display = "none";
 
@@ -496,12 +497,12 @@
 
                         <br>
                         <div id = "qtyDiv2" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" name ="quantitysell" class="form-control" placeholder="Quantity">
+                          <input type="number" name ="quantitysell" class="form-control" placeholder="Quantity" required>
                           <br>
                         </div>
 
                         <div id = "priceDiv2" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" name="pricesell" class="form-control" placeholder="Price" min = 150 max = 160>
+                          <input type="number" name="pricesell" class="form-control" placeholder="Price" min = 150 max = 160 required>
                           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                           <br>
                         </div>
@@ -529,6 +530,7 @@
                           <script>
                             function checkmkt2(evt){
                               document.getElementById("priceDiv2").style.display = "none";
+                              document.getElementById("priceDiv2").value = "0";
                               document.getElementById("qtyDiv2").style.display = "block";
                               document.getElementById("aon2").style.display = "none";
 

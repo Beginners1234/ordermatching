@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.OrderTableImpl;
 import DAO.UserTableImpl;
+import businessLogic.OrderProcessesInterfaceImpl;
 import pojo.Order;
 import pojo.User;
 
@@ -86,25 +87,13 @@ public class PlaceOrderServlet extends HttpServlet {
 		}
 		
 		Order order=new Order(buyorsell.toUpperCase(), orderType.toUpperCase(), new Date(), quantity, price, userid, "PENDING", allornone);
-		
+		OrderProcessesInterfaceImpl impl=new OrderProcessesInterfaceImpl();
+		int resu=impl.PlaceOrder(order);
 		System.out.println("got post order req");
 		PrintWriter out = response.getWriter();
-	     out.println("<h1>"+user+"<br> "+order+ "</h1>");
+	     out.println("<h1>"+user+"<br> "+order+"<br> "+resu+ "</h1>");
 		
-		/*OrderTableImpl o=new OrderTableImpl();
-		HttpSession session=request.getSession();
-		var x = DOM.getElementByTagName("DIV")[0];
-		if(x.id == "tab_buy") // buy function
-		{
-			
-		}
-		else
-		{
-			
-		}
-		*/
 		
-		//doGet(request, response);
 	}
 
 }
