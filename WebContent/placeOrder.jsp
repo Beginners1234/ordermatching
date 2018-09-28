@@ -167,20 +167,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -295,9 +282,8 @@
         PLACE ORDER
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="user"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Place Order</li>
       </ol>
     </section>
 
@@ -309,11 +295,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Place your Order</h3>
 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-              <i class="fa fa-minus"></i></button>
-          </div>
+          
         </div>
 
         <div class="nav-tabs-custom">
@@ -350,13 +332,14 @@
 
                         <br>
                         <div id = "qtyDiv" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" name ="quantitybuy" class="form-control" placeholder="Quantity" required>
+                          <input type="number" name ="quantitybuy" class="form-control" placeholder="Quantity" min=1 required>
+                          <span class = "fa fa-facebook-f form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id = "priceDiv" class="form-group has-feedback" style = "display: none;">
                           <input type="number" name="pricebuy" class="form-control" placeholder="Price" min = 150 max = 160 >
-                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                          <span class="fa fa-inr form-control-feedback"></span>
                           <br>
                         </div>
 
@@ -436,12 +419,13 @@
                         <br>
                         <div id = "qtyDiv2" class="form-group has-feedback" style = "display: none;">
                           <input type="number" name ="quantitysell" class="form-control" placeholder="Quantity" required>
+                          <span class = "fa fa-facebook-f form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id = "priceDiv2" class="form-group has-feedback" style = "display: none;">
                           <input type="number" name="pricesell" class="form-control" placeholder="Price" min = 150 max = 160 >
-                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                          <span class = "fa fa-inr form-control-feedback"></span>
                           <br>
                         </div>
 
@@ -449,6 +433,7 @@
                          <label> All or None: &nbsp;
                               <input type="checkbox" name="aonsell">
                           </label>
+                          
 
                         </div>
                         

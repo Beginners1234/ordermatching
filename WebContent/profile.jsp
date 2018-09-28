@@ -389,7 +389,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
         <li class="active">User profile</li>
       </ol>
     </section>
@@ -425,10 +424,22 @@
                   <b>Login ID</b> <a class="pull-right"><%=u.getLoginId() %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Password</b> <a class="pull-right"><%=u.getPassword() %></a>
+                  <b>Password</b> <a class="pull-right">
+                  
+                  <%
+                  	String pw = u.getPassword();
+                  	for (int i=0; i<pw.length(); i++) out.println("*");
+                  %>
+                  
+                  </a>
                 </li>
                 <li class="list-group-item">
-                  <b>Contact</b> <a class="pull-right"><%=u.getContact() %></a>
+                  <b>Contact</b> <a class="pull-right">
+                  <%
+                  	long v = (long) (u.getContact());
+                  %>
+                  <%=v %>
+                	</a>
                 </li>
                          
               </ul>

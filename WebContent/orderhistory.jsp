@@ -400,9 +400,8 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="user"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Order History</li>
       </ol>
     </section>
 

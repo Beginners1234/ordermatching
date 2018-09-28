@@ -271,9 +271,7 @@
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>
-                  <%= name1%> - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <%= name1%> 
                 </p>
               </li>
               <!-- Menu Footer-->

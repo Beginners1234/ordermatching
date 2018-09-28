@@ -91,11 +91,27 @@
 	<% 
 		String message = (String) request.getAttribute("errorString");
 		if(message!=null) 
-			{ %>
+			{
+			
+			if (message.equals("Success!! Please Login ")){
+			
+			%>
+			
+			<div id = "successful" class = "alert" style = "margin:10px 0px; text-align:center; vertical-align:middle; padding-bottom:20px; line-height:5px; height:10px;  color: #008000; background-color: #98FB98;" >
+				<p> <%out.println(message + "<br>"); %></p>
+			
+			</div>
+			
+			<% } 
+			
+			else{ %>
+			
 		    <div id="noEntry" class = "alert" style = "margin:10px 0px; text-align:center; vertical-align:middle; padding-bottom:20px; line-height:5px; height:10px;  color: #D8000C; background-color: #FFD2D2;">
 		        <p> <% out.println(message + "<br>"); %>   </p>
 		    </div>
-		<%	} %>
+		    
+		<%	} 
+		}%>
     <br>
     Already registered? <a href="login.jsp" class="text-center">Sign in</a>
   </div>

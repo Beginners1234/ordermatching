@@ -46,7 +46,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.jsp" class="logo">
+    <a href="user" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -276,15 +276,17 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+                <br> <br>
+				<%= name1 %>
               </li>
+              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout">Sign out</a>
+                  <a href="logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
