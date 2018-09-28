@@ -481,21 +481,29 @@
                   <th>Trade ID</th>
                   <th>Price</th>
                   <th>Quantity</th>
+                  <th>Order_ID_Buy </th>
+                  <th>Order_ID_Sell </th>
+                  <th>User_ID_Buy </th>
+                  <th> User_ID_Sell </th>
                   <th>Time</th>
-                  <th>All/None</th>
                 </tr>
                 </thead>
                                 <tbody>
                 <%
-                for(Trade t:list)
+                for(Trade b:list)
                 {
                 %>
-                <tr>
-                <td><%= t.getTradeId() %></td>
-                <td><%= t.getTradedPrice() %></td>
-                <td><%= t.getTradedQuantity() %></td>
-                <td><%= t.getTradedTime()%></td>
-                </tr>
+	                <tr>
+						<td><%= b.getTradeId() %></td>
+						<td><%= b.getTradedPrice() %></td>
+						<td><%= b.getTradedQuantity() %></td>
+						<td><%= b.getOrderId_buy() %></td>							
+						<td><%= b.getUserId_buy() %></td>								
+						<td><%= b.getOrderId_sell() %></td>
+						<td><%= b.getUserId_sell() %></td>
+						<td><%= b.getTradedTime() %></td>
+									 
+					</tr>
                 <%  }  %>
                 
                 
