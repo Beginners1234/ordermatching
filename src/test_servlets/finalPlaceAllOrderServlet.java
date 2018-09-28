@@ -3,26 +3,26 @@ package test_servlets;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import businessLogic.OrderProcessesInterfaceImpl;
 import pojo.Order;
 
 /**
- * Servlet implementation class loadPageServlet
+ * Servlet implementation class finalPlaceAllOrderServlet
  */
-@WebServlet("/test")
-public class loadPageServlet extends HttpServlet {
+@WebServlet("/placeAll")
+public class finalPlaceAllOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loadPageServlet() {
+    public finalPlaceAllOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +32,16 @@ public class loadPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("test servlet");
-//		Order o=new Order("BUY", "Limit", null, 100, 152, 1, "pending", true);
-//		staticOrdersCl.addToList(o);
-		List<Order> l=staticOrdersCl.getList();		
-	
-		request.setAttribute("order", l);
-		RequestDispatcher dis=request.getRequestDispatcher("admin_test.jsp");
-		dis.forward(request, response);
+		System.out.println("here placeAll Servlet");
+		List<Order> l=staticOrdersCl.getList();
+		OrderProcessesInterfaceImpl impl=new OrderProcessesInterfaceImpl();
+		for (Order order : l) {
+			int resu=impl.PlaceOrder(order);
+//			System.out.println(order);
+		}
+		
+		response.sendRedirect("admin");
+		
 	}
 
 }

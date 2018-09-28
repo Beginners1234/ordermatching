@@ -321,13 +321,14 @@
 
               <div class = "col-md-6" style="margin-top: 5px; margin-bottom: 15px; text-align: center;"> <h4> Generate random orders </h4></div>
               <div class = "col-md-3"> 
-                <form action="">
-                  <input type="text" placeholder="No. of orders" style="margin-top: 15px; margin-bottom: 15px">
+                <form action="grow" method="post">
+                  <input type="text" name="number" placeholder="No. of orders" style="margin-top: 15px; margin-bottom: 15px">
+                  <button type="submit" class="btn btn-primary btn-block btn-flat">Add</button>
                 </form>
               </div>
 
               <div class = "col-md-3">
-                  <button type="button" class="btn btn-success btn-sm" style="margin-top: 15px; margin-bottom: 15px" onclick="generateTable(this);">Generate!</button>
+                  <button type="button" class="btn btn-success btn-sm" style="margin-top: 15px; margin-bottom: 15px" onclick="generateTable(this);">Show</button>
               </div>
 
             </div>
@@ -395,7 +396,10 @@
         <div class = "col-md-5"></div>
         <div class = "col-md-4"> <button type="button" class="btn btn-primary" onclick="displayForm(this);">Add Custom Order</button>
         <button type="button" class="btn" onclick="exportTableToExcel('orderhistorytable')">Export Table Data To Excel File</button>
-         </div>
+        <form action="placeAll" method="get">
+   		 <input type="submit" value="Send Orders to Exchange" />
+			</form>
+        </div>
        
         <div class = "col-md-3  "></div>
       </div>
@@ -414,15 +418,15 @@
 
                     <div class="register-box-body">
 
-                      <form action="" method="post">
-
+                      <form action="manAdd" method="post">
+						<input type="hidden" id="hidden" class="hidden" name="ordercatbs" value="buy">
                         <div class="form-group has-feedback" style = "display: inline; text-align: center; vertical-align: middle">
                           <label> ORDER TYPE </label> <br>
                           <label class="radio-inline">
-                              <input type="radio" name="Order Type" value = "mkt" onclick="checkmkt(this)"> MKT &nbsp;
+                              <input type="radio" name="ordertypeml" value = "mkt" onclick="checkmkt(this)"> MKT &nbsp;
                           </label>
                           <label class="radio-inline">
-                              <input type="radio" name="Order Type" value = "lmt" onclick="checklmt(this)"> LMT
+                              <input type="radio" name="ordertypeml" value = "lmt" onclick="checklmt(this)"> LMT
                           </label>  
 
                           <br>
@@ -434,30 +438,22 @@
 
                         <br>
                         <div id = "qtyDiv" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" class="form-control" placeholder="Quantity">
+                          <input type="number" name ="quantitybuy" class="form-control" placeholder="Quantity" min=1 required>
+                          <span class = "fa fa-facebook-f form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id = "priceDiv" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" class="form-control" placeholder="Price" min = 150 max = 160>
-                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                          <input type="number" name="pricebuy" class="form-control" placeholder="Price" min = 150 max = 160 >
+                          <span class="fa fa-inr form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id="aon" class="form-group has-feedback" style = "display: none;">
-                          <label> All or None: &nbsp;</label>
-<!--                          <div class="btn-group btn-toggle"> 
-                            <button class="btn">ON</button>
-                            <button class="btn btn-primary active">OFF</button> 
-                          </div>-->
-
-                          <div class="btn-group btn-toggle"> 
-                            <button class="btn btn-sm default">ON</button>
-                            <button class="btn btn-sm btn-info active">OFF</button>
-                            <br>
-                            </div>
-
-                        </div>
+                          <label> All or None: &nbsp;
+                              <input type="checkbox" name="aonbuy" >
+                          </label>
+                         </div>
                         
 
                           <script>
@@ -475,9 +471,10 @@
                           <script>
                             function checkmkt(evt){
                               document.getElementById("priceDiv").style.display = "none";
+                              document.getElementById("priceDiv").value = "150";
                               document.getElementById("qtyDiv").style.display = "block";
                               document.getElementById("aon").style.display = "none";
-
+							console.log("MKT");
                                 
                           }
                           </script>
@@ -488,8 +485,6 @@
                           <!--</div> -->
                           <!-- /.col -->
                           <br>
-                            <button class="btn btn-primary btn-block btn-flat"> Add Order </button>
-                            <br>
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Place Order</button>
                           
                           <!-- /.col 
@@ -500,7 +495,7 @@
               </div>
 
               </div>
-              <!-- /.tab-pane -->
+              <!-- /.tab-pane-----------------------------------------------------SELL below---------------------------------------------- -->
               <div class="tab-pane" id="tab_sell">
                 <div class="register-box">
                     <div class="register-logo">
@@ -509,15 +504,15 @@
 
                     <div class="register-box-body">
 
-                      <form action="" method="post">
-
+                      <form action="placeorder" method="post">
+						<input type="hidden" id="hidden" class="hidden" name="ordercatbs" value="sell">
                         <div class="form-group has-feedback" style = "display: inline; text-align: center; vertical-align: middle">
                           <label> ORDER TYPE </label> <br>
                           <label class="radio-inline">
-                              <input type="radio" name="Order Type" value = "mkt" onclick="checkmkt2(this)"> MKT &nbsp;
+                              <input type="radio" name="ordertypeml" value = "mkt" onclick="checkmkt2(this)"> MKT &nbsp;
                           </label>
                           <label class="radio-inline">
-                              <input type="radio" name="Order Type" value = "lmt" onclick="checklmt2(this)"> LMT
+                              <input type="radio" name="ordertypeml" value = "lmt" onclick="checklmt2(this)"> LMT
                           </label>  
 
                           <br>
@@ -529,28 +524,22 @@
 
                         <br>
                         <div id = "qtyDiv2" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" class="form-control" placeholder="Quantity">
+                          <input type="number" name ="quantitysell" class="form-control" placeholder="Quantity" required>
+                          <span class = "fa fa-facebook-f form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id = "priceDiv2" class="form-group has-feedback" style = "display: none;">
-                          <input type="number" class="form-control" placeholder="Price" min = 150 max = 160>
-                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                          <input type="number" name="pricesell" class="form-control" placeholder="Price" min = 150 max = 160 >
+                          <span class = "fa fa-inr form-control-feedback"></span>
                           <br>
                         </div>
 
                         <div id="aon2" class="form-group has-feedback" style = "display: none;">
-                          <label> All or None: &nbsp;</label>
-<!--                          <div class="btn-group btn-toggle"> 
-                            <button class="btn">ON</button>
-                            <button class="btn btn-primary active">OFF</button> 
-                          </div>-->
-
-                          <div class="btn-group btn-toggle"> 
-                            <button class="btn btn-sm default">ON</button>
-                            <button class="btn btn-sm btn-info active">OFF</button>
-                            <br>
-                            </div>
+                         <label> All or None: &nbsp;
+                              <input type="checkbox" name="aonsell">
+                          </label>
+                          
 
                         </div>
                         
@@ -570,6 +559,7 @@
                           <script>
                             function checkmkt2(evt){
                               document.getElementById("priceDiv2").style.display = "none";
+                              document.getElementById("priceDiv2").value = "150";
                               document.getElementById("qtyDiv2").style.display = "block";
                               document.getElementById("aon2").style.display = "none";
 
@@ -582,8 +572,6 @@
                         
                           <!--</div> -->
                           <!-- /.col -->
-                            <button class="btn btn-primary btn-block btn-flat"> Add Order </button>
-                            <br>
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Place Order</button>
                           
                           <!-- /.col 
