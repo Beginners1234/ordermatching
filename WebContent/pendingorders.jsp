@@ -261,7 +261,10 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Himanshu Singh</span>
+              <% 
+              String name1 = (String)request.getAttribute("name");
+              %>
+              <span class="hidden-xs"><%= name1%></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -269,17 +272,17 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Himanshu Singh - Web Developer
+                  <%= name1%> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -299,7 +302,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Sakshi Goel</p>
+          <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -317,10 +320,10 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-
-        
+ 
+ 
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
+          <a href="admin">
             <i class="fa fa-table"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -328,7 +331,7 @@
           </a>
           <br>
         </li>
-      
+ 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o "></i>
@@ -338,106 +341,57 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\pendingorders.jsp"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\rejectedorders.jsp"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
+            <!-- <li><a href="./pages/tables/executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>-->
+            <li><a href="aps"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
+            <li><a href="ars"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
           </ul>
           <br>
         </li>
+ 
+ 		<li>
+          <a href="ats">
+            <i class="fa fa-user"></i> <span>Trade</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+          <br>
+        </li>
+ 
         <li class="treeview">
-          <a href="#">
+          <a href="../charts/flot.jsp">
             <i class="fa fa-pie-chart"></i>
             <span>Trade Analysis</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.jsp"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="../charts/morris.jsp"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="../charts/flot.jsp"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="../charts/inline.jsp"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
           <br>
         </li>
-
+ 
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\users.jsp">
-            <i class="fa fa-users"></i> <span>Users</span>
+          <a href="agu">
+            <i class="fa fa-user"></i> <span>Users</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
-
+ 
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/admin_test.jsp">
+          <a href="load">
             <i class="fa fa-user"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
-
-        <li>
-          <a href="../calendar.jsp">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="../mailbox/mailbox.jsp">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-          </a>
-        </li>
-      
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
+ 
+        
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
-
+ 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

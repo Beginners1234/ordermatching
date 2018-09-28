@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="pojo.User"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -273,10 +275,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -315,8 +317,10 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+ 
+ 
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
+          <a href="admin">
             <i class="fa fa-table"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -324,7 +328,7 @@
           </a>
           <br>
         </li>
-      
+ 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o "></i>
@@ -334,79 +338,57 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\pendingorders.jsp"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\rejectedorders.jsp"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
+            <!-- <li><a href="./pages/tables/executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>-->
+            <li><a href="aps"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
+            <li><a href="ars"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
           </ul>
           <br>
         </li>
-
+ 
+ 		<li>
+          <a href="ats">
+            <i class="fa fa-user"></i> <span>Trade</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+          <br>
+        </li>
+ 
         <li class="treeview">
-          <a href="#">
+          <a href="../charts/flot.jsp">
             <i class="fa fa-pie-chart"></i>
             <span>Trade Analysis</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.jsp"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="../charts/morris.jsp"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="../charts/flot.jsp"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="../charts/inline.jsp"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
           <br>
         </li>
-
+ 
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/users.jsp">
+          <a href="agu">
             <i class="fa fa-user"></i> <span>Users</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
-
+ 
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/admin_test.jsp">
+          <a href="load">
             <i class="fa fa-user"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
-
-        <li>
-          <a href="pages/calendar.jsp">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-          </a>
-        </li>
-        <li>
-
-        <li>
-          <a href="pages/mailbox/mailbox.jsp">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-          </a>
-        </li>
-        <li class="active treeview menu-open">
-          <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\users.jsp">
-            <i class="fa fa-users"></i> <span>Users</span>
-          </a>
-        </li>
+ 
+        
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
-
+ 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -480,26 +462,36 @@
 
 <input type="text" id="myInput" onkeyup="myFunction()"  placeholder="Search for User ID.." title="Type in a name">
 
+<%
+	List <User> list_user = (List<User>)request.getAttribute("admin_get_user");
+%>
+
 <table id="example1" class="table table-bordered table-striped">
   <tr class="header">
     <th style="width:20%;">User ID</th>
     <th style="width:30%;">Name</th>
     <th style="width:25%;">Username</th>
-    <th style="width:25%;">Last Trade ID</th>
+    <th style="width:25%;">Date of Registration</th>
   </tr>
-  <tr>
-    <td><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\userprofile.jsp">NM2345</a></td>
-    <td>Nina Mcintire</td>
-    <td>nina2345</td>
-    <td>E2345</td>
-  </tr>
-  <tr>
-    <td><a href="#">ST5678</a></td>
-    <td>Sam Thomas</td>
-    <td>sam5678</td>
-    <td>E5678</td>
-  </tr>
+  <tbody>
   
+   <% 
+		for(User b:list_user)
+		{
+			
+		//double UserID = (double) request.getAttribute("userid");	
+	%>
+		<tr>
+			<td> <%= b.getUserId() %>  </td>
+			<td><%= b.getName() %></td>
+			<td><%= b.getLoginId() %></td>
+			<td><%= b.getReg() %></td>		 
+		</tr>
+
+<% } %> 
+   </tfoot>
+  
+
 </table>
 
 <script>

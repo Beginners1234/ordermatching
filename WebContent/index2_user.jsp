@@ -254,7 +254,6 @@
               </li>
               <li class="footer">
                 <a href="#">View all tasks</a>
-              </li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
@@ -335,7 +334,7 @@
 
         <!-- Place order -->
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\examples\placeOrder.jsp">
+          <a href="placeorder">
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
@@ -347,7 +346,7 @@
         
       
         <li class="treeview">
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\userhistory.jsp">
+          <a href="#">
             <i class="fa fa-table"></i> <span>User History</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -369,68 +368,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.jsp"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="../charts/morris.jsp"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="../charts/flot.jsp"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="../charts/inline.jsp"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
           </ul>
           <br>
         </li>
 
-        <li>
-          <a href="../calendar.jsp">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="../mailbox/mailbox.jsp">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-          </a>
-        </li>
-      
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
