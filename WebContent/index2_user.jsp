@@ -558,16 +558,27 @@
                   </thead>
                   <tbody>
                   
-                  <% for (Order o: list_order) {%>
+                 <% for (Order o: list_order) {%>
                   	<tr>
                   	<td> <%= o.getOrderId() %></td>
                   	<td> <%= o.getOrderStatus() %></td>
                   	<td> <%= o.getOrderCategory() %></td>
                   	<td> <%= o.getOrderType() %></td>
-                  	<td> <%= o.getOrderPrice() %></td>
-                  	<td> <%= o.getOrderQuantity() %></td>
-                  	<td> <%= o.getOrderTime() %></td>
-                  	<td> <%= o.isAon() %></td>
+ 
+                  	 <%
+ 
+                  	if((o.getOrderType()).equalsIgnoreCase("MARKET"))
+                  	{%>
+                  		<td>NA</td>
+                  	<%}
+                  	else
+                  	{%>
+                  	<td><%=o.getOrderPrice()%></td>
+                  	<%} %>
+                  	<td> <%=o.getOrderQuantity() %></td>
+                  	<td> <%=o.getOrderTime() %></td>
+                  	<td> <%=o.isAon() %></td>
+ 
                   	<%} %> 
                   </tr>
                   </tbody>
