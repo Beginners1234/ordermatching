@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="exportExcel.js"></script>
+</head>
+<body>
+<table id="tblData">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>John Doe</td>
+        <td>john@gmail.com</td>
+        <td>USA</td>
+    </tr>
+    <tr>
+        <td>Michael Addison</td>
+        <td>michael@gmail.com</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>Sam Farmer</td>
+        <td>sam@gmail.com</td>
+        <td>France</td>
+    </tr>
+</table>
+<button onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button>
+</body>
+</html>
