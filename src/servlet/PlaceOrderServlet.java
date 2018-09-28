@@ -29,7 +29,15 @@ public class PlaceOrderServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("./placeOrder.jsp");
+		HttpSession session = request.getSession();
+		String loginId=(String)session.getAttribute("loginId");
+		UserTableImpl a=new UserTableImpl();
+		List<User>u=a.GetUserByLoginid(loginId);
+		User user=u.get(0);
+		
+		request.setAttribute("name", user.getName());
+		
+		RequestDispatcher dispatcher= request.getRequestDispatcher("placeOrder.jsp");
         dispatcher.forward(request, response);
 		
 	

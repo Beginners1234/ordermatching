@@ -94,11 +94,11 @@ public class AdminServlet extends HttpServlet {
 		ArrayList<Order> list_orders_sell = new ArrayList<>();
 		for(int k=0; k<list_orders.size(); k++)
 		{
-			if(list_orders.get(k).getOrderCategory().equals("BUY"))
+			if(list_orders.get(k).getOrderCategory().equals("BUY") && list_orders.get(k).getOrderStatus().equals("PENDING"))
 			{
 				list_orders_buy.add(list_orders.get(k));
 			}
-			else if(list_orders.get(k).getOrderCategory().equals("SELL"))
+			else if(list_orders.get(k).getOrderCategory().equals("SELL") && list_orders.get(k).getOrderStatus().equals("PENDING"))
 			{
 				list_orders_sell.add(list_orders.get(k));
 			}
