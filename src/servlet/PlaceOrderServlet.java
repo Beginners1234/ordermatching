@@ -91,10 +91,10 @@ public class PlaceOrderServlet extends HttpServlet {
 		
 		Order order=new Order(buyorsell.toUpperCase(), orderType.toUpperCase(), new Date(), quantity, price, userid, "PENDING", allornone);
 		OrderProcessesInterfaceImpl impl=new OrderProcessesInterfaceImpl();
-		//int resu=impl.PlaceOrder(order);
+		int resu=impl.PlaceOrder(order);
 		System.out.println("got post order req");
-		PrintWriter out = response.getWriter();
-	     out.println("<h1>"+user+"<br> "+order+"<br> "+ "</h1>");
+		
+		response.sendRedirect("user");
 		
 		
 	}
