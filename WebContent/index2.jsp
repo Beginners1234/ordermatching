@@ -279,10 +279,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -323,7 +323,7 @@
  
  
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2.jsp">
+          <a href="admin">
             <i class="fa fa-table"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -342,14 +342,14 @@
           </a>
           <ul class="treeview-menu">
             <!-- <li><a href="./pages/tables/executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>-->
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\pendingorders.jsp"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\rejectedorders.jsp"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
+            <li><a href="aps"><i class="fa fa-circle-o"></i> Pending Orders</a></li>
+            <li><a href="ars"><i class="fa fa-circle-o"></i> Rejected Orders</a></li>
           </ul>
           <br>
         </li>
  
  		<li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/trade.jsp">
+          <a href="ats">
             <i class="fa fa-user"></i> <span>Trade</span>
             <span class="pull-right-container">
             </span>
@@ -369,7 +369,7 @@
         </li>
  
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/users.jsp">
+          <a href="agu">
             <i class="fa fa-user"></i> <span>Users</span>
             <span class="pull-right-container">
             </span>
@@ -378,7 +378,7 @@
         </li>
  
         <li>
-          <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/admin_test.jsp">
+          <a href="load">
             <i class="fa fa-user"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
@@ -397,12 +397,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        Admin Dashboard
         <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Admin Dashboard</li>
       </ol>
     </section>
  

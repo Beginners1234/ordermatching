@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.SessionCookieConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.OrderTableImpl;
 import pojo.Order;
@@ -34,6 +36,7 @@ public class AdminPendingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+
 		OrderTableImpl o = new OrderTableImpl();
 		List<Order>list_orders_pending = o.GetAllOrders("PENDING");
 		request.setAttribute("order_pending",list_orders_pending);
