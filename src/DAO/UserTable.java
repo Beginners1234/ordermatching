@@ -11,5 +11,7 @@ public interface UserTable {
 	public int AddUser(User user);
 	public int GetCount();
 	public int GetPosition(double user_id);
+	public String GetEmailByOrderId(double user_id);
+	public double GetContactByOrderId(double user_id);
 }
 
