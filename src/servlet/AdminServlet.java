@@ -53,9 +53,9 @@ public class AdminServlet extends HttpServlet {
 		OrderProcessesInterfaceImpl b=new OrderProcessesInterfaceImpl();
 		OrderTableImpl i=new OrderTableImpl();
 		TradeTableImpl t=new TradeTableImpl();
-		//HttpSession session=request.getSession();
-		//RequestDispatcher d=request.getRequestDispatcher("login.jsp");
-		//d.forward(request, response); 
+//		HttpSession sessio=request.getSession();
+//		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+//		d.forward(request, response); 
 //
 //		Boolean check=session.getAttribute("loginId").equals("admin");
 //		if(check==false)
@@ -63,19 +63,19 @@ public class AdminServlet extends HttpServlet {
 //			RequestDispatcher d2=request.getRequestDispatcher("login.jsp");
 //			d2.forward(request, response); 
 //		}
-//
-//		
+
+		
 //		String loginId=(String)session.getAttribute("loginId");		
-//		List<User>u=a.GetUserByLoginid(loginId);
-//		User user=u.get(0);
-//		System.out.println(u.get(0));
+		List<User>u=a.GetUserByLoginid(loginId);
+		User user=u.get(0);
+		System.out.println(u.get(0));
 		int number_orders=b.GetStatistics("order");
 		int number_trades=b.GetStatistics("trade");
 		int number_users=b.GetStatistics("user");
 		request.setAttribute("stats_order", number_orders);//attributes names
 		request.setAttribute("stats_trade", number_trades);
 		request.setAttribute("stats_user", number_users);
-//		request.setAttribute("name", user.getName());
+		request.setAttribute("name", user.getName());
 		List<Order>list_orders=i.GetAllOrders();
 		ArrayList<Order> list_orders_buy = new ArrayList<>();
 		ArrayList<Order> list_orders_sell = new ArrayList<>();
