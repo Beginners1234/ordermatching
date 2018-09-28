@@ -393,7 +393,10 @@
 
       <div id = "orderForm" class="row">
         <div class = "col-md-5"></div>
-        <div class = "col-md-4"> <button type="button" class="btn btn-primary" onclick="displayForm(this);">Add Custom Order</button> </div>
+        <div class = "col-md-4"> <button type="button" class="btn btn-primary" onclick="displayForm(this);">Add Custom Order</button>
+        <button type="button" class="btn" onclick="exportTableToExcel('orderhistorytable')">Export Table Data To Excel File</button>
+         </div>
+       
         <div class = "col-md-3  "></div>
       </div>
 
@@ -838,5 +841,6 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="exportExcel.js"></script>
 </body>
 </html>

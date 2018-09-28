@@ -662,5 +662,6 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="exportExcel.js"></script>
 </body>
 </html>
