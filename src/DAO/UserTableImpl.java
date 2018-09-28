@@ -156,10 +156,10 @@ public class UserTableImpl implements UserTable {
 		int position = 0;
 		
 		String buyposition = "SELECT SUM(quantity*price) AS sumbuy FROM order_details WHERE user_id_order = ? AND "
-				+ "order_status = 'COMPLETED' AND order_category = 'BUY'";
+				+ "order_status <> 'REJECTED' AND order_category = 'BUY'";
 
 		String sellposition = "SELECT SUM(quantity*price) AS sumsell FROM order_details WHERE user_id_order = ? AND "
-				+ "order_status = 'COMPLETED' AND order_category = 'SELL'";
+				+ "order_status = 'REJECTED' AND order_category = 'SELL'";
 
 		try(Connection con = MyConnection.openConnection();) {
 			PreparedStatement ps = con.prepareStatement(buyposition);
@@ -178,6 +178,7 @@ public class UserTableImpl implements UserTable {
 			{
 				sposition = set2.getInt("sumsell");
 			}
+			
 
 			position = bposition - sposition;
 			
