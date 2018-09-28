@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="pojo.User"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w...content-available-to-author-only...3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://w...content-available-to-author-only...3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta charset="utf-8">
@@ -35,27 +38,26 @@
   <link rel="stylesheet"
         href="https://f...content-available-to-author-only...s.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" bgcolor="dark grey">
 <div class="wrapper">
 
   <header class="main-header">
+
     <!-- Logo -->
-    <a href="../../index2.jsp" class="logo">
+    <a href="index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>User Dashboard</b></span>
     </a>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </a>
-
+      <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
@@ -72,7 +74,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -85,7 +87,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -97,7 +99,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -109,7 +111,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -121,7 +123,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -195,7 +197,8 @@
                         <small class="pull-right">20%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">20% Complete</span>
                         </div>
                       </div>
@@ -209,7 +212,8 @@
                         <small class="pull-right">40%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">40% Complete</span>
                         </div>
                       </div>
@@ -223,7 +227,8 @@
                         <small class="pull-right">60%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
+                               aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
@@ -237,7 +242,8 @@
                         <small class="pull-right">80%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">80% Complete</span>
                         </div>
                       </div>
@@ -254,58 +260,55 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nina Mcintire</span>
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">
+              
+              	<%
+              
+	              String name1 = (String) request.getAttribute("name");
+	              out.println(name1 + "<br>");
+              
+          		%>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>
-                  Nina Mcintire
-                  <small>Member since Nov. 2012</small>
-                </p>
               </li>
-              <!-- Menu Body -->
-              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" class="btn btn-default btn-flat">Profile</a>
+                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\pages\examples\profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
+
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  
-  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+ <div class="user-panel">
         <div class="pull-left image">
-          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nina Mcintire</p>
+          <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div>
+      <br>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+   <!--   <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -313,15 +316,15 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form>-->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-
+        <br>
         <!-- Place order -->
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2_user.jsp">
+          <a href="user">
             <i class = "fa fa-th"></i> 
             <span>Home</span>
             <span class="pull-right-container">
@@ -336,16 +339,13 @@
             <i class = "fa fa-th"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
-              <small class = "label pull-right bg-green">Hot</small>
-            </span>
-          </a>
+              </span>
+                       </a>
           <br>
         </li>
 
         
-        
-
-        
+      
         <li class="treeview">
           <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\userhistory.jsp">
             <i class="fa fa-table"></i> <span>User History</span>
@@ -354,12 +354,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\orderhistory.jsp"><i class="fa fa-circle-o"></i> Order History</a></li>
-            <li><a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\pages\tables\tradehistory.jsp"><i class="fa fa-circle-o"></i> Trade History</a></li>
+            <li><a href="userorder"><i class="fa fa-circle-o"></i> Order History</a></li>
+            <li><a href="usertrades"><i class="fa fa-circle-o"></i> Trade History</a></li>
           </ul>
           <br>
         </li>
-      
 
         <li class="treeview">
           <a href="#">
@@ -437,7 +436,6 @@
     <!-- /.sidebar -->
   </aside>
 
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -463,25 +461,32 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="C:\Users\Grad\Downloads\Profile.png" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center"><%=name1 %></h3>
 
+              <%
+              
+              User u=(User)request.getAttribute("user");
+              
+              
+              %>
+              
+              
+              
               
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>User ID</b> <a class="pull-right">NM2345</a>
+                  <b>User ID</b> <a class="pull-right"><%=u.getUserId() %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Username</b> <a class="pull-right">nina2345</a>
+                  <b>Login ID</b> <a class="pull-right"><%=u.getLoginId() %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Password</b> <a class="pull-right">******</a>
+                  <b>Password</b> <a class="pull-right"><%=u.getPassword() %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Contact</b> <a class="pull-right">99999</a>
+                  <b>Contact</b> <a class="pull-right"><%=u.getContact() %></a>
                 </li>
-                <li class="list-group-item">
-                  <b>Email ID</b> <a class="pull-right">nina@gmail.com</a>
-                </li>             
+                         
               </ul>
 
 
