@@ -262,9 +262,11 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
-              <%
+              
+              	<%
               
 	              String name1 = (String) request.getAttribute("name");
+	              out.println(name1 + "<br>");
               
           		%>
               </span>
@@ -273,18 +275,15 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-				<p>
-                  <%= name1%> - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
+
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" class="btn btn-default btn-flat">Profile</a>
+                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-master/pages/examples/login.jsp" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -307,7 +306,6 @@
           <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div>
       <br>
       <!-- search form -->
    <!--   <form action="#" method="get" class="sidebar-form">
@@ -326,7 +324,7 @@
         <br>
         <!-- Place order -->
         <li>
-          <a href="C:\Users\Grad57\Desktop\AdminLTE-2.4.4\index2_user.jsp">
+          <a href="user">
             <i class = "fa fa-th"></i> 
             <span>Home</span>
             <span class="pull-right-container">
