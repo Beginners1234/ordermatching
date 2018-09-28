@@ -49,7 +49,8 @@ public class OrderMatching {
 				trade.setUserId_sell(curSellOrder.getOrderId());
 				trade.setOrderId_buy(order.getOrderId());
 				trade.setOrderId_sell(curSellOrder.getOrderId());
-				trade.setTradedPrice(order.getOrderPrice());
+				//trade.setTradedPrice(order.getOrderPrice());
+				trade.setTradedPrice(curSellOrder.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curSellOrder.getRemaining_quantity()) {
@@ -128,7 +129,8 @@ public class OrderMatching {
 				trade.setUserId_sell(order.getOrderId());
 				trade.setOrderId_buy(curBuyOrder.getOrderId());
 				trade.setOrderId_sell(order.getOrderId());
-				trade.setTradedPrice(order.getOrderPrice());
+				trade.setTradedPrice(curBuyOrder.getOrderPrice());
+				//trade.setTradedPrice(order.getOrderPrice());
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curBuyOrder.getRemaining_quantity()) {
