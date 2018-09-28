@@ -1,7 +1,8 @@
-package businessLogic;
+package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import DAO.UserTableImpl;
+import businessLogic.ValidationImpl;
+import pojo.User;
 
 
 @WebServlet("/RegisterUser")
@@ -48,9 +53,21 @@ public class RegisterUser extends HttpServlet {
 			//registration sucessful
 		}
 		ValidationImpl validation=new ValidationImpl();
+		UserTableImpl uimpl=new UserTableImpl();
 		int res=validation.ValidateUser(fullname);
-		if(res==1);//go ahead
-		else if(res==0)//already exists
+		if(res==1) {
+			//go ahead
+			System.out.println("Regg user");
+			double contactno=Double.parseDouble(contact);
+			System.out.println(contactno);
+			int ret=uimpl.AddUser(new User(fullname, password, contactno, fullname, new Date()));
+			if(ret==1)
+				messageOnJsp="Success!! Please Login ";
+		}
+		else if(res==0) {
+			//already exists
+			messageOnJsp="Username already exists!!";
+		}
 		
 		
 		
