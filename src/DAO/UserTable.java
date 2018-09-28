@@ -10,6 +10,8 @@ public interface UserTable {
 	public List<User> GetAllUsers();
 	public int AddUser(User user);
 	public int GetCount();
+	public double GetContactByOrderId(double user_id);
 	public String GetPosition(double user_id);
+	public String GetEmailByOrderId(double user_id);
 }
 

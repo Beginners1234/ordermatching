@@ -198,5 +198,51 @@ public class UserTableImpl implements UserTable {
 		return pos;
 	}
 
+	@Override
+	public String GetEmailByOrderId(double user_id) {
+		// TODO Auto-generated method stub
+		
+		String email = null;
+		
+		String GETEMAIL = "SELECT login_id AS email FROM user_details WHERE user_id = ?";
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(GETEMAIL);
+			ps.setDouble(1, user_id);
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				email = set.getString("email");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return email;
+	}
+
+	@Override
+	public double GetContactByOrderId(double user_id) {
+		// TODO Auto-generated method stub
+		
+		double contact = 0;
+		
+		String GETNUM = "SELECT contact AS cont FROM user_details WHERE user_id = ?";
+		try(Connection con = MyConnection.openConnection();) {
+			PreparedStatement ps = con.prepareStatement(GETNUM);
+			ps.setDouble(1, user_id);
+			ResultSet set = ps.executeQuery();
+			while(set.next())
+			{
+				contact = set.getDouble("cont");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return contact;
+	}
+
 }
+
 
