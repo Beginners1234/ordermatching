@@ -76,11 +76,11 @@
       
       <!-- <div class="row">
        <div class="col-xs-8"> -->
-          <div class="checkbox icheck">
+         <!--  <div class="checkbox icheck">
             <label>
               <input name = "agreeterms" type="checkbox">    I agree to the <a href="#">terms and conditions</a>
             </label>
-          </div>
+          </div> -->
         <!--</div> -->
         <!-- /.col -->
           <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>

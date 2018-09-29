@@ -58,12 +58,12 @@ public class RegisterUser extends HttpServlet {
 		if(fullname.isEmpty()||email.isEmpty()||password.isEmpty()||repassword.isEmpty()||contact.isEmpty()) {
 			request.setAttribute("errorString", "Invalid Input");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
+			return;
 		}
-		if(agreeterms == null)
-		{	//not agreed to terms
-			messageOnJsp="Please Agree to Terms";
-		}else if(!password.equals(repassword)){
-			messageOnJsp="Passwords dont match";
+		if(!password.equals(repassword)){
+			request.setAttribute("errorString", "Passwords don't match");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+			return;
 		}
 		ValidationImpl validation=new ValidationImpl();
 		UserTableImpl uimpl=new UserTableImpl();
@@ -75,11 +75,11 @@ public class RegisterUser extends HttpServlet {
 			System.out.println(contactno);
 			int ret=uimpl.AddUser(new User(email, password, contactno, fullname, new Date()));
 			if(ret==1)
-				messageOnJsp="Success!! Please Login ";
+				messageOnJsp="Success. Please Login ";
 		}
 		else if(res==0) {
 			//already exists
-			messageOnJsp="Email already exists!!";
+			messageOnJsp="Email already exists.";
 		}
 		
 		
