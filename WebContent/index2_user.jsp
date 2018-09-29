@@ -261,7 +261,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="smiley.jpg" class="user-image" alt="User Image">
+              <img src="user.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
               
               	<%
@@ -275,24 +275,44 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="userimg.png" class="img-circle" alt="User Image">
+              	<br>
+              	<img src=user.jpg class="img-circle" alt="User Image">
                 <br> <br>
-				<%= name1 %>
+				<b><%= name1 %></b>
+				<br>
               </li>
-              
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer" style="background-color: #383838;">
+        
                 <div class="pull-left">
-                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
-                </div>
+                  <button type  = "button" class = "btn" onclick="callProfileServlet();">Profile</button>
+<!--                   <a href="openservlet" class="btn">Profile</a>
+ -->                </div>
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-default btn-flat">Sign out</a>
+                   <button type  = "button" class = "btn" onclick="callLogoutServlet();">Sign Out</button>
+
                 </div>
               </li>
             </ul>
           </li>
         </ul>
       </div>
+      
+       <script type="text/javascript">
+	        function callProfileServlet() {
+	            document.forms[0].action = "openservlet";
+	            document.forms[0].submit();
+	        }
+	        
+	        function callLogoutServlet() {
+	            document.forms[0].action = "logout";
+	            document.forms[0].submit();
+	        }
+	        
+	        
+	    </script>
+	    
+	    
 
     </nav>
   </header>
@@ -301,30 +321,30 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
+      <br>
  <div class="user-panel">
         <div class="pull-left image">
-          <img src="smiley.jpg" class="img-circle" alt="User Image">
+          <img src="user.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      <br>
+        </div>
       <!-- search form -->
-   <!--   <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
+      <form action="#" method="get" class="sidebar-form">
+        <!-- <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
-        </div>
-      </form>-->
+        </div> -->
+      </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <br>
+        <br> 
         <!-- Place order -->
         <li>
           <a href="user">
@@ -388,11 +408,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        Home
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
       </ol>
     </section>
 
