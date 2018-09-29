@@ -1,4 +1,4 @@
-?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
@@ -48,7 +48,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>OMS</b></span>
+      <span class="logo-lg"><b>Admin Dashboard</b></span>
     </a>
  
     <!-- Header Navbar: style can be found in header.less -->
@@ -266,70 +266,76 @@
               %>
               <span class="hidden-xs"><%= name1%></span>
             </a>
-            <ul class="dropdown-menu">
+             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="abc.jpg" class="img-circle" alt="User Image">
- 
-                <p>
-                  <%= name1%>
-                </p>
+              	<br>
+              	<img src=user.jpg class="img-circle" alt="User Image">
+                <br> <br>
+				<b><%= name1 %></b>
+				<br>
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
+              <li class="user-footer" style="background-color: #383838;">
+        	   <div class = "row">
+        	   <div class ="col-md-4"></div>
+                <div class = "col-md-4">
+                   <button type  = "button" class = "btn" onclick="callLogoutServlet();">Sign Out</button>
+
                 </div>
-                <div class="pull-right">
-                  <a href="logout" class="btn btn-default btn-flat" class="btn btn-default btn-flat">Sign out</a>
+                <div class = "col-md-4"></div>
                 </div>
               </li>
             </ul>
           </li>
         </ul>
       </div>
+      
+       <script type="text/javascript">
+	        function callLogoutServlet() {
+	            document.forms[0].action = "logout";
+	            document.forms[0].submit();
+	        }
+	        
+	        
+	    </script>
  
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+    <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+      <br>
+ <div class="user-panel">
         <div class="pull-left image">
-          <img src="abc.jpg" class="img-circle" alt="User Image">
+          <img src="user.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div>
+        </div>
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
-        <!-- <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div> -->
+ 
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
- 
+		<br> 
  
         <li>
           <a href="admin">
-            <i class="fa fa-table"></i> <span>Dashboard</span>
+            <i class="fa fa-th"></i> <span>Dashboard</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <br>
         </li>
+        
+        
  
         <li class="treeview">
           <a href="#">
@@ -339,6 +345,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+         
           <ul class="treeview-menu">
             <!-- <li><a href="./pages/tables/executedorders.jsp"><i class="fa fa-circle-o"></i> Executed Orders</a></li>-->
             <li><a href="aps"><i class="fa fa-circle-o"></i> Pending Orders</a></li>

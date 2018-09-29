@@ -10,7 +10,7 @@
 <html xmlns="http://w...content-available-to-author-only...3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-  <meta charset="utf-8">
+  <meta charsHomet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>User | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
