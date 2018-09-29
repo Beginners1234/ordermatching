@@ -194,7 +194,7 @@ public class OrderTableImpl implements OrderTable {
 		// TODO Auto-generated method stub
 		String GETORDERSFORMATCH;
 		List<Order> ordersmatch = new ArrayList<>();
-		if(order_categ == "BUY")
+		if(order_categ.equalsIgnoreCase("buy"))
 		{
 			GETORDERSFORMATCH = "SELECT TOP (?) * FROM order_details WHERE order_category = ? "
 					+ "AND order_type = 'LIMIT' AND order_status = 'PENDING' ORDER BY price DESC";
