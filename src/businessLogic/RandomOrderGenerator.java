@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import pojo.Order;
 
@@ -80,6 +81,12 @@ public class RandomOrderGenerator implements Runnable {
 		Random g=new Random(f_1);
 		for(int i=0;i<numberOfOrders;i++)
 		{
+			try {
+				TimeUnit.MILLISECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Boolean aon_random=o_aon[g.nextInt(2)];
 			int o_t = new Random().nextInt(o_type.length);
 			double userId_buy =100+val_user.nextInt(10);
