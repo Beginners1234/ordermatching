@@ -93,7 +93,7 @@
 		if(message!=null) 
 			{
 			
-			if (message.equals("Success!! Please Login ")){
+			if (message.equals("Success. Please Login ")){
 			
 			%>
 			
