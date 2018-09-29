@@ -270,7 +270,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../../dist/img/user3-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   <%=name1 %>
@@ -315,7 +315,7 @@
       </div>
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
+        <div class="input-g	roup">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
