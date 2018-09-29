@@ -46,9 +46,9 @@
     <!-- Logo -->
     <a href="../../index2.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>O</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>User Dashboard</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -258,7 +258,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="C:\Users\Grad\Downloads\Profile.png" class="user-image" alt="User Image">
+              <img src="user.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">
               
               <%
@@ -269,36 +269,46 @@
               
               </span>
             </a>
-            <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
-
-                <p>
-                  <%=name1 %>
-                  
-                </p>
+              	<br>
+              	<img src=user.jpg class="img-circle" alt="User Image">
+                <br> <br>
+				<b><%= name1 %></b>
+				<br>
               </li>
-              <!-- Menu Body -->
-              
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer" style="background-color: #383838;">
+        
                 <div class="pull-left">
-                  <a href="openservlet" class="btn btn-default btn-flat">Profile</a>
-                </div>
+                  <button type  = "button" class = "btn" onclick="callProfileServlet();">Profile</button>
+<!--                   <a href="openservlet" class="btn">Profile</a>
+ -->                </div>
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-default btn-flat">Sign out</a>
+                   <button type  = "button" class = "btn" onclick="callLogoutServlet();">Sign Out</button>
+
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/examples/profile.jsp" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
-    </nav>
+      
+       <script type="text/javascript">
+	        function callProfileServlet() {
+	            document.forms[0].action = "openservlet";
+	            document.forms[0].submit();
+	        }
+	        
+	        function callLogoutServlet() {
+	            document.forms[0].action = "logout";
+	            document.forms[0].submit();
+	        }
+	        
+	        
+	    </script>    
+	    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   
@@ -307,31 +317,25 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+      <br>
+ <div class="user-panel">
         <div class="pull-left image">
-          <img src="C:\Users\Grad\Downloads\Profile.png" class="img-circle" alt="User Image">
+          <img src="user.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>
-          <%=name1 %>
-          </p>
+          <p><%= name1%></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div>
+        </div>    
+      
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
+       <form action="#" method="get" class="sidebar-form">
       </form>
+      
       <!-- /.search form -->
+  
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
         <br>
         <!-- Place order -->
         <li>
