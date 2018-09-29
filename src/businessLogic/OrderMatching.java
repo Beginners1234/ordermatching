@@ -14,7 +14,7 @@ import pojo.Trade;
 public class OrderMatching {
 	OrderTableImpl oimpl=new OrderTableImpl();
 	TradeTableImpl timpl=new TradeTableImpl();
-	
+	Trade trade=new Trade();
 	public void matchOrder(Order order) {
 		//OrderTableImpl orderFunctions=new OrderTableImpl();
 		String type=order.getOrderCategory();// buy/sell
@@ -43,7 +43,7 @@ public class OrderMatching {
 					}
 				}
 				
-				Trade trade=new Trade();
+				trade=new Trade();
 
 				trade.setUserId_buy(order.getUserId());
 				trade.setUserId_sell(curSellOrder.getOrderId());
@@ -84,14 +84,13 @@ public class OrderMatching {
 				
 				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
+				(new SMSsender()).sendSMStoUsers(order, trade);
 			}
 			
 			//update buy order in db
 			//if buy is market then mark rejected
 			if (order.getOrderType().equalsIgnoreCase("market")) {
 				if(order.getRemaining_quantity()!=order.getOrderQuantity())
-					order.setOrderStatus("PARTIAL");
-				else if(order.getRemaining_quantity()==0)
 					order.setOrderStatus("COMPLETED");
 				else
 					order.setOrderStatus("REJECTED");
@@ -99,6 +98,8 @@ public class OrderMatching {
 			
 			oimpl.UpdateOrderByOrderId(order); //todo
 			System.out.println("update buy order in db after trade\n"+order+"\n");
+			
+			(new SMSsender()).sendSMStoUsers(order, trade);
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
 			System.out.println("Order is of type SELL\n");
@@ -123,7 +124,7 @@ public class OrderMatching {
 							continue; //go to next buy order
 						}
 					}
-				Trade trade=new Trade();
+				trade=new Trade();
 
 				trade.setUserId_buy(curBuyOrder.getUserId());
 				trade.setUserId_sell(order.getOrderId());
@@ -162,13 +163,13 @@ public class OrderMatching {
 				
 				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
+			
+				(new SMSsender()).sendSMStoUsers(order, trade);
 			}
 			//update sell order in db
 			//if order is market
 			if (order.getOrderType().equalsIgnoreCase("market")) {
 				if(order.getRemaining_quantity()!=order.getOrderQuantity())
-					order.setOrderStatus("PARTIAL");
-				if(order.getRemaining_quantity()==0)
 					order.setOrderStatus("COMPLETED");
 				else
 					order.setOrderStatus("REJECTED");
@@ -176,6 +177,8 @@ public class OrderMatching {
 			
 			oimpl.UpdateOrderByOrderId(order);
 			System.out.println("update sell order in db after trade\n"+order+"\n");
+			
+			(new SMSsender()).sendSMStoUsers(order, trade);
 		}
 		
 	}
