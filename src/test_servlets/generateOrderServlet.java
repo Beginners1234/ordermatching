@@ -1,11 +1,19 @@
 package test_servlets;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import businessLogic.RandomOrderGenerator;
+import pojo.Order;
+
+
 
 /**
  * Servlet implementation class generateOrderServlet
@@ -27,6 +35,17 @@ public class generateOrderServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int number=Integer.parseInt(request.getParameter("number"));
+//		System.out.println("here1");
+		RandomOrderGenerator r=new RandomOrderGenerator();		
+//		System.out.println("here2");
+		List<Order> l=r.GeneraterandomOrderFinite(number);
+		for (Order order : l) {
+			staticOrdersCl.addToList(order);
+		}
+//		System.out.println(l);
+		
+		response.sendRedirect("test");
 	}
 
 }
