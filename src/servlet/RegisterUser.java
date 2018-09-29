@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.UserTableImpl;
 import businessLogic.ValidationImpl;
@@ -33,6 +34,17 @@ public class RegisterUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("got post");
+		HttpSession session = request.getSession();
+		String loginId=(String)session.getAttribute("loginId");	
+		if(loginId != null && !loginId.isEmpty()) {
+        	request.setAttribute("errorString", "Login Again.");
+        	//System.out.println("no session 1");
+        	session.invalidate();
+    		RequestDispatcher d=request.getRequestDispatcher("login.jsp");
+    		d.forward(request, response);  
+    		return;
+ 
+        }
 		
 		String fullname=request.getParameter("fullname");
 		String email=request.getParameter("email");
