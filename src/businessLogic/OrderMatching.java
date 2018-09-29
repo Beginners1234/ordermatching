@@ -84,7 +84,7 @@ public class OrderMatching {
 				
 				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
-				(new SMSsender()).sendSMStoUsers(order, trade);
+				(new SMSsender()).sendSMStoUsers(curSellOrder, trade);
 			}
 			
 			//update buy order in db
@@ -164,7 +164,7 @@ public class OrderMatching {
 				timpl.AddTrade(trade);
 				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			
-				(new SMSsender()).sendSMStoUsers(order, trade);
+				(new SMSsender()).sendSMStoUsers(curBuyOrder, trade);
 			}
 			//update sell order in db
 			//if order is market
