@@ -506,27 +506,28 @@
                 <table class="table no-margin">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
-                    <th>Buy/Sell</th>
-                    <th>Order Type</th>
-                     <th>Order Status</th>
-                    <th>Price</th>
+     	           <th>Time</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>All/None</th>
+                    <th>Instrument</th>
                     <th>Quantity</th>
-                    <th>Remaining</th>
-                    <th>Timestamp</th>
-                    <th>All or None</th>
+                    <th>Price</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   
-                <% for (Order o: list_order) {%>
+                  	<% for (Order o: list_order) {%>
                   	<tr>
-                  	<td> <%= o.getOrderId() %></td>
+                  	<td> <%= o.getOrderTime() %></td>
  
-                  	<td> <%= o.getOrderCategory() %></td>
                   	<td> <%= o.getOrderType() %></td>
-                  	<td> <%= o.getOrderStatus() %></td>
-                  	 <%
+                  	<td> <%= o.getOrderCategory() %></td>
+                  	<td> <%= o.isAon() %></td>
+                  	<td>Facebook, Inc</td>
+                  	<td> <%=(long) o.getOrderQuantity() %></td>
+                  	<%
  
                   	if((o.getOrderType()).equalsIgnoreCase("MARKET"))
                   	{%>
@@ -534,14 +535,11 @@
                   	<%}
                   	else
                   	{%>
-                  	<td><%=o.getOrderPrice()%></td>
+                  	<td><%=(long)o.getOrderPrice()%></td>
                   	<%} %>
-                  	<td> <%=o.getOrderQuantity() %></td>
-                  	<td> <%=o.getRemaining_quantity() %></td>
-                  	<td> <%=o.getOrderTime() %></td>
-                  	<td> <%=o.isAon() %></td>
- 
+                  	<td><%=o.getOrderStatus()%></td>
                   	<%} %> 
+                  	                  	
                   </tr>
                   </tbody>
                 </table>
