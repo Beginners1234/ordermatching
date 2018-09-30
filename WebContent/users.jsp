@@ -25,6 +25,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+   <link rel="stylesheet" href="./bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -156,23 +157,13 @@
  
  		<li>
           <a href="ats">
-            <i class="fa fa-user"></i> <span>Trade</span>
+            <i class="fa fa-handshake-o"></i> <span>Trades</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
  
-        <li class="treeview">
-          <a href="../charts/flot.jsp">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <br>
-        </li>
  
         <li>
           <a href="agu">
@@ -185,7 +176,7 @@
  
         <li>
           <a href="load">
-            <i class="fa fa-user"></i> <span>Test</span>
+            <i class="glyphicon glyphicon-check"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -218,70 +209,26 @@
       
       <!-- /.row -->
 
-          <!-- TABLE: LATEST ORDERS -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              
+<!-- TABLE: LATEST ORDERS -->
+<div class="box box-info">
+  
+  <!-- /.box-header -->
+<div class="box-body">
 
-              <div class="box-tools pull-right">
-                
-              </div>
-            </div>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-#myInput {
-  background-image: url('C:\Users\Grad\Downloads\AdminLTE-2.4.4\AdminLTE-2.4.4\download.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 14px;
-  padding: 12px 25px 12px 40px;
-  border: 2px solid #ddd;
-  margin-bottom: 15px;
-}
-
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 14px;
-}
-
-#myTable th, #myTable td {
-  text-align: center;
-  padding: 12px;
-}
-
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
-</style>
-</head>
-<body>
-
-
-
-<input type="text" id="myInput" onkeyup="myFunction()"  placeholder="Search for User ID.." title="Type in a name">
 
 <%
 	List <User> list_user = (List<User>)request.getAttribute("admin_get_user");
 %>
 
-<table id="example1" class="table table-bordered table-striped">
+<table id="users" class="table table-bordered table-hover">
   <tr class="header">
+  <thead>
     <th style="width:20%;">User ID</th>
     <th style="width:30%;">Name</th>
     <th style="width:25%;">Username</th>
     <th style="width:25%;">Date of Registration</th>
   </tr>
+  </thead>
   <tbody>
   
    <% 
@@ -303,30 +250,11 @@
 
 </table>
 
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-
+</div>
+</div>
 
         <!-- /.col -->
 
-        <!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
             <!-- /.box-header -->
             <!-- /.footer -->
           </div>
@@ -375,5 +303,19 @@ function myFunction() {
 <script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+<!--  DataTables-->
+<script src="./bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap"></script>
+
+<script>
+$(document).ready(function() {
+    $('#users').DataTable( {
+        "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "All"]]
+    } );
+} );
+</script>
+
 </body>
 </html>

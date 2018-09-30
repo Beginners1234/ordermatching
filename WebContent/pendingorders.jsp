@@ -26,6 +26,9 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+ <!-- tab;e -->
+ <!-- table -->
+   <link rel="stylesheet" href="./bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -157,19 +160,8 @@
  
  		<li>
           <a href="ats">
-            <i class="fa fa-user"></i> <span>Trade</span>
+            <i class="fa fa-handshake-o"></i> <span>Trades</span>
             <span class="pull-right-container">
-            </span>
-          </a>
-          <br>
-        </li>
- 
-        <li class="treeview">
-          <a href="../charts/flot.jsp">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <br>
@@ -186,7 +178,7 @@
  
         <li>
           <a href="load">
-            <i class="fa fa-user"></i> <span>Test</span>
+            <i class="glyphicon glyphicon-check"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -234,16 +226,19 @@
                 <%
 							List<Order> list=(List<Order>)request.getAttribute("order_pending");
 				%>	
-              <table id="orderhistorytable" class="table table-bordered table-striped">
+              <table id="pending" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Order ID</th>
+                  <th>Time</th>
+                  <th>Instrument</th>
                   <th>Buy/Sell</th>
                   <th>Type</th>
-                  <th>Price</th>
+                 <th>All/None</th>
                   <th>Quantity</th>
-                  <th>Time</th>
-                  <th>All/None</th>
+                  <th>Price</th>
+                  
+                  
                 </tr>
                 </thead>
                 <tbody>
@@ -252,13 +247,27 @@
 							{
 					%>
 							<tr>
-								<td><%= b.getOrderId()%></td>
+								<td><%= (long) b.getOrderId()%></td>
+								<td><%= b.getOrderTime()%></td>
+								<td>Facebook, Inc.</td>
 								<td><%= b.getOrderCategory()%></td>
 								<td><%= b.getOrderType()%></td>
-								<td><%= b.getOrderPrice()%></td>
-								<td><%= b.getOrderQuantity()%></td>
-								<td><%= b.getOrderTime()%></td>
-								<td><%= b.isAon()%></td>		 
+								<td><%= b.isAon()%></td>
+								<td><%= (long) b.getOrderQuantity()%></td>
+								<td><%
+								
+								double x = b.getOrderPrice();
+								String msg;
+								
+								if (x<150 || x>160) msg = "N/A";
+								else msg = Double.toString(x);
+								%>
+								
+								<%=msg %>
+								
+								</td>
+								
+										 
 							</tr>
  
 					<% } %> 
@@ -325,5 +334,21 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+<!--  DataTables-->
+<script src="./bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap"></script>
+
+<script>
+$(document).ready(function() {
+    $('#pending').DataTable( {
+        "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "All"]]
+    } );
+} );
+</script>
+
+
+
 </body>
 </html>

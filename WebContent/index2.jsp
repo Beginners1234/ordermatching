@@ -162,23 +162,13 @@
  
  		<li>
           <a href="ats">
-            <i class="fa fa-user"></i> <span>Trade</span>
+            <i class="fa fa-handshake-o"></i> <span>Trades</span>
             <span class="pull-right-container">
             </span>
           </a>
           <br>
         </li>
  
-        <li class="treeview">
-          <a href="../charts/flot.jsp">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <br>
-        </li>
  
         <li>
           <a href="agu">
@@ -191,7 +181,7 @@
  
         <li>
           <a href="load">
-            <i class="fa fa-user"></i> <span>Test</span>
+            <i class="glyphicon glyphicon-check"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -213,7 +203,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Admin Dashboard</li>
       </ol>
     </section>
  

@@ -158,19 +158,8 @@
  
  		<li>
           <a href="ats">
-            <i class="fa fa-user"></i> <span>Trade</span>
+            <i class="fa fa-handshake-o"></i> <span>Trades</span>
             <span class="pull-right-container">
-            </span>
-          </a>
-          <br>
-        </li>
- 
-        <li class="treeview">
-          <a href="../charts/flot.jsp">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <br>
@@ -187,7 +176,7 @@
  
         <li>
           <a href="load">
-            <i class="fa fa-user"></i> <span>Test</span>
+            <i class="glyphicon glyphicon-check"></i> <span>Test</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -210,7 +199,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Orders</li>
         <li class="active">Trades</li>
       </ol>
     </section>
@@ -243,10 +231,10 @@
                   <th>Instrument</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Order_ID_Buy </th>
-                  <th>Order_ID_Sell </th>
-                  <th>User_ID_Buy </th>
-                  <th> User_ID_Sell </th>
+                  <th>Buy OrderID </th>
+                  <th>Sell OrderID </th>
+                  <th>Buyer ID </th>
+                  <th>Seller ID </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -353,7 +341,7 @@
 <script>
 $(document).ready(function() {
     $('#trade').DataTable( {
-        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]]
+        "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "All"]]
     } );
 } );
 </script>
