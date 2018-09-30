@@ -469,7 +469,6 @@
       </div>
       <!-- /.row -->
  
- 
 			<!-- TABLE: BUY ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
@@ -514,7 +513,6 @@
  
                   </tbody>
                 </table>
-              </div>
               <!-- /.table-responsive -->
             </div>
 		<!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -566,8 +564,11 @@
               </div>
               <!-- /.table-responsive -->
             </div>
+            
+        </div>
 		<!-- ------------------------------------------------------------------------------------------------------------- -->
 		<!-- TABLE: TRADE ORDERS -->
+		<div class = "col-md-6">
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Trades</h3>
@@ -612,6 +613,7 @@
               </div>
               <!-- /.table-responsive -->
             </div>
+            </div>
 		<!-- ---------------------------------------------------------------------------------------------------------- -->
  
  
@@ -630,6 +632,7 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+      
       </div>
       <!-- /.row -->
     </section>

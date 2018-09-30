@@ -503,7 +503,7 @@
               	List <Order> list_order = (List<Order>)request.getAttribute("list_orders");
               %>
               
-                <table class="table no-margin">
+                <table id= "orders" class="table table-bordered table-hover">
                   <thead>
                   <tr>
      	           <th>Time</th>
@@ -547,11 +547,7 @@
               <!-- /.table-responsive -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/tables/orderhistory.jsp" class="btn btn-sm btn-default btn-flat pull-right-container" style="align-items: center;"> View All Orders &nbsp; </a>
-              &nbsp;
-              <a href="file:///C:/Users/Grad57/Desktop/AdminLTE-2.4.4/pages/tables/orderhistory.jsp" class="btn btn-sm btn-default btn-flat pull-right"> &nbsp; View All Trades</a>
-            </div>
+            
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
@@ -604,7 +600,27 @@
 <script src="bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/demo.js"></script>
+<!-- <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<script src = "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"></script>
+
+AdminLTE for demo purposes
+DataTables
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
+
+<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
+<!-- page script -->
+<script>
+$(document).ready(function() {
+    $('#orders').DataTable( {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+    } );
+} );
+</script>
+
 </body>
 </html>
+	
