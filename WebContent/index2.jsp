@@ -26,6 +26,9 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+     <!-- DataTables -->
+  <link rel="stylesheet" href="./bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,203 +63,6 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        AdminLTE Design Team
-                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Developers
-                        <small><i class="fa fa-clock-o"></i> Today</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Sales Department
-                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Reviewers
-                        <small><i class="fa fa-clock-o"></i> 2 days</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Create a nice theme
-                        <small class="pull-right">40%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">40% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Some task I need to do
-                        <small class="pull-right">60%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Make beautiful transitions
-                        <small class="pull-right">80%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">80% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -404,7 +210,6 @@
     <section class="content-header">
       <h1>
         Admin Dashboard
-        <small>Version 2.0</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -416,11 +221,10 @@
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
+          <%-- <div class="small-box" bg-aqua>
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
  
-            <div class="info-box-content">
+            <div class="inner">
               <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">New Orders</span>
               <%
               int stats_order1 = (int)request.getAttribute("stats_order");
@@ -429,10 +233,73 @@
             </div>
             <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box -->
+  --%>         <!-- /.info-box -->
+  
+         <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>
+              
+              <%
+              	int stats_order = (int)request.getAttribute("stats_order");
+              %>
+              <%=stats_order %>
+			 </h3>
+
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+        </div>
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        
+        <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-red">
+            <div class="inner">
+              <h3>
+              
+              <%
+              int stats_user = (int)request.getAttribute("stats_user");
+              %>
+              <%=stats_user %>
+			 </h3>
+
+              <p>New Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-user"></i>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-green">
+            <div class="inner">
+              <h3>
+              
+              <%
+              int stats_trade = (int)request.getAttribute("stats_trade");
+              %>
+              <%=stats_trade %>
+			 </h3>
+
+              <p>Trades done today</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-handshake-o"></i>
+            </div>
+        </div>
+        </div>
+        
+        
+        
+        
+ <%--        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
  
@@ -447,10 +314,10 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+        <!-- /.col --> --%>
  
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+ <%--        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
  
@@ -464,10 +331,15 @@
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div>
+        </div> --%>
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      
+      <div class = "row">
+      
+      
+      <div class = "col-md-6">
  
 			<!-- TABLE: BUY ORDERS -->
           <div class="box box-info">
@@ -486,13 +358,13 @@
               				<%
 							List<Order> list=(List<Order>)request.getAttribute("buy_order");
 							%>	
-                <table class="table no-margin">
+                <table id = "buy" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
+                    <th>Time</th>
+                    <th>Instrument</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    <th>Time</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -502,10 +374,21 @@
 							{
 					%>
 							<tr>
-								<td><%= b.getOrderId()%></td>
-								<td><%= b.getOrderPrice()%></td>
-								<td><%= b.getOrderQuantity()%></td>
-								<td><%= b.getOrderTime()%></td>		 
+								<td><%= b.getOrderTime()%></td>	
+								<td>Facebook, Inc.</td>	 
+								<td><%= (long) b.getOrderQuantity()%></td>
+								<td><%
+								
+								double x = b.getOrderPrice();
+								String msg;
+								
+								if (x<150 || x>160) msg = "N/A";
+								else msg = Double.toString(x);
+								%>
+								
+								<%=msg %>
+								
+								</td>
 							</tr>
  
 					<% } %>  
@@ -516,9 +399,8 @@
               <!-- /.table-responsive -->
             </div>
 		<!-- ----------------------------------------------------------------------------------------------------------------- -->
- 
 		<!-- TABLE: SELL ORDERS -->
-          <div class="box box-info">
+          <div class="box box-info" style = "margin-top:40px;">
             <div class="box-header with-border">
               <h3 class="box-title">Sell Orders</h3>
  
@@ -534,13 +416,13 @@
               				<%
 							List<Order> list1=(List<Order>)request.getAttribute("sell_order");
 							%> 
-                <table class="table no-margin">
+                <table id = "sell" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
+                    <th>Time</th>
+                    <th>Instrument</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    <th>Time</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -550,10 +432,21 @@
 							{
 					%>
 							<tr>
-								<td><%= b1.getOrderId()%></td>
-								<td><%= b1.getOrderPrice()%></td>
-								<td><%= b1.getOrderQuantity()%></td>
-								<td><%= b1.getOrderTime()%></td>		 
+								<td><%= b1.getOrderTime()%></td>
+								<td>Facebook, Inc.</td>		 
+								<td><%= (long) b1.getOrderQuantity()%></td>
+								<td><%
+								
+								double x = b1.getOrderPrice();
+								String msg;
+								
+								if (x<150 || x>160) msg = "N/A";
+								else msg = Double.toString(x);
+								%>
+								
+								<%=msg %>
+								
+								</td>
 							</tr>
  
 					<% } %> 
@@ -561,12 +454,19 @@
  
                   </tbody>
                 </table>
+                
+                <br>
               </div>
               <!-- /.table-responsive -->
             </div>
             
         </div>
+        </div>
+        </div>
 		<!-- ------------------------------------------------------------------------------------------------------------- -->
+		</div>
+				
+		
 		<!-- TABLE: TRADE ORDERS -->
 		<div class = "col-md-6">
           <div class="box box-info">
@@ -585,10 +485,11 @@
               				<%
 							List<Trade> list2=(List<Trade>)request.getAttribute("trade_order");
 							%>	
-                <table class="table no-margin">
+                <table id = "trade" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>Trade ID</th>
+                    <th>Instrument</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Time</th>
@@ -601,8 +502,20 @@
 					%>
 							<tr>
 								<td><%= b2.getTradeId()%></td>
-								<td><%= b2.getTradedPrice()%></td>
-								<td><%= b2.getTradedQuantity()%></td>
+								<td>Facebook, Inc. </td>
+								<td><%= (long) b2.getTradedQuantity()%></td>
+								<td><%
+								
+								double x = b2.getTradedPrice();
+								String msg;
+								
+								if (x<150 || x>160) msg = "N/A";
+								else msg = Double.toString(x);
+								%>
+								
+								<%=msg %>
+								
+								</td>
 								<td><%= b2.getTradedTime()%></td>		 
 							</tr>
 					<% } %>  
@@ -618,6 +531,8 @@
  
  
           </div>
+          </div>
+          </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -626,6 +541,8 @@
             <!-- /.box-header -->
             <!-- /.footer -->
           </div>
+          
+      </div>
           <!-- /.box -->
             <!-- /.box-footer -->
           </div>
@@ -672,5 +589,37 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="exportExcel.js"></script>
+<!--  DataTables-->
+<script src="./bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap"></script>
+<script>
+$(document).ready(function() {
+    $('#buy').DataTable( {
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+    } );
+} );
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#sell').DataTable( {
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+    } );
+} );
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#trade').DataTable( {
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]]
+    } );
+} );
+</script>
+
+
+
 </body>
 </html>
