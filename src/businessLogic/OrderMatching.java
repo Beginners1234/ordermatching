@@ -22,12 +22,18 @@ public class OrderMatching {
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
 			System.out.println("Order is of type BUY\n");
 			
-			List<Order> sellerList = oimpl.GetOrderForMatching("sell",20);
+			List<Order> sellerList = oimpl.GetOrderForMatching("sell",500);
 			ListIterator<Order> litr = sellerList.listIterator();
 			
 			while(order.getRemaining_quantity()>0) {
 				if(litr.hasNext()==false)break;
 				Order curSellOrder=litr.next();
+				
+				//same user check
+				if(order.getUserId()==curSellOrder.getUserId()) {
+					continue; //dont match orders from same users
+				}
+				
 				//double curSellQuantity=curSellOrder.getRemaining_quantity();
 				
 				if(order.getOrderPrice()<curSellOrder.getOrderPrice()) {
@@ -104,13 +110,19 @@ public class OrderMatching {
 		}else { //current order is to sell /////////////////////////////////////////////////////////
 			System.out.println("Order is of type SELL\n");
 			
-			List<Order> buyerList = oimpl.GetOrderForMatching("buy",20); //todo
+			List<Order> buyerList = oimpl.GetOrderForMatching("buy",500); //todo
 			 
 			ListIterator<Order> litr = buyerList.listIterator();
 			
 			while(order.getRemaining_quantity()>0) {
 				if(litr.hasNext()==false)break;
 				Order curBuyOrder=litr.next();
+				
+				//same user check
+				if(order.getUserId()==curBuyOrder.getUserId()) {
+					continue; //dont match orders from same users
+				}
+				
 				
 				if(order.getOrderPrice()>curBuyOrder.getOrderPrice()) {
 					//cant be executed

@@ -35,7 +35,17 @@ public class generateOrderServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(request.getParameter("number").toString().isEmpty())
+		{
+			response.sendRedirect("test");
+			return;
+		}
 		int number=Integer.parseInt(request.getParameter("number"));
+		
+//		if(number==0)
+//		{
+//			response.sendRedirect("test");
+//		}
 //		System.out.println("here1");
 		RandomOrderGenerator r=new RandomOrderGenerator();		
 //		System.out.println("here2");
