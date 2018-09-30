@@ -20,7 +20,7 @@ public class OrderMatching {
 		String type=order.getOrderCategory();// buy/sell
 		
 		if(type.equalsIgnoreCase("BUY")) {//current order is to buy
-			System.out.println("Order is of type BUY\n");
+//			System.out.println("Order is of type BUY\n");
 			
 			List<Order> sellerList = oimpl.GetOrderForMatching("sell",500);
 			ListIterator<Order> litr = sellerList.listIterator();
@@ -38,7 +38,7 @@ public class OrderMatching {
 				
 				if(order.getOrderPrice()<curSellOrder.getOrderPrice()) {
 					//cant be executed
-					System.out.println("order cant be executed due to price diff");
+//					System.out.println("order cant be executed due to price diff");
 					break;
 				}
 				
@@ -84,12 +84,12 @@ public class OrderMatching {
 				//update sell orders in db
 				
 				oimpl.UpdateOrderByOrderId(curSellOrder); //todo
-				System.out.println("updated sell order\n"+curSellOrder+"\n");
+//				System.out.println("updated sell order\n"+curSellOrder+"\n");
 				
 				//update trade in db
 				
 				timpl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
+//				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 				(new SMSsender()).sendSMStoUsers(curSellOrder, trade);
 			}
 			
@@ -103,12 +103,12 @@ public class OrderMatching {
 			}
 			
 			oimpl.UpdateOrderByOrderId(order); //todo
-			System.out.println("update buy order in db after trade\n"+order+"\n");
+//			System.out.println("update buy order in db after trade\n"+order+"\n");
 			
 			(new SMSsender()).sendSMStoUsers(order, trade);
 			
 		}else { //current order is to sell /////////////////////////////////////////////////////////
-			System.out.println("Order is of type SELL\n");
+//			System.out.println("Order is of type SELL\n");
 			
 			List<Order> buyerList = oimpl.GetOrderForMatching("buy",500); //todo
 			 
@@ -126,7 +126,7 @@ public class OrderMatching {
 				
 				if(order.getOrderPrice()>curBuyOrder.getOrderPrice()) {
 					//cant be executed
-					System.out.println("order cant be executed due to price diff");
+//					System.out.println("order cant be executed due to price diff");
 					break;
 				}
 				
@@ -147,10 +147,10 @@ public class OrderMatching {
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curBuyOrder.getRemaining_quantity()) {
-					System.out.println("edge case\n");
+//					System.out.println("edge case\n");
 					//sell order completed
 					if(curBuyOrder.isAon()&&(order.getRemaining_quantity()!=curBuyOrder.getRemaining_quantity())) {
-						System.out.println("not using current buy order due to aon");
+//						System.out.println("not using current buy order due to aon");
 						continue; //go to next buy order as this one is aon
 					}
 					trade.setTradedQuantity(order.getRemaining_quantity());
@@ -169,12 +169,12 @@ public class OrderMatching {
 				//update buy orders in db
 				
 				oimpl.UpdateOrderByOrderId(curBuyOrder); //todo
-				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
+//				System.out.println("updated Buy order\n"+curBuyOrder+"\n");
 				
 				//update trade in db
 				
 				timpl.AddTrade(trade);
-				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
+//				System.out.println("TRADE: "+trade+"\n"+"----------------------------------------\n");
 			
 				(new SMSsender()).sendSMStoUsers(curBuyOrder, trade);
 			}
@@ -188,7 +188,7 @@ public class OrderMatching {
 			}
 			
 			oimpl.UpdateOrderByOrderId(order);
-			System.out.println("update sell order in db after trade\n"+order+"\n");
+//			System.out.println("update sell order in db after trade\n"+order+"\n");
 			
 			(new SMSsender()).sendSMStoUsers(order, trade);
 		}
