@@ -49,7 +49,10 @@ public class OrderTableImpl implements OrderTable {
 			String ordercat = set.getString("order_category");
 			String ordertype = set.getString("order_type");
 			//ps.setObject(3, new java.sql.Timestamp(order.getOrderTime().getTime()));
-			Date order_time = set.getDate("order_time");
+//			Date order_time = set.getDate("order_time");
+			Date order_time=set.getTimestamp("order_time");
+			
+			System.out.println("DateTime "+order_time);
 			System.out.println(order_time);
 			double quant = set.getDouble("quantity");
 			double price = set.getDouble("price");
