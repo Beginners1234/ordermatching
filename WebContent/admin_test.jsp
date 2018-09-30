@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
@@ -275,7 +276,7 @@
 							{
 							%>
 							<tr>
-								<td><%= b.getOrderTime()%></td>
+								<td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").format(b.getOrderTime())%></td>
 								<td>Facebook, Inc.</td>		
 								<td><%= b.getOrderCategory()%></td>
 								<td><%= b.getOrderType()%></td>

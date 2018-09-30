@@ -1,6 +1,7 @@
 package businessLogic;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -24,9 +25,10 @@ public class demo {
         {
         	Order b=list.get(i);
         	//Order c=list2.get(i);
-        	//System.out.println(b);
+        	//System.out.println(b.getOrderTime());
+        	System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").format(b.getOrderTime()));
         	
-        	ot.AddOrder(b);
+        	//ot.AddOrder(b);
         }
 }
 }
