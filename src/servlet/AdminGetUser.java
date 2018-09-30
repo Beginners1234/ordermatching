@@ -58,7 +58,12 @@ public class AdminGetUser extends HttpServlet {
 		UserTableImpl u=new UserTableImpl();
 		List<User>list_users=u.GetAllUsers();
 		request.setAttribute("admin_get_user",list_users);
-		request.setAttribute("name", loginId);
+		
+		UserTableImpl a=new UserTableImpl();
+		List<User> uas=a.GetUserByLoginid(loginId);
+		User user=uas.get(0);
+		request.setAttribute("name", user.getName());
+		
 		System.out.println(list_users);
 		RequestDispatcher d1=request.getRequestDispatcher("users.jsp");
 		d1.forward(request, response);	}

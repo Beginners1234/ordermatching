@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.OrderTableImpl;
+import DAO.UserTableImpl;
 import pojo.Order;
+import pojo.User;
 
 /**
  * Servlet implementation class AdminRejectedServlet
@@ -58,7 +60,12 @@ public class AdminRejectedServlet extends HttpServlet {
 	
 		OrderTableImpl o = new OrderTableImpl();
 		List<Order>list_orders_rejected = o.GetAllOrders("REJECTED");
-		request.setAttribute("name", loginId);
+		
+		UserTableImpl a=new UserTableImpl();
+		List<User> uas=a.GetUserByLoginid(loginId);
+		User user=uas.get(0);
+		request.setAttribute("name", user.getName());		
+		
 		request.setAttribute("order_rejected",list_orders_rejected);
 		RequestDispatcher d1=request.getRequestDispatcher("rejectedorders.jsp");
 		d1.forward(request, response);

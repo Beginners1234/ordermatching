@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.OrderTableImpl;
+import DAO.UserTableImpl;
 import pojo.Order;
+import pojo.User;
 
 /**
  * Servlet implementation class AdminPendingServlet
@@ -60,7 +62,10 @@ public class AdminPendingServlet extends HttpServlet {
 		
 		OrderTableImpl o = new OrderTableImpl();
 		List<Order>list_orders_pending = o.GetAllOrders("PENDING");
-		request.setAttribute("name", loginId);
+		UserTableImpl a=new UserTableImpl();
+		List<User> uas=a.GetUserByLoginid(loginId);
+		User user=uas.get(0);
+		request.setAttribute("name", user.getName());	
 		request.setAttribute("order_pending",list_orders_pending);
 		RequestDispatcher d1=request.getRequestDispatcher("pendingorders.jsp");
 		d1.forward(request, response);  
