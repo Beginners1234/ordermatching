@@ -51,8 +51,8 @@ public class RegisterUser extends HttpServlet {
 		String password=request.getParameter("password");
 		String repassword=request.getParameter("repassword");
 		String contact=request.getParameter("contact");
-		String agreeterms=request.getParameter("agreeterms");
-		System.out.println(agreeterms);
+//		String agreeterms=request.getParameter("agreeterms");
+//		System.out.println(agreeterms);
 		String messageOnJsp="Invalid Input";
 		
 		if(fullname.isEmpty()||email.isEmpty()||password.isEmpty()||repassword.isEmpty()||contact.isEmpty()) {
@@ -65,6 +65,17 @@ public class RegisterUser extends HttpServlet {
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 			return;
 		}
+		if(contact.isEmpty()){
+			request.setAttribute("errorString", "Enter valid contact number.");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+			return;
+		}
+		if(contact.length()!=10){
+			request.setAttribute("errorString", "Enter valid contact number.");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+			return;
+		}
+		
 		ValidationImpl validation=new ValidationImpl();
 		UserTableImpl uimpl=new UserTableImpl();
 		int res=validation.ValidateUser(email);

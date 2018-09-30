@@ -424,7 +424,7 @@
 
                     <div class="register-box-body">
 
-                      <form action="placeorder" method="post">
+                      <form action="manAdd" method="post">
 						<input type="hidden" id="hidden" class="hidden" name="ordercatbs" value="sell">
                         <div class="form-group has-feedback" style = "display: inline; text-align: center; vertical-align: middle">
                           <label> ORDER TYPE </label> <br>

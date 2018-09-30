@@ -34,6 +34,8 @@ public class manualOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("\nManual order servlet called");
 		// TODO Auto-generated method stub
 		String orderType=request.getParameter("ordertypeml"); //mkt or lmt
 		String buyorsell=request.getParameter("ordercatbs"); //buy or sell
@@ -79,6 +81,7 @@ public class manualOrderServlet extends HttpServlet {
 		User user=list.get(0);
 		double userid=user.getUserId();
 		if(list.isEmpty()) {
+			System.out.println("issue coming here.");
 			 request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		boolean allornone=true;
@@ -90,8 +93,8 @@ public class manualOrderServlet extends HttpServlet {
 //		OrderProcessesInterfaceImpl impl=new OrderProcessesInterfaceImpl();
 //		int resu=impl.PlaceOrder(order);
 		staticOrdersCl.addToList(order);
-		System.out.println("got post order req");
-		
+//		System.out.println("got post order req");
+		System.out.println("Manual order servlet ends.\n");
 		response.sendRedirect("test");
 	}
 
