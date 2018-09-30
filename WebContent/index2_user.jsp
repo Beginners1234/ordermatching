@@ -37,6 +37,11 @@
   <script src="https://o...content-available-to-author-only...n.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://o...content-available-to-author-only...n.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
+      <!-- DataTables -->
+  <link rel="stylesheet" href="./bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+ 
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -149,7 +154,7 @@
         <!-- Place order -->
         <li>
           <a href="user">
-            <i class = "fa fa-th"></i> 
+            <i class = "glyphicon glyphicon-home"></i> 
             <span>Home</span>
             <span class="pull-right-container">
             </span>
@@ -160,13 +165,14 @@
         <!-- Place order -->
         <li>
           <a href="placeorder">
-            <i class = "fa fa-th"></i> 
+            <i class = "fa fa-pencil-square-o"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
               </span>
                        </a>
           <br>
         </li>
+
 
         
       
@@ -184,20 +190,6 @@
           <br>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
-          </ul>
-          <br>
-        </li>
 
       </ul>
     </section>
@@ -209,7 +201,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Home
+        Home	
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -220,55 +212,72 @@
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
-        <div class="col-md-3">
-          <div class="info-box" style="border-style: outset;">
-            <span class="info-box-icon bg-aqua" style="height: 84px !important"><i class="fa fa-pencil-square-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Orders</span>
-              <span class="info-box-number" style = "text-align: center">
+                 <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>
               
               <%
-              
-              Integer order_stats = (Integer) request.getAttribute("statistics_order");
-              out.println(order_stats + "<br>");
-              
+              	int stats_order = (int)request.getAttribute("statistics_order");
               %>
-              
-              </span>
+              <%=stats_order %>
+			 </h3>
+
+              <p>Total Orders</p>
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
+            <div class="icon" style="margin-top:10px;">
+              <i class="fa fa-pencil-square-o"></i>
+            </div>
+        </div>
         </div>
         <!-- /.col -->
-        <div class = "col-md-1"></div>
-        <div class="col-md-3">
-          <div class="info-box"  style="border-style: outset;">
-            <span class="info-box-icon bg-green" style="height: 84px !important"><i class="fa fa-handshake-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text" style="text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Total Trades</span>
-              <span class="info-box-number"style="text-align: center">
+        
+        <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-yellow" >
+            <div class="inner">
+              <h3>
               
               <%
-              
-              int trade_stats = (Integer) request.getAttribute("statistics_trade");
-              out.println(trade_stats + "<br>");
-              
+              int stats_trade = (int)request.getAttribute("statistics_trade");
               %>
-              
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <!-- /.col -->
+              <%=stats_trade %>
+			 </h3>
 
-        <div class = "col-md-1"></div>
-        <div class="col-md-3">
+              <p>Total trades</p>
+            </div>
+            <div class="icon" style="margin-top:10px;">
+              <i class="fa fa-user"></i>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 col-xs-12">
+  
+  		<div class="small-box bg-green">
+            <div class="inner">
+              <h3>
+              
+              <%
+              String stats_pos = (String)request.getAttribute("statistics_position");
+              %>
+              <%=stats_pos %>
+			 </h3>
+
+              <p>Position</p>
+            </div>
+            <div class="icon" style="margin-top:10px;">
+              <i class="fa fa-handshake-o"></i>
+            </div>
+        </div>
+        </div>
+        
+        
+        
+         </div>        
+        
+        <%-- <div class="col-md-4">
           <div class="info-box"  style="border-style: outset;">
             <span class="info-box-icon bg-red" style="height: 84px !important"><i class="fa fa-money"></i></span>
 
@@ -287,9 +296,7 @@
           </div>
           <!-- /.info-box -->
         </div>
-
-        <div class = "col-md-1"></div>
-      </div>
+ --%>
       <!-- /.row -->
 
           <!-- TABLE: LATEST ORDERS -->

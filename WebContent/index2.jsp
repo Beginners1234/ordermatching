@@ -287,42 +287,7 @@
         
         
         
-        
- <%--        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
- 
-            <div class="info-box-content">
-              <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold; word-wrap: break-word;">New Registrations</span>
-              <%
-              int stats_user1 = (int)request.getAttribute("stats_user");
-              %>
-              <span class="info-box-number" style = "text-align: center"><%= stats_user1%></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col --> --%>
- 
-        <!-- /.col -->
- <%--        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
- 
-            <div class="info-box-content">
-              <span class="info-box-text" style = "text-align: center; padding-top: 15px; font-size: 15px; font-weight: bold">Trades done Today</span>
-              <%
-              int stats_trade1 = (int)request.getAttribute("stats_trade");
-              %>
-              <span class="info-box-number" style = "text-align: center"><%= stats_trade1%></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div> --%>
-        <!-- /.col -->
-      </div>
+              </div>
       <!-- /.row -->
       
       <div class = "row">

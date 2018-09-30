@@ -227,8 +227,8 @@
         <br> 
         <!-- Place order -->
         <li>
-           <a href="user">
-            <i class = "fa fa-th"></i> 
+          <a href="user">
+            <i class = "glyphicon glyphicon-home"></i> 
             <span>Home</span>
             <span class="pull-right-container">
             </span>
@@ -239,13 +239,14 @@
         <!-- Place order -->
         <li>
           <a href="placeorder">
-            <i class = "fa fa-th"></i> 
+            <i class = "fa fa-pencil-square-o"></i> 
             <span>Place Order</span>
             <span class="pull-right-container">
               </span>
                        </a>
           <br>
         </li>
+
 
         
       
@@ -263,20 +264,6 @@
           <br>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Trade Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
-          </ul>
-          <br>
-        </li>
 
       </ul>
     </section>
@@ -350,7 +337,7 @@
 
                         <div id = "priceDiv" class="form-group has-feedback" style = "display: none;">
                           <input type="number" name="pricebuy" class="form-control" placeholder="Price" min = 150 max = 160 >
-                          <span class="fa fa-inr form-control-feedback"></span>
+                          <span class="fa fa-usd form-control-feedback"></span>
                           <br>
                         </div>
 
@@ -436,7 +423,7 @@
 
                         <div id = "priceDiv2" class="form-group has-feedback" style = "display: none;">
                           <input type="number" name="pricesell" class="form-control" placeholder="Price" min = 150 max = 160 >
-                          <span class = "fa fa-inr form-control-feedback"></span>
+                          <span class = "fa fa-usd form-control-feedback"></span>
                           <br>
                         </div>
 
