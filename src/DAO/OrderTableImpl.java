@@ -93,7 +93,8 @@ public class OrderTableImpl implements OrderTable {
 				String orderst = set.getString(1);
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
-				Date order_time = set.getDate("order_time");
+//				Date order_time = set.getDate("order_time");
+				Date order_time = set.getTimestamp("order_time");
 				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
 				double userid = set.getDouble("user_id_order");
@@ -170,7 +171,8 @@ public class OrderTableImpl implements OrderTable {
 				String orderst = set.getString("order_status");
 				String ordercat = set.getString("order_category");
 				String ordertype = set.getString("order_type");
-				Date order_time = set.getDate("order_time");
+//				Date order_time = set.getDate("order_time");
+				Date order_time = set.getTimestamp("order_time");
 				double quant = set.getDouble("quantity");
 				double price = set.getDouble("price");
 				double userid = set.getDouble("user_id_order");
@@ -220,7 +222,8 @@ public class OrderTableImpl implements OrderTable {
 				String orderst_m = set.getString("order_status");
 				String ordercat_m = set.getString("order_category");
 				String ordertype_m = set.getString("order_type");
-				Date order_time_m = set.getDate("order_time");
+//				Date order_time_m = set.getDate("order_time");
+				Date order_time_m = set.getTimestamp("order_time");
 				double quant_m = set.getDouble("quantity");
 				double price_m = set.getDouble("price");
 				double userid_m = set.getDouble("user_id_order");

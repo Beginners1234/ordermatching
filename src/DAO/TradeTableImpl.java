@@ -46,7 +46,8 @@ public class TradeTableImpl implements TradeTable {
 			while(set.next())
 			{
 				double tradeid = set.getDouble("trade_id");
-				Date trade_time = set.getDate("traded_time");
+//				Date trade_time = set.getDate("traded_time");
+				Date trade_time = set.getTimestamp("traded_time");
 				double quantity = set.getDouble("traded_quantity");
 				double tradeprice = set.getDouble("traded_price");
 				double useridbuy = set.getDouble("user_id_buy");
@@ -163,7 +164,8 @@ public class TradeTableImpl implements TradeTable {
 			while(set.next())
 			{
 				double tradeid = set.getDouble("trade_id");
-				Date trade_time = set.getDate("traded_time");
+//				Date trade_time = set.getDate("traded_time");
+				Date trade_time = set.getTimestamp("traded_time");
 				double quantity2 = set.getDouble("traded_quantity");
 				double tradeprice = set.getDouble("traded_price");
 				double useridbuy = set.getDouble("user_id_buy");
