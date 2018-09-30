@@ -232,8 +232,9 @@
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Buy OrderID </th>
-                  <th>Sell OrderID </th>
                   <th>Buyer ID </th>
+                  
+                  <th>Sell OrderID </th>
                   <th>Seller ID </th>
                 </tr>
                 </thead>
