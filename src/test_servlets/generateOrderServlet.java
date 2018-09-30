@@ -52,7 +52,7 @@ public class generateOrderServlet extends HttpServlet {
 		List<Order> l=r.GeneraterandomOrderFinite(number);
 		for (Order order : l) {
 			staticOrdersCl.addToList(order);
-			System.out.println("Order is"+ order);
+//			System.out.println("Order is"+ order);
 		}
 //		System.out.println(l);
 		

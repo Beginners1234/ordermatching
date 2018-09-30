@@ -41,7 +41,7 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 		}
 		
 		order = o.AddOrder(order); //add to db via dao returns 1 if successful
-		System.out.println(order.getOrderId());
+//		System.out.println(order.getOrderId());
 		if(order.getOrderId()!=0.0) {
 			//has been added to db
 			n=1;
