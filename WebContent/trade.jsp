@@ -258,6 +258,7 @@
 								<td><%= b.getTradeId() %></td>
 								<td><%= b.getTradedTime() %></td>
 								<td>Facebook, Inc. </td>
+								
 								<td><%
 								
 								double x = b.getTradedPrice();
