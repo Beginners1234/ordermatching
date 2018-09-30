@@ -60,10 +60,10 @@ public class OrderMatching {
 				trade.setTradedTime(new Date());
 				
 				if(order.getRemaining_quantity()<=curSellOrder.getRemaining_quantity()) {
-					System.out.println("edge case\n");
+//					System.out.println("edge case\n");
 					//buy order completed
 					if(curSellOrder.isAon()&&(order.getRemaining_quantity()!=curSellOrder.getRemaining_quantity())) {
-						System.out.println("not using current sell order due to aon");
+//						System.out.println("not using current sell order due to aon");
 						continue; //go to next sell order as this one is aon
 					}
 					trade.setTradedQuantity(order.getRemaining_quantity());

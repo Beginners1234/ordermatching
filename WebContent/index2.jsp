@@ -330,7 +330,7 @@
 							<tr>
 								<td><%= b.getOrderTime()%></td>	
 								<td>Facebook, Inc.</td>	 
-								<td><%= (long) b.getOrderQuantity()%></td>
+								<td><%= (long) b.getRemaining_quantity()%>/<%= (long) b.getOrderQuantity()%></td>
 								<td><%
 								
 								double x = b.getOrderPrice();
@@ -388,7 +388,7 @@
 							<tr>
 								<td><%= b1.getOrderTime()%></td>
 								<td>Facebook, Inc.</td>		 
-								<td><%= (long) b1.getOrderQuantity()%></td>
+								<td><%= (long) b1.getRemaining_quantity()%>/<%= (long) b1.getOrderQuantity()%></td>
 								<td><%
 								
 								double x = b1.getOrderPrice();
