@@ -52,7 +52,7 @@ public class OrderMatching {
 				trade=new Trade();
 
 				trade.setUserId_buy(order.getUserId());
-				trade.setUserId_sell(curSellOrder.getOrderId());
+				trade.setUserId_sell(curSellOrder.getUserId());
 				trade.setOrderId_buy(order.getOrderId());
 				trade.setOrderId_sell(curSellOrder.getOrderId());
 				//trade.setTradedPrice(order.getOrderPrice());
@@ -139,7 +139,7 @@ public class OrderMatching {
 				trade=new Trade();
 
 				trade.setUserId_buy(curBuyOrder.getUserId());
-				trade.setUserId_sell(order.getOrderId());
+				trade.setUserId_sell(order.getUserId());
 				trade.setOrderId_buy(curBuyOrder.getOrderId());
 				trade.setOrderId_sell(order.getOrderId());
 				trade.setTradedPrice(curBuyOrder.getOrderPrice());
