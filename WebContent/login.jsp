@@ -35,7 +35,7 @@
 
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" bgcolor="#3498DB">
 <div class="login-box">
   <div class="login-logo">
     <a href="./index2.html"><b>Order</b>Matching System</a>

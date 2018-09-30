@@ -226,7 +226,7 @@
 
               <p>Total Orders</p>
             </div>
-            <div class="icon" style="margin-top:10px;">
+            <div class="icon" style="margin-top:20px;">
               <i class="fa fa-pencil-square-o"></i>
             </div>
         </div>
@@ -247,7 +247,7 @@
 
               <p>Total trades</p>
             </div>
-            <div class="icon" style="margin-top:10px;">
+            <div class="icon" style="margin-top:15px;">
               <i class="fa fa-user"></i>
             </div>
         </div>
@@ -267,7 +267,7 @@
 
               <p>Position</p>
             </div>
-            <div class="icon" style="margin-top:10px;">
+            <div class="icon" style="margin-top:15px;">
               <i class="fa fa-handshake-o"></i>
             </div>
         </div>
@@ -351,7 +351,25 @@
                   	{%>
                   	<td><%=(long)o.getOrderPrice()%></td>
                   	<%} %>
-                  	<td><%=o.getOrderStatus()%></td>
+                  	
+                  	<%
+                  		String status = new String();
+                  		status = o.getOrderStatus();
+                  		if (status.equalsIgnoreCase("REJECTED")){ %>
+                  		
+                  		<td> <div style="margin-top:5px;"> <small class = "label label-danger"><%=status %></small> </div></td> 
+                  			
+                  		<% 
+                  		}
+                  		else if (status.equalsIgnoreCase("PENDING")){%>
+                  		
+                  		<td><div style="margin-top:5px;"><small class = "label label-warning"><%=status %></small></div></td>
+
+                  	<%
+                  		}
+                  	%>
+                  	
+                  	
                   	<%} %> 
                   	                  	
                   </tr>

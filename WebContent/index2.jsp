@@ -260,7 +260,7 @@
               <p>New Registrations</p>
             </div>
             <div class="icon">
-              <i class="fa fa-user"></i>
+              <i class="ion ion-person-add"></i>
             </div>
         </div>
         </div>
@@ -297,7 +297,7 @@
  
 			<!-- TABLE: BUY ORDERS -->
           <div class="box box-info">
-            <div class="box-header with-border">
+            <div class="box-header with-border" style = "background-color: #FA8072">
               <h3 class="box-title">Buy Orders</h3>
  
               <div class="box-tools pull-right">
@@ -330,7 +330,7 @@
 							<tr>
 								<td><%= b.getOrderTime()%></td>	
 								<td>Facebook, Inc.</td>	 
-								<td><%= (long) b.getRemaining_quantity()%>/<%= (long) b.getOrderQuantity()%></td>
+								<td><%= (long) b.getOrderQuantity()%></td>
 								<td><%
 								
 								double x = b.getOrderPrice();
@@ -355,7 +355,7 @@
 		<!-- ----------------------------------------------------------------------------------------------------------------- -->
 		<!-- TABLE: SELL ORDERS -->
           <div class="box box-info" style = "margin-top:40px;">
-            <div class="box-header with-border">
+            <div class="box-header with-border" style = "background-color: #98FB98">
               <h3 class="box-title">Sell Orders</h3>
  
               <div class="box-tools pull-right">
@@ -388,7 +388,7 @@
 							<tr>
 								<td><%= b1.getOrderTime()%></td>
 								<td>Facebook, Inc.</td>		 
-								<td><%= (long) b1.getRemaining_quantity()%>/<%= (long) b1.getOrderQuantity()%></td>
+								<td><%= (long) b1.getOrderQuantity()%></td>
 								<td><%
 								
 								double x = b1.getOrderPrice();
@@ -424,7 +424,7 @@
 		<!-- TABLE: TRADE ORDERS -->
 		<div class = "col-md-6">
           <div class="box box-info">
-            <div class="box-header with-border">
+            <div class="box-header with-border" style="background-color: #FFD700">
               <h3 class="box-title">Trades</h3>
  
               <div class="box-tools pull-right">
