@@ -40,7 +40,7 @@ public class SMSsender {
 		System.out.println(message1);
 
 		if (order1.getOrderStatus().equalsIgnoreCase("COMPLETED")) {
-			// sendsms(contact1,message1);
+			 sendsms(contact1,message1);
 			System.out.println("Sent->"+ contact1+" "+message1);
 		}
 	
