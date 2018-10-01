@@ -238,7 +238,7 @@
 		//double UserID = (double) request.getAttribute("userid");	
 	%>
 		<tr>
-			<td> <%= b.getUserId() %>  </td>
+			<td> <%= (long) b.getUserId() %>  </td>
 			<td><%= b.getName() %></td>
 			<td><%= b.getLoginId() %></td>
 			<td><%= b.getReg() %></td>		 

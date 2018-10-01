@@ -317,7 +317,7 @@
                   <tr>
                     <th>Time</th>
                     <th>Instrument</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Price</th>
                   </tr>
                   </thead>
@@ -375,7 +375,7 @@
                   <tr>
                     <th>Time</th>
                     <th>Instrument</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Price</th>
                   </tr>
                   </thead>
@@ -444,7 +444,7 @@
                   <tr>
                     <th>Trade ID</th>
                     <th>Instrument</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Price</th>
                     <th>Time</th>
                   </tr>
@@ -455,7 +455,7 @@
 							{
 					%>
 							<tr>
-								<td><%= b2.getTradeId()%></td>
+								<td><%= (long) b2.getTradeId()%></td>
 								<td>Facebook, Inc. </td>
 								<td><%= (long) b2.getTradedQuantity()%></td>
 								<td><%

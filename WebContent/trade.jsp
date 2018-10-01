@@ -244,7 +244,7 @@
 							{
 					%>
 							<tr>
-								<td><%= b.getTradeId() %></td>
+								<td><%= (long) b.getTradeId() %></td>
 								<td><%= b.getTradedTime() %></td>
 								<td>Facebook, Inc. </td>
 								
@@ -260,11 +260,11 @@
 								<%=msg %>
 								
 								</td>
-								<td><%= b.getTradedQuantity() %></td>
-								<td><%= b.getOrderId_buy() %></td>							
-								<td><%= b.getUserId_buy() %></td>								
-								<td><%= b.getOrderId_sell() %></td>
-								<td><%= b.getUserId_sell() %></td>
+								<td><%=(long) b.getTradedQuantity() %></td>
+								<td><%=(long) b.getOrderId_buy() %></td>							
+								<td><%=(long) b.getUserId_buy() %></td>								
+								<td><%=(long) b.getOrderId_sell() %></td>
+								<td><%=(long) b.getUserId_sell() %></td>
 								
 									 
 							</tr>

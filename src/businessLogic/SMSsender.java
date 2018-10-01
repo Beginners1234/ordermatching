@@ -30,11 +30,12 @@ public class SMSsender {
 
 		double contact1dou = uimpl.GetContactByOrderId(order1.getUserId());
 		String contact1 = Double.toString(contact1dou);
+		System.out.println(contact1);
 		contact1 = contact1.replace(".", "");
 		contact1 = contact1.substring(0, contact1.length() - 2);
-
+		System.out.println(contact1);
 		String message1 = "Your " + order1.getOrderCategory() + " " + order1.getOrderType() + " order of Quantity "
-				+ order1.getOrderQuantity() + " was executed at " + trade.getTradedPrice() ;
+				+ order1.getOrderQuantity() + " was executed. Cheers!";
 
 		
 		System.out.println(message1);
@@ -60,7 +61,7 @@ public class SMSsender {
 
         	 		String requestUrl = "http://api.msg91.com/api/sendhttp.php?country=91&"
         	 				+ "sender=MSGIND&"
-        	 				+ "route=1&"
+        	 				+ "route=4&"
         	 				+ "mobiles=+91"+recipient+"&"
         	 				+ "authkey="+authkey+"&"
         	 				+ "message=" + message;
