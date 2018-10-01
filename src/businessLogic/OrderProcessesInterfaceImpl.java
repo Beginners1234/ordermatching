@@ -35,6 +35,7 @@ public class OrderProcessesInterfaceImpl implements OrderProcessesInterface{
 		
 		if(order.getOrderType().equalsIgnoreCase("market"))
 		{
+			order.setAon(false);
 			if(order.getOrderCategory().equalsIgnoreCase("buy"))
 				order.setOrderPrice(1000);
 			else order.setOrderPrice(0);

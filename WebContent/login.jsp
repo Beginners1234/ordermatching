@@ -35,7 +35,7 @@
 
 
 </head>
-<body class="hold-transition login-page" bgcolor="#3498DB">
+<body class="hold-transition login-page" style="background-image: url(maxresdefault.jpg); background-size: cover;">
 <div class="login-box">
   <div class="login-logo">
     <a href="./index2.html"><b>Order</b>Matching System</a>
