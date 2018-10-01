@@ -367,10 +367,14 @@
 
                   	<%
                   		}
-                  	%>
+                  		
+                  		else if (status.equalsIgnoreCase("COMPLETED")){%>
+                  		
+                  		<td><div style="margin-top:5px;"><small class = "label label-success"><%=status %></small></div></td>
+   
                   	
-                  	
-                  	<%} %> 
+                  	<%}
+                  	}%> 
                   	                  	
                   </tr>
                   </tbody>
